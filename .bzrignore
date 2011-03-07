@@ -1,0 +1,7 @@
+loaddefs.el
+*.elc
+ac-comphist.dat
+auto-save-list
+backups
+places
+elpa/*

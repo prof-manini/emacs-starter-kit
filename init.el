@@ -74,12 +74,19 @@
 ;; You can keep system- or user-specific customizations here
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name))
+      user-specific-dir (concat dotfiles-dir user-login-name)
+      overrides-dir (concat dotfiles-dir "overrides"))
 (add-to-list 'load-path user-specific-dir)
 
 (if (file-exists-p system-specific-config) (load system-specific-config))
 (if (file-exists-p user-specific-config) (load user-specific-config))
 (if (file-exists-p user-specific-dir)
-  (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+    (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+
+;; Overrides
+(if (file-exists-p overrides-dir)
+    (add-to-list 'load-path overrides-dir))
+
+(require 'python-mode)
 
 ;;; init.el ends here

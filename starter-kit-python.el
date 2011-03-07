@@ -31,7 +31,7 @@
 (setq flymake-enable-pep8 nil)
 
 ;; Python or python mode?
-(eval-after-load 'python
+(eval-after-load 'python-mode
   '(progn
      ;;==================================================
      ;; Ropemacs Configuration

@@ -24,6 +24,7 @@
                         (0 (progn (compose-region (match-beginning 1)
                                                   (match-end 1) "ƒ")
                                   nil)))))
+     
      ;; http://www.emacswiki.org/emacs/FlymakeJavaScript
 
      (defun flymake-jslint-init ()
@@ -32,7 +33,7 @@
               (local-file (file-relative-name
                            temp-file
                            (file-name-directory buffer-file-name))))
-         (list "rhino" (list (concat dotfiles-dir "scripts/fulljslint.js") local-file))))
+         (list "sh" (list (concat dotfiles-dir "scripts/run-jslint.sh") local-file))))
 
      (setq flymake-allowed-file-name-masks
            (cons '(".+\\.js$"

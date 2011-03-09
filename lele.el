@@ -5,6 +5,9 @@
 ;:Licenza:   GNU General Public License version 3 or later
 ;
 
+(setq user-mail-address "lele@metapensiero.it")
+
+
 ;; Claws-mail
 
 (setq auto-mode-alist
@@ -19,7 +22,7 @@
       '(("freenode.net"
          "#rafanass" "#linuxtrent" "#darcs" "#revctrl"
          "#tailor" "#sqlalchemy" "#airpim")))
-(setq erc-email-userid "lele@metapensiero.it")
+(setq erc-email-userid user-mail-address)
 (setq erc-nick "lelit")
 
 

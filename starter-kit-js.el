@@ -50,7 +50,6 @@
      (defun turn-on-flymake-jslint ()
        (flymake-mode 1))
 
-     (add-hook 'espresso-mode-hook 'yas/minor-mode-on)
      (add-hook 'espresso-mode-hook 'turn-on-flymake-jslint)
      )
   )

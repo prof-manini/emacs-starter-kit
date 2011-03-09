@@ -1,4 +1,5 @@
-#name : (standard file header)
+# -*- mode: snippet -*-
+# name : ap-header
 # --
 `comment-start`-*- coding: utf-8 -*-`comment-end`
 `comment-start`:Progetto:  ${project} -- ${description}`comment-end`

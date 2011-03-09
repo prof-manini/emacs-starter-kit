@@ -67,6 +67,7 @@
 (require 'starter-kit-js)
 (require 'starter-kit-python)
 (require 'starter-kit-completion)
+(require 'starter-kit-darcs)
 
 (regen-autoloads)
 

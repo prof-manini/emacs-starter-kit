@@ -13,16 +13,13 @@
   (setq ropemacs-codeassist-maxfixes 3)
   (setq ropemacs-guess-project t)
   (setq ropemacs-enable-autoimport t)
+  )
 
-  ;; Adding hook to automatically open a rope project if there is one
-  ;; in the current or in the upper level directory
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (cond ((file-exists-p ".ropeproject")
-                     (rope-open-project default-directory))
-                    ((file-exists-p "../.ropeproject")
-                     (rope-open-project (concat default-directory "..")))
-                    )))
+(defun ropemacs-auto-open-project ()
+  "Automatically open a rope project if there is one"
+  (let* ((project-dir (locate-dominating-file default-directory ".ropeproject")))
+    (if (and project-dir (file-exists-p project-dir))
+        (rope-open-project project-dir)))
   )
 
 ;; Customizing
@@ -46,7 +43,7 @@
 
      (autoload 'virtualenv-workon "virtualenv"
        "Activate a Virtual Environment present using virtualenvwrapper" t)
-     
+
      ;;==================================================
      ;; Flymake for python configuration
      ;;===================================================
@@ -73,10 +70,10 @@
 
      (defun flymake-create-copy-file ()
        "Create a copy local file"
-       (let* ((temp-file (flymake-init-create-temp-buffer-copy 
+       (let* ((temp-file (flymake-init-create-temp-buffer-copy
                           'flymake-create-temp-inplace)))
-         (file-relative-name 
-          temp-file 
+         (file-relative-name
+          temp-file
           (file-name-directory buffer-file-name))))
 
      (defun flymake-command-setup (command &optional options)
@@ -84,7 +81,7 @@
 will be called in this way: COMMAND OPTIONS FILE The FILE varible
 is passed after the options."
        ;; Make sure it's not a remote buffer or flymake would not work
-       (when (not (current-file-remotep)) 
+       (when (not (current-file-remotep))
          (list command
                (append options (list (flymake-create-copy-file))))))
 
@@ -118,7 +115,7 @@ is passed after the options."
      ;; Not on all modes, please
      (add-hook 'python-mode-hook 'flymake-find-file-hook)
 
-     
+
      (when flymake-enable-pyflakes
        (flymake-add-checker 'flymake-pyflakes-init))
 

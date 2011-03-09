@@ -83,6 +83,11 @@
 ;; Python, a must
 (require 'python-mode)
 
+;; Adding hook to automatically open a rope project if there is one
+;; in the current or in the upper level directory: this may be too
+;; heavy to be the default
+;; (add-hook 'python-mode-hook 'ropemacs-auto-open-project)
+
 ;; gettext
 (require 'po)
 (setq auto-mode-alist

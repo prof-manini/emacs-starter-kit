@@ -68,6 +68,7 @@
 (require 'starter-kit-python)
 (require 'starter-kit-completion)
 (require 'starter-kit-darcs)
+(require 'starter-kit-erc)
 
 (regen-autoloads)
 

@@ -111,6 +111,10 @@
 ;; heavy to be the default
 ;; (add-hook 'python-mode-hook 'ropemacs-auto-open-project)
 
+;; remove the rope hooks for now
+(remove-hook 'python-mode-hook 'ac-python-mode-setup)
+(remove-hook 'rope-open-project-hook 'ac-nropemacs-setup)
+
 ;; gettext
 (require 'po)
 (setq auto-mode-alist

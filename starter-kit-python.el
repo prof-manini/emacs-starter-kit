@@ -33,7 +33,7 @@
      ;;==================================================
      ;; Ropemacs Configuration
      ;;==================================================
-     (setup-ropemacs)
+     ;;(setup-ropemacs)
 
      ;;==================================================
      ;; Virtualenv Commands
@@ -115,7 +115,6 @@ is passed after the options."
      ;; Not on all modes, please
      (add-hook 'python-mode-hook 'flymake-find-file-hook)
 
-
      (when flymake-enable-pyflakes
        (flymake-add-checker 'flymake-pyflakes-init))
 
@@ -125,6 +124,7 @@ is passed after the options."
      (when flymake-enable-pep8
        (flymake-add-checker 'flymake-pep8-init)))
   )
+
 ;; Cython Mode
 (autoload 'cython-mode "cython-mode" "Mode for editing Cython source files")
 

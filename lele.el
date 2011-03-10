@@ -7,6 +7,9 @@
 
 (setq user-mail-address "lele@metapensiero.it")
 
+;; Most of the time I deal with darcs repositories
+(global-set-key [f9] 'darcsum-whatsnew)
+
 
 ;; Claws-mail
 

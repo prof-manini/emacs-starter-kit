@@ -38,6 +38,17 @@
   (untabify-buffer)
   (whitespace-cleanup))
 
+(defun whatsnew-or-vc-dir ()
+  "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
+  (interactive)
+  (let ((backend (vc-backend (buffer-file-name))))
+    (if (eq backend 'DARCS)
+        (darcsum-whatsnew default-directory)
+      (vc-dir default-directory)
+      )
+    )
+  )
+
 ;;
 ;; Function keys bindings
 ;;
@@ -56,7 +67,7 @@
 (global-set-key [f7] 'edit-named-kbd-macro)
 (global-set-key [f8] 'cleanup-buffer)
 
-(global-set-key [f9] 'vc-dir)
+(global-set-key [f9] 'whatsnew-or-vc-dir)
 (global-set-key [f10] 'shell)
 (global-set-key [S-f10] 'eshell)
 (global-set-key [f11] 'goto-char)

@@ -56,7 +56,7 @@
 (global-set-key [f7] 'edit-named-kbd-macro)
 (global-set-key [f8] 'cleanup-buffer)
 
-(global-set-key [f9] 'darcsum-whatsnew)
+(global-set-key [f9] 'vc-dir)
 (global-set-key [f10] 'shell)
 (global-set-key [S-f10] 'eshell)
 (global-set-key [f11] 'goto-char)

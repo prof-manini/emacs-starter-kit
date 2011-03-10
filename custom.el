@@ -49,6 +49,18 @@
     )
   )
 
+(defun compile-next-makefile (command)
+  "Run a compilation after changing the working directory"
+  (interactive
+   (list
+    (let ((command (eval compile-command)))
+      (if (or compilation-read-command current-prefix-arg)
+          (compilation-read-command command)
+        command))))
+  (let* ((root-dir (or (locate-dominating-file default-directory "Makefile") "."))
+         (cd-command (concat "cd " root-dir " && " command)))
+    (compile cd-command)))
+
 ;;
 ;; Function keys bindings
 ;;
@@ -58,7 +70,7 @@
 (global-set-key [S-f2] 'query-replace-regexp)
 (global-set-key [f3] 'grep)
 (global-set-key [S-f3] 'grep-find)
-;(global-set-key [C-f3] 'compile-next-makefile)
+(global-set-key [C-f3] 'compile-next-makefile)
 (global-set-key [f4] 'next-error)
 (global-set-key [S-f4] 'previous-error)
 

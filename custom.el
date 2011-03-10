@@ -31,6 +31,9 @@
 ; Non inserire spazi intorno alle parentesi (scrivo poco lisp :)
 (setq parens-require-spaces nil)
 
+;; Show scrollbars on the right
+(set-scroll-bar-mode 'right)
+
 ; Override the default impl, that does also a (indent-buffer)
 (defun cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer."

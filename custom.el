@@ -64,6 +64,20 @@
          (cd-command (concat "cd " root-dir " && " command)))
     (compile cd-command)))
 
+(defun turn-on-desktop ()
+  "Turn on nearest desktop, in auto-save mode"
+  (interactive)
+  (if desktop-save-mode
+      (message "Already active")
+    (setq desktop-base-file-name "emacs.desktop")
+    (setq desktop-dirname (or (locate-dominating-file default-directory "emacs.desktop")
+                              default-directory))
+    (setq desktop-save t)
+    (setq desktop-save-mode t)
+    (desktop-read desktop-dirname)
+    )
+  )
+
 ;;
 ;; Function keys bindings
 ;;
@@ -85,8 +99,7 @@
 (global-set-key [f9] 'whatsnew-or-vc-dir)
 (global-set-key [f10] 'shell)
 (global-set-key [S-f10] 'eshell)
-(global-set-key [f11] 'goto-char)
-(global-set-key [S-f11] 'what-cursor-position)
+(global-set-key [f11] 'turn-on-desktop)
 (global-set-key [f12] 'auto-fill-mode)
 
 (global-set-key [home] 'beginning-of-line)

@@ -62,7 +62,8 @@
         command))))
   (let* ((root-dir (or (locate-dominating-file default-directory "Makefile") "."))
          (cd-command (concat "cd " root-dir " && " command)))
-    (compile cd-command)))
+    (compile cd-command)
+    (setq compile-command command)))
 
 (defun turn-on-desktop ()
   "Turn on nearest desktop, in auto-save mode"

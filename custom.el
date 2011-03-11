@@ -12,7 +12,7 @@
 (setq backup-by-copying-when-linked t)
 
 ; Fai vedere le righe vuote
-(setq default-indicate-empty-lines t)
+(setq indicate-empty-lines t)
 
 ; Mantieni la posizione negli scroll
 (setq scroll-preserve-screen-position t)

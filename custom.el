@@ -99,8 +99,8 @@
 (global-set-key [f8] 'cleanup-buffer)
 
 (global-set-key [f9] 'whatsnew-or-vc-dir)
-(global-set-key [f10] 'shell)
-(global-set-key [S-f10] 'eshell)
+(global-set-key [f10] 'eshell)
+(global-set-key [S-f10] 'shell)
 (global-set-key [f11] 'turn-on-desktop)
 (global-set-key [f12] 'auto-fill-mode)
 

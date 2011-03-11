@@ -69,6 +69,7 @@
   (interactive)
   (if desktop-save-mode
       (message "Already active")
+    (eval-when-compile (require 'desktop))
     (setq desktop-base-file-name "emacs.desktop")
     (setq desktop-dirname (or (locate-dominating-file default-directory "emacs.desktop")
                               default-directory))

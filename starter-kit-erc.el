@@ -47,7 +47,7 @@
 
       (erc-autojoin-mode 1)
 
-      (set-default-font "DejaVu Sans Mono-10")
+      (set-frame-font "DejaVu Sans Mono-10")
       (erc-select :server "irc.freenode.net"
                   :port 6667
                   :nick erc-nick

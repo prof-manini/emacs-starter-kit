@@ -24,10 +24,13 @@
 
 (add-to-list 'load-path dotfiles-dir)
 
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/auto-complete"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/emacs-dbgr"))
-(add-to-list 'load-path (concat dotfiles-dir "/elpa-to-submit/yasnippet"))
+(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit"))
+(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/auto-complete"))
+(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/emacs-dbgr"))
+(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/yasnippet"))
+
+;; Overrides for possibly old bundled versions
+(add-to-list 'load-path (concat dotfiles-dir "overrides"))
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -75,9 +78,7 @@
 ;; You can keep system- or user-specific customizations here
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name)
-      sys-overrides-dir (concat dotfiles-dir "overrides"))
-(add-to-list 'load-path sys-overrides-dir)
+      user-specific-dir (concat dotfiles-dir user-login-name))
 (add-to-list 'load-path user-specific-dir)
 
 ;; Load custom.el

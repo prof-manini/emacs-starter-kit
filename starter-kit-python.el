@@ -132,4 +132,73 @@ is passed after the options."
 (add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
 (add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
 
+;; eshell - see http://wiki.zope.org/klm/PDBTrack and
+;;          http://www.emacswiki.org/emacs/EshellAndPdbTrack
+
+(add-hook 'eshell-output-filter-functions
+       '(lambda () ""
+          (when (eshell-interactive-process)
+            (py-pdbtrack-track-stack-file
+             (buffer-substring (eshell-beginning-of-output) (eshell-end-of-output))))))
+
+; Redefine the following function from python-mode.el: use
+; eshell-last-xxx-end instead of comint-last-xxx-end
+
+(defun py-pdbtrack-track-stack-file (text)
+  "Show the file indicated by the pdb stack entry line, in a separate window.
+
+Activity is disabled if the buffer-local variable
+`py-pdbtrack-do-tracking-p' is nil.
+
+We depend on the pdb input prompt matching `py-pdbtrack-input-prompt'
+at the beginning of the line.
+
+If the traceback target file path is invalid, we look for the most
+recently visited python-mode buffer which either has the name of the
+current function \(or class) or which defines the function \(or
+class).  This is to provide for remote scripts, eg, Zope's 'Script
+(Python)' - put a _copy_ of the script in a buffer named for the
+script, and set to python-mode, and pdbtrack will find it.)"
+  ;; Instead of trying to piece things together from partial text
+  ;; (which can be almost useless depending on Emacs version), we
+  ;; monitor to the point where we have the next pdb prompt, and then
+  ;; check all text from comint-last-input-end to process-mark.
+  ;;
+  ;; Also, we're very conservative about clearing the overlay arrow,
+  ;; to minimize residue.  This means, for instance, that executing
+  ;; other pdb commands wipe out the highlight.  You can always do a
+  ;; 'where' (aka 'w') command to reveal the overlay arrow.
+  (let* ((origbuf (current-buffer))
+         (currproc (get-buffer-process origbuf)))
+
+    (if (not (and currproc py-pdbtrack-do-tracking-p))
+        (py-pdbtrack-overlay-arrow nil)
+
+      (let* ((procmark (point))
+             (block (buffer-substring (max eshell-last-input-end
+                                           (- procmark
+                                              py-pdbtrack-track-range))
+                                      procmark))
+             target target_fname target_lineno target_buffer)
+
+        (if (not (string-match (concat py-pdbtrack-input-prompt "$") block))
+            (py-pdbtrack-overlay-arrow nil)
+
+          (setq target (py-pdbtrack-get-source-buffer block))
+
+          (if (stringp target)
+              (message "pdbtrack: %s" target)
+
+            (setq target_lineno (car target))
+            (setq target_buffer (cadr target))
+            (setq target_fname (buffer-file-name target_buffer))
+            (switch-to-buffer-other-window target_buffer)
+            (goto-line target_lineno)
+            (message "pdbtrack: line %s, file %s" target_lineno target_fname)
+            (py-pdbtrack-overlay-arrow t)
+            (pop-to-buffer origbuf t)
+
+            )))))
+  )
+
 (provide 'starter-kit-python)

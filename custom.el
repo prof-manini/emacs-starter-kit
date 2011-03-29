@@ -46,31 +46,3 @@
 ;; remove the rope hooks for now
 (remove-hook 'python-mode-hook 'ac-python-mode-setup)
 (remove-hook 'rope-open-project-hook 'ac-nropemacs-setup)
-
-;; gettext
-(require 'po)
-(setq auto-mode-alist
-      (cons '("\\.po[tx]?\\'\\|\\.po\\." . po-mode) auto-mode-alist))
-(autoload 'po-mode "po-mode")
-
-;; nxml
-(setq auto-mode-alist
-      (cons '("\\.\\(pt\\|xml\\|xsl\\|rng\\|xhtml\\|zcml\\)\\'" . nxml-mode)
-            auto-mode-alist))
-
-;; reStructuredText
-(require 'rst)
-
-;; attiva la modalità rst sui file *.rst
-(setq auto-mode-alist (cons '("\\.rst$" . rst-mode) auto-mode-alist))
-
-;; aggiorna automaticamente il contents
-(add-hook 'rst-adjust-hook 'rst-toc-update)
-
-;; disabilita il font-lock dei titoli, dei code-blocks... che rallenta
-;; troppo!
-(setq rst-mode-lazy nil)
-(setq rst-directive-face 'font-lock-builtin-face)
-
-;; Attiva i bindings standard (vedi C-c p)
-;;(add-hook 'rst-mode-hook 'rst-text-mode-bindings)

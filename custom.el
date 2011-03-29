@@ -25,9 +25,6 @@
 ; Abilita la valutazione delle variabili locali
 (setq enable-local-eval t)
 
-; Non inserire mai dei tabulatori per l'indentazione
-(setq-default indent-tabs-mode nil)
-
 ; Non inserire spazi intorno alle parentesi (scrivo poco lisp :)
 (setq parens-require-spaces nil)
 

@@ -34,13 +34,6 @@
 ;; Show scrollbars on the right
 (set-scroll-bar-mode 'right)
 
-; Override the default impl, that does also a (indent-buffer)
-(defun cleanup-buffer ()
-  "Perform a bunch of operations on the whitespace content of a buffer."
-  (interactive)
-  (untabify-buffer)
-  (whitespace-cleanup))
-
 (defun whatsnew-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)

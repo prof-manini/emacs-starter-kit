@@ -34,3 +34,19 @@
 (setq gnus-default-posting-charset (quote utf-8))
 (setq gnus-permanently-visible-groups ".")
 (setq gnus-summary-line-format "%U%R%z%d %(%[%-20,20a%]%) %I%s\n")
+
+
+;; reStructuredText
+
+(require 'rst)
+
+;; aggiorna automaticamente il contents
+(add-hook 'rst-adjust-hook 'rst-toc-update)
+
+;; disabilita il font-lock dei titoli, dei code-blocks... che rallenta
+;; troppo!
+(setq rst-mode-lazy nil)
+(setq rst-directive-face 'font-lock-builtin-face)
+
+;; Attiva i bindings standard (vedi C-c p)
+;;(add-hook 'rst-mode-hook 'rst-text-mode-bindings)

@@ -233,5 +233,44 @@ Symbols matching the text at point are put first in the completion list."
   (let ((name (file-relative-name file)))
     (vc-git-command buf 0 name "blame" "-w" rev)))
 
+(defun whatsnew-or-vc-dir ()
+  "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
+  (interactive)
+  (let ((backend (vc-backend (buffer-file-name))))
+    (if (eq backend 'DARCS)
+        (darcsum-whatsnew default-directory)
+      ;; vc gets confused when running status on sibling bzr dirs
+      (if (eq backend 'Bzr)
+          (vc-dir (locate-dominating-file default-directory ".bzr"))
+        (vc-dir default-directory)))))
+
+(defun compile-next-makefile (command)
+  "Run a compilation after changing the working directory"
+  (interactive
+   (list
+    (let ((command (eval compile-command)))
+      (if (or compilation-read-command current-prefix-arg)
+          (compilation-read-command command)
+        command))))
+  (let* ((root-dir (or (locate-dominating-file default-directory "Makefile") "."))
+         (cd-command (concat "cd " root-dir " && " command)))
+    (compile cd-command)
+    (setq compile-command command)))
+
+(defun activate-virtual-desktop ()
+  "Turn on a virtualenv and its related desktop, in auto-save mode"
+  (interactive)
+  (if desktop-save-mode
+      (message "Already active")
+    (eval-when-compile
+      (require 'desktop)
+      (require 'virtualenv))
+    (call-interactively 'virtualenv-activate)
+    (setq desktop-base-file-name "emacs.desktop")
+    (setq desktop-dirname (getenv "VIRTUAL_ENV"))
+    (setq desktop-save t)
+    (setq desktop-save-mode t)
+    (desktop-read desktop-dirname)))
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

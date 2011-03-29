@@ -89,5 +89,40 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+;; Function keys bindings
+(global-set-key [f1] 'hippie-expand)   ; alias di M-/
+(global-set-key [f2] 'query-replace)    ; alias di M-%
+(global-set-key [S-f2] 'query-replace-regexp)
+(global-set-key [f3] 'grep)
+(global-set-key [S-f3] 'grep-find)
+(global-set-key [C-f3] 'compile-next-makefile)
+(global-set-key [f4] 'next-error)
+(global-set-key [S-f4] 'previous-error)
+
+(global-set-key [f5] 'call-last-kbd-macro)
+(global-set-key [f6] 'name-last-kbd-macro)
+(global-set-key [f7] 'edit-named-kbd-macro)
+(global-set-key [f8] 'cleanup-buffer)
+
+(global-set-key [f9] 'whatsnew-or-vc-dir)
+(global-set-key [f10] 'eshell)
+(global-set-key [S-f10] 'shell)
+(global-set-key [f11] 'activate-virtual-desktop)
+(global-set-key [f12] 'auto-fill-mode)
+
+;; Other global keys
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
+(global-set-key [C-home] 'beginning-of-buffer)
+(global-set-key [C-end] 'end-of-buffer)
+(global-set-key "\C-m" 'newline-and-indent)
+(global-set-key [delete] 'delete-char)
+
+(global-set-key [C-left] 'backward-word)
+(global-set-key [C-right] 'forward-word)
+
+(global-set-key [M-left] 'previous-buffer)
+(global-set-key [M-right] 'next-buffer)
+
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here

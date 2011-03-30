@@ -80,6 +80,10 @@
         ido-use-filename-at-point 'guess
         ido-max-prospects 10))
 
+;; but please use a better ordering, when dealing with Pyjamas for example...
+(setq ido-file-extensions-order '(".py" ".js" t))
+
+
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)

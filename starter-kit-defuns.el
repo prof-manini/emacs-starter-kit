@@ -236,13 +236,17 @@ Symbols matching the text at point are put first in the completion list."
 (defun whatsnew-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)
+  (eval-when-compile (require 'darcsum))
   (let ((backend (vc-backend (buffer-file-name))))
-    (if (eq backend 'DARCS)
+    (if (or (eq backend 'DARCS)
+            (darcsum-repository-root default-directory))
         (darcsum-whatsnew default-directory)
       ;; vc gets confused when running status on sibling bzr dirs
       (if (eq backend 'Bzr)
           (vc-dir (locate-dominating-file default-directory ".bzr"))
-        (vc-dir default-directory)))))
+        (if backend
+            (vc-dir default-directory)
+          (message "No darcs or bzr repository in sight"))))))
 
 (defun compile-next-makefile (command)
   "Run a compilation after changing the working directory"

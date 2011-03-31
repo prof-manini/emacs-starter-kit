@@ -135,6 +135,8 @@ is passed after the options."
 ;; eshell - see http://wiki.zope.org/klm/PDBTrack and
 ;;          http://www.emacswiki.org/emacs/EshellAndPdbTrack
 
+(require 'python-mode)
+
 (add-hook 'eshell-output-filter-functions
        '(lambda () ""
           (when (eshell-interactive-process)

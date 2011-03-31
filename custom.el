@@ -35,9 +35,6 @@
 ;; Modes
 ;;
 
-;; Python, a must
-(require 'python-mode)
-
 ;; Adding hook to automatically open a rope project if there is one
 ;; in the current or in the upper level directory: this may be too
 ;; heavy to be the default

@@ -177,7 +177,10 @@ script, and set to python-mode, and pdbtrack will find it.)"
         (py-pdbtrack-overlay-arrow nil)
 
       (let* ((procmark (point))
-             (block (buffer-substring (max eshell-last-input-end
+             (last-input-end (or (and (boundp 'eshell-last-input-end)
+                                      eshell-last-input-end)
+                                 comint-last-input-end))
+             (block (buffer-substring (max last-input-end
                                            (- procmark
                                               py-pdbtrack-track-range))
                                       procmark))

@@ -276,5 +276,17 @@ Symbols matching the text at point are put first in the completion list."
     (setq desktop-save-mode t)
     (desktop-read desktop-dirname)))
 
+(defun sort-words (reverse beg end)
+  "Sort words in region alphabetically, in REVERSE if negative.
+  Prefixed with negative \\[universal-argument], sorts in reverse.
+
+  The variable `sort-fold-case' determines whether alphabetic case
+  affects the sort order.
+
+  See `sort-regexp-fields'."
+
+  (interactive "P\nr")
+  (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

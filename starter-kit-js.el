@@ -24,33 +24,35 @@
                         (0 (progn (compose-region (match-beginning 1)
                                                   (match-end 1) "ƒ")
                                   nil)))))
-     
-     ;; http://www.emacswiki.org/emacs/FlymakeJavaScript
 
-     (defun flymake-jslint-init ()
+     ;; Adapted from http://www.emacswiki.org/emacs/FlymakeJavaScript,
+     ;; to http://www.javascriptlint.com/index.htm: we assume it has
+     ;; been installed under ~/.emacs.d/, possibly using a virtualenv.
+
+     (defun flymake-jsl-init ()
        (let* ((temp-file (flymake-init-create-temp-buffer-copy
                           'flymake-create-temp-inplace))
               (local-file (file-relative-name
                            temp-file
                            (file-name-directory buffer-file-name))))
-         (list "sh" (list (concat dotfiles-dir "scripts/run-jslint.sh") local-file))))
+         (list (concat dotfiles-dir "bin/jsl") (list "--nologo" local-file))))
 
      (setq flymake-allowed-file-name-masks
            (cons '(".+\\.js$"
-                   flymake-jslint-init
+                   flymake-jsl-init
                    flymake-simple-cleanup
                    flymake-get-real-file-name)
                  flymake-allowed-file-name-masks))
 
      (setq flymake-err-line-patterns
-           (cons '("^Lint at line \\([[:digit:]]+\\) character \\([[:digit:]]+\\): \\(.+\\)$"
-                   nil 1 2 3)
+           (cons '("^\\(.*\\)(\\([[:digit:]]+\\)): warning: \\(.+\\)$"
+                   1 2 nil 3)
                  flymake-err-line-patterns))
 
-     (defun turn-on-flymake-jslint ()
+     (defun turn-on-flymake-jsl ()
        (flymake-mode 1))
 
-     (add-hook 'espresso-mode-hook 'turn-on-flymake-jslint)
+     (add-hook 'espresso-mode-hook 'turn-on-flymake-jsl)
      )
   )
 

@@ -228,10 +228,10 @@ Symbols matching the text at point are put first in the completion list."
                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
 
 
-;; A monkeypatch to cause annotate to ignore whitespace
-(defun vc-git-annotate-command (file buf &optional rev)
-  (let ((name (file-relative-name file)))
-    (vc-git-command buf 0 name "blame" "-w" rev)))
+;; ;; A monkeypatch to cause annotate to ignore whitespace
+;; (defun vc-git-annotate-command (file buf &optional rev)
+;;   (let ((name (file-relative-name file)))
+;;     (vc-git-command buf 0 name "blame" "-w" rev)))
 
 (defun whatsnew-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"

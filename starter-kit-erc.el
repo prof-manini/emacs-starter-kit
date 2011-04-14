@@ -35,7 +35,11 @@
      (setq erc-autoaway-mode nil)
      (setq erc-modules (quote (autoaway autojoin button fill irccontrols
                                         match netsplit noncommands completion
-                                        readonly ring smiley stamp track)))))
+                                        readonly ring smiley stamp track)))
+
+     ;; paste2
+     (autoload 'paste2-buffer-create "paste2" "create a buffer and then send its content to paste2.org." t)
+     (define-key erc-mode-map (kbd "C-c p") 'paste2-buffer-create)))
 
 (defun irc-maybe ()
   "Connect to IRC, but ask first."

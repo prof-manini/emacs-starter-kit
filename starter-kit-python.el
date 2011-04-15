@@ -62,7 +62,7 @@
      ;;
      ;;    (flymake-add-checker flymake-newchecker-init)
 
-     (require 'tramp)
+     (require 'tramp-cmds)
      ;; Utilities that increase legibility and reduce code duplication
      (defun current-file-remotep ()
        "Tell if the file is remote"

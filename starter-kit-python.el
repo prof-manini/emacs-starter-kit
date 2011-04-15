@@ -165,8 +165,11 @@ cursor is sitting on a flymake error the error information is
 displayed in the minibuffer (rather than having to mouse over
 it)"
        (set (make-local-variable 'post-command-hook)
-            (cons 'show-fly-err-at-point post-command-hook))))
-  )
+            (cons 'show-fly-err-at-point post-command-hook)))
+
+     ;; Bind Python specific linters
+     (define-key py-mode-map [S-f5] 'python-pylint)
+     (define-key py-mode-map [M-f5] 'python-pep8)))
 
 ;; Cython Mode
 (autoload 'cython-mode "cython-mode" "Mode for editing Cython source files")

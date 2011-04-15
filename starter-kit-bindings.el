@@ -25,7 +25,7 @@
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 ;; Jump to a definition in the current file. (This is awesome.)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "M-TAB") 'ido-imenu)
 
 ;; File finding
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)

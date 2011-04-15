@@ -11,9 +11,6 @@
 ;; Completion that uses many different methods to find options.
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-;; Turn on the menu bar for exploring new modes
-(global-set-key (kbd "C-<f10>") 'menu-bar-mode)
-
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
@@ -105,6 +102,7 @@
 (global-set-key [S-f10] 'shell)
 (global-set-key [f11] 'activate-virtual-desktop)
 (global-set-key [f12] 'auto-fill-mode)
+(global-set-key [M-f12] 'menu-bar-mode)
 
 ;; Other global keys
 (global-set-key [home] 'beginning-of-line)

@@ -76,7 +76,21 @@ Customization
 You may want to create a file named after your own account name, as I
 did in ``.emacs.d/lele.el``, where you can put your specific
 tweaks. That file will be loaded only by your instances of Emacs. In
-particular, it should contain your preferred `user-mail-address`.
+particular, it should contain your preferred `user-mail-address`. As
+this file is loaded very late by ``init.el`` (in particular, after any
+``starter-kit-xxx``) it can overwrite any previous configuration
+detail.
+
+You can also create a sub directory of ``.emacs.d`` named after your
+account, for example I have a ``.emacs.d/lele/`` where I store `GNUS`
+details and state. If it exists, that directory is also added to the
+Emacs's `load-path`.
+
+If you need to override some module provided either by the
+emacs-starter-kit or by your system, or maybe you just wanna evaluate
+some elisp package, you can use the ``.emacs.d/overrides/`` sub
+directory that is added *in front* of the Emacs's `load-path` so that
+it has the highest priority.
 
 .. _emacs starter kit: http://github.com/technomancy/emacs-starter-kit/
 __ http://github.com/gabrielelanaro/emacs-starter-kit/

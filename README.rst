@@ -35,8 +35,8 @@ The very first time you execute Emacs with the new configuration it
 will download further packages from ELPA_; I usually do that from the
 command line executing the following two commands in row::
 
-  $ emacs -q -l ~/.emacs.d/init.el
-  $ emacs -q -l ~/.emacs.d/init.el -f recompile-init
+  $ emacs --batch -l ~/.emacs.d/init.el
+  $ emacs --batch -l ~/.emacs.d/init.el -f recompile-init
 
 I recommend redoing the latter whenever seems reasonable, that is
 after any configuration tweak you may do.

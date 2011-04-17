@@ -92,9 +92,37 @@ some elisp package, you can use the ``.emacs.d/overrides/`` sub
 directory that is added *in front* of the Emacs's `load-path` so that
 it has the highest priority.
 
+nxhtml mode
+-----------
+
+nXhtml_ is a set of utilities, expecially useful when authoring web
+applications where ``HTML`` pages are usually built with some
+*template engine*.
+
+One of the components is in fact ``MuMaMo``, *multi major mode*, on
+which (for example) ``mako-nxhtml-mode`` is built.
+
+Another example is ``python-rst-mode`` that may be handy when writing
+ReST_ documentation within Python modules and classes.
+
+Since it is too big to be included and I wasn't able to distill a
+recipe based on its ``web-vcs`` system, here are the steps I suggest::
+
+  $ cd ~/.emacs.d
+  $ bzr branch lp:nxhtml
+  $ emacs --batch -l nxhtml/autostart.el -f nxhtmlmaint-byte-recompile
+
+At this point nXhtml is ready to use: you can either manually load it
+with ``M-x load-file RET ~/.emacs.d/nxhtml/autostart.elc`` or
+automatically load it in every Emacs session::
+
+  $ echo '(load (concat dotfiles-dir "nxhtml/autostart.elc"))' >> your-user-name.el
+
 .. _emacs starter kit: http://github.com/technomancy/emacs-starter-kit/
 __ http://github.com/gabrielelanaro/emacs-starter-kit/
 .. _elpa: http://tromey.com/elpa
 .. _javascriptlint: http://www.javascriptlint.com/
 __ http://javascriptlint.svn.sourceforge.net/viewvc/javascriptlint?view=revision&revision=302
 .. _sourceforge: http://sourceforge.net/projects/javascriptlint/
+.. _nxhtml: http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html
+.. _rest: http://docutils.sourceforge.net/

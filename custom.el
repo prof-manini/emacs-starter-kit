@@ -3,14 +3,6 @@
 ;;:Creato il: Mon Feb  2 19:37:56 2004
 ;;
 
-; Attiva le funzionalità di version control
-(setq version-control t)
-
-; Elimina le vecchie versioni senza chiedere
-(setq trim-versions-without-ask t)
-(setq delete-old-versions t)
-(setq backup-by-copying-when-linked t)
-
 ; Fai vedere le righe vuote
 (setq indicate-empty-lines t)
 

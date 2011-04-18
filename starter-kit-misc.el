@@ -101,6 +101,12 @@
 (delete 'try-expand-line hippie-expand-try-functions-list)
 (delete 'try-expand-list hippie-expand-try-functions-list)
 
+;; Activate file backups
+(setq version-control t)
+(setq trim-versions-without-ask t)
+(setq delete-old-versions t)
+(setq backup-by-copying-when-linked t)
+
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat dotfiles-dir "backups")))))

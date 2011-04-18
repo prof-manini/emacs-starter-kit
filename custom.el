@@ -3,14 +3,8 @@
 ;;:Creato il: Mon Feb  2 19:37:56 2004
 ;;
 
-; Fai vedere le righe vuote
-(setq indicate-empty-lines t)
-
 ; Mantieni la posizione negli scroll
 (setq scroll-preserve-screen-position t)
-
-; Evidenzia la selezione
-(transient-mark-mode t)
 
 (put 'downcase-region 'disabled nil)
 

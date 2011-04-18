@@ -33,7 +33,6 @@
                                   indentation space-after-tab)
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
-      oddmuse-directory (concat dotfiles-dir "oddmuse")
       xterm-mouse-mode t
       save-place-file (concat dotfiles-dir "places")
       scroll-preserve-screen-position t)
@@ -172,12 +171,6 @@
 
 ;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
-
-;; Get around the emacswiki spam protection
-(add-hook 'oddmuse-mode-hook
-          (lambda ()
-            (unless (string-match "question" oddmuse-post)
-              (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
 ;; Yasnippet setup
 (yas/initialize)

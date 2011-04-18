@@ -3,19 +3,7 @@
 ;;:Creato il: Mon Feb  2 19:37:56 2004
 ;;
 
-; Mantieni la posizione negli scroll
-(setq scroll-preserve-screen-position t)
-
 (put 'downcase-region 'disabled nil)
-
-; Abilita la valutazione delle variabili locali
-(setq enable-local-eval t)
-
-; Non inserire spazi intorno alle parentesi (scrivo poco lisp :)
-(setq parens-require-spaces nil)
-
-;; Show scrollbars on the right
-(set-scroll-bar-mode 'right)
 
 ;;
 ;; Modes

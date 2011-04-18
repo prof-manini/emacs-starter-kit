@@ -6,7 +6,8 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
   (mouse-wheel-mode t)
-  (blink-cursor-mode -1))
+  (blink-cursor-mode -1)
+  (set-scroll-bar-mode 'right))
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
@@ -17,12 +18,14 @@
 
 (setq visible-bell t
       echo-keystrokes 0.1
+      enable-local-eval t
       font-lock-maximum-decoration t
       inhibit-startup-message t
       transient-mark-mode t
       color-theme-is-global t
       shift-select-mode nil
       mouse-yank-at-point t
+      parens-require-spaces nil
       require-final-newline t
       truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
@@ -32,7 +35,8 @@
       ediff-window-setup-function 'ediff-setup-windows-plain
       oddmuse-directory (concat dotfiles-dir "oddmuse")
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
+      save-place-file (concat dotfiles-dir "places")
+      scroll-preserve-screen-position t)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))

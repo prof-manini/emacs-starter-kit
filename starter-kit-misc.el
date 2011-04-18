@@ -80,8 +80,14 @@
   (setq ido-enable-prefix nil
         ido-enable-flex-matching t
         ido-create-new-buffer 'always
-        ido-use-filename-at-point 'guess
-        ido-max-prospects 10))
+        ido-use-filename-at-point nil
+        ido-max-prospects 10
+        ido-show-dot-for-dired t
+        ido-ignore-files '("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./"
+                           "\\`_darcs/" "\\`\\.bzr/")
+        ido-ignore-directories '("\\`CVS/" "\\`\\.\\./" "\\`\\./"
+                                 "\\`_darcs/" "\\`\\.bzr/")
+        ))
 
 ;; but please use a better ordering, when dealing with Pyjamas for example...
 (setq ido-file-extensions-order '(".py" ".js" t))

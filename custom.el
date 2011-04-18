@@ -1,9 +1,6 @@
-;; -*- Emacs-Lisp -*-
-;;:Progetto:  dot.emacs -- Impostazioni principali, preferenze generali
-;;:Creato il: Mon Feb  2 19:37:56 2004
+;;; custom.el --- Overrides Emacs Starter Kit settings
 ;;
-
-(put 'downcase-region 'disabled nil)
+;; Part of the Emacs Starter Kit
 
 ;;
 ;; Modes

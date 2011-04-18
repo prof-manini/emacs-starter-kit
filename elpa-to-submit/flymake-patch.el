@@ -1438,7 +1438,8 @@ With arg, turn Flymake mode on if and only if arg is positive."
   ;;+    (flymake-log 3 "starting syntax check on file open")
   ;;+    (flymake-start-syntax-check)
   ;;+)
-  (when (and (not (local-variable-p 'flymake-mode (current-buffer)))
+  (when (and buffer-file-name
+             (not (local-variable-p 'flymake-mode (current-buffer)))
 	     (flymake-can-syntax-check-file buffer-file-name))
     (flymake-mode)
     (flymake-log 3 "automatically turned ON flymake mode")))

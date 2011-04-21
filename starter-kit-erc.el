@@ -3,21 +3,6 @@
 
 (eval-after-load 'erc
   '(progn
-     (when (require 'netrc nil t)
-       (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
-         (setq freenode-password (netrc-get freenode "password")
-               freenode-username (netrc-get freenode "login")
-               erc-prompt-for-nickserv-password nil
-               erc-nickserv-passwords '((freenode
-                                         ((freenode-username . freenode-password)
-                                        ; ("nick-two" . "password")
-                                          ))))
-         (add-hook 'erc-after-connect
-                   '(lambda (SERVER NICK)
-                      (erc-message
-                       "PRIVMSG" (concat "NickServ identify " freenode-password)))))
-       )
-
      ;; logging
      (setq erc-log-insert-log-on-open nil)
      (setq erc-log-channels t)
@@ -40,26 +25,6 @@
      ;; paste2
      (autoload 'paste2-buffer-create "paste2" "create a buffer and then send its content to paste2.org." t)
      (define-key erc-mode-map (kbd "C-c p") 'paste2-buffer-create)))
-
-(defun irc-maybe ()
-  "Connect to IRC, but ask first."
-  (interactive)
-  
-  (when (y-or-n-p "IRC? ")
-    (progn
-      (require 'erc)
-
-      (erc-autojoin-mode 1)
-
-      (set-frame-font "DejaVu Sans Mono-10")
-      (erc-select :server "irc.freenode.net"
-                  :port 6667
-                  :nick erc-nick
-                  :full-name (user-full-name))))
-  
-  (when (y-or-n-p "Emacs server? ")
-    (progn
-      (server-start))))
 
 
 (provide 'starter-kit-erc)

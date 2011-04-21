@@ -17,13 +17,45 @@
 
 ;; ERC
 
-(setq erc-autojoin-channels-alist
-      '(("freenode.net"
-         "#rafanass" "#linuxtrent" "#darcs" "#revctrl"
-         "#tailor" "#sqlalchemy" "#airpim")))
-(setq erc-email-userid user-mail-address)
-(setq erc-nick "lelit")
+(defun start-erc-session ()
+  "Start an ERC session on freenode.net"
 
+  (require 'erc)
+
+  ;; Load credentials from ~/.netrc if present
+  (when (require 'netrc nil t)
+    (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
+      (when freenode
+        (setq freenode-password (netrc-get freenode "password")
+              freenode-username (netrc-get freenode "login")
+              erc-prompt-for-nickserv-password nil
+              erc-nickserv-passwords '((freenode ((freenode-username . freenode-password)))))
+        (add-hook 'erc-after-connect
+                  '(lambda (SERVER NICK)
+                     (erc-message
+                      "PRIVMSG" (concat "NickServ identify " freenode-password))))))
+    )
+
+  (setq erc-autojoin-channels-alist
+        '(("freenode.net"
+           "#rafanass"
+           "#linuxtrent"
+           "#darcs"
+           "#revctrl"
+           "#tailor"
+           "#sqlalchemy"
+           "#airpim"
+           )))
+  (setq erc-email-userid user-mail-address)
+  (setq erc-nick "lelit")
+
+  (erc-autojoin-mode 1)
+
+  (erc-select :server "irc.freenode.net"
+              :port 6667
+              :nick erc-nick
+              :full-name (user-full-name))
+  (recentf-mode nil))
 
 ;; GNUS
 
@@ -50,3 +82,13 @@
 
 ;; Attiva i bindings standard (vedi C-c p)
 ;;(add-hook 'rst-mode-hook 'rst-text-mode-bindings)
+
+
+;; My wmii automatically starts up "emacs -f mine-emacs"
+
+(defun mine-emacs ()
+  "Connect to IRC and activate Emacs server, but ask first."
+  (interactive)
+  (if (y-or-n-p "IRC? ") (start-erc-session))
+  (if (y-or-n-p "Emacs server? ") (server-start))
+  (message "Have a nice day!"))

@@ -29,9 +29,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/emacs-dbgr"))
 (add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/yasnippet"))
 
-;; Overrides for possibly old bundled versions
-(add-to-list 'load-path (concat dotfiles-dir "overrides"))
-
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
@@ -90,6 +87,9 @@
 
 ;; Load "user-name".el
 (if (file-exists-p user-specific-config) (load user-specific-config))
+
+;; Overrides for possibly old bundled versions
+(add-to-list 'load-path (concat dotfiles-dir "overrides"))
 
 ;; Automatically load all "user-name"/*.el files
 (if (file-exists-p user-specific-dir)

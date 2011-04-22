@@ -86,6 +86,7 @@
                            "\\`_darcs/" "\\`\\.bzr/")
         ido-ignore-directories '("\\`CVS/" "\\`\\.\\./" "\\`\\./"
                                  "\\`_darcs/" "\\`\\.bzr/")
+        ido-auto-merge-work-directories-length -1
         ))
 
 ;; but please use a better ordering, when dealing with Pyjamas for example...

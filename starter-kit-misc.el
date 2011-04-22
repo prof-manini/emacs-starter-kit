@@ -82,7 +82,6 @@
         ido-create-new-buffer 'always
         ido-use-filename-at-point nil
         ido-max-prospects 10
-        ido-show-dot-for-dired t
         ido-ignore-files '("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./"
                            "\\`_darcs/" "\\`\\.bzr/")
         ido-ignore-directories '("\\`CVS/" "\\`\\.\\./" "\\`\\./"

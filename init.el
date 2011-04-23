@@ -24,7 +24,8 @@
       esk-custom-file (concat esk-dotfiles-dir "custom.el")
       esk-system-specific-config (concat esk-dotfiles-dir system-name ".el")
       esk-user-specific-config (concat esk-dotfiles-dir user-login-name ".el")
-      esk-user-specific-dir (concat esk-dotfiles-dir user-login-name))
+      esk-user-specific-dir (concat esk-dotfiles-dir user-login-name)
+      esk-overrides-dir (concat esk-dotfiles-dir "overrides"))
 
 ;; Load up ELPA, the package manager
 
@@ -88,7 +89,8 @@
 (if (file-exists-p esk-user-specific-config) (load esk-user-specific-config))
 
 ;; Overrides for possibly old bundled versions
-(add-to-list 'load-path (concat esk-dotfiles-dir "overrides"))
+(if (file-exists-p esk-overrides-dir)
+    (add-to-list 'load-path esk-overrides-dir))
 
 ;; Automatically load all "user-name"/*.el files
 (if (file-exists-p esk-user-specific-dir)

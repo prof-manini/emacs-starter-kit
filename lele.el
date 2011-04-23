@@ -17,24 +17,24 @@
 
 ;; ERC
 
-(defun start-erc-session ()
-  "Start an ERC session on freenode.net"
-
-  (require 'erc)
-
-  ;; Load credentials from ~/.netrc if present
+(defun erc-auto-login-with-netrc (server nick)
   (when (require 'netrc nil t)
     (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
       (when freenode
-        (setq freenode-password (netrc-get freenode "password")
-              freenode-username (netrc-get freenode "login")
-              erc-prompt-for-nickserv-password nil
-              erc-nickserv-passwords '((freenode ((freenode-username . freenode-password)))))
-        (add-hook 'erc-after-connect
-                  '(lambda (SERVER NICK)
-                     (erc-message
-                      "PRIVMSG" (concat "NickServ identify " freenode-password))))))
-    )
+        (let ((freenode-password (netrc-get freenode "password"))
+              (freenode-username (netrc-get freenode "login")))
+          (when (string= freenode-username nick)
+            (setq erc-prompt-for-password nil)
+            (erc-message "PRIVMSG"
+                         (concat "NickServ identify " freenode-password))))))))
+
+(defun start-erc-session ()
+  "Start an ERC session on freenode.net"
+
+  (eval-when-compile (require 'erc))
+
+  ;; Load credentials from ~/.netrc if present
+  (add-hook 'erc-after-connect 'erc-auto-login-with-netrc)
 
   (setq erc-autojoin-channels-alist
         '(("freenode.net"

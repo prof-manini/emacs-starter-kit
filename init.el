@@ -21,9 +21,9 @@
                     (or (buffer-file-name) load-file-name))
       esk-autoload-file (concat esk-dotfiles-dir "loaddefs.el")
       package-user-dir (concat esk-dotfiles-dir "elpa")
-      esk-custom-file (concat esk-dotfiles-dir "custom.el")
-      esk-system-specific-config (concat esk-dotfiles-dir system-name ".el")
-      esk-user-specific-config (concat esk-dotfiles-dir user-login-name ".el")
+      esk-custom-file (concat esk-dotfiles-dir "custom")
+      esk-system-specific-config (concat esk-dotfiles-dir system-name)
+      esk-user-specific-config (concat esk-dotfiles-dir user-login-name)
       esk-user-specific-dir (concat esk-dotfiles-dir user-login-name)
       esk-overrides-dir (concat esk-dotfiles-dir "overrides"))
 
@@ -83,10 +83,10 @@
 (load esk-custom-file 'noerror)
 
 ;; Load "system-name".el
-(if (file-exists-p esk-system-specific-config) (load esk-system-specific-config))
+(load esk-system-specific-config 'noerror)
 
 ;; Load "user-name".el
-(if (file-exists-p esk-user-specific-config) (load esk-user-specific-config))
+(load esk-user-specific-config 'noerror)
 
 ;; Overrides for possibly old bundled versions
 (if (file-exists-p esk-overrides-dir)

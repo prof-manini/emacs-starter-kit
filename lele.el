@@ -91,4 +91,5 @@
   (interactive)
   (if (y-or-n-p "IRC? ") (start-erc-session))
   (if (y-or-n-p "Emacs server? ") (server-start))
+  (set-default-font "DejaVu Sans Mono-10")
   (message "Have a nice day!"))

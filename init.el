@@ -18,7 +18,13 @@
 ;; Load path etc.
 
 (setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
+                    (or (buffer-file-name) load-file-name))
+      autoload-file (concat dotfiles-dir "loaddefs.el")
+      package-user-dir (concat dotfiles-dir "elpa")
+      custom-file (concat dotfiles-dir "custom.el")
+      system-specific-config (concat dotfiles-dir system-name ".el")
+      user-specific-config (concat dotfiles-dir user-login-name ".el")
+      user-specific-dir (concat dotfiles-dir user-login-name))
 
 ;; Load up ELPA, the package manager
 
@@ -28,10 +34,6 @@
 (add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/auto-complete"))
 (add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/emacs-dbgr"))
 (add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/yasnippet"))
-
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-(setq custom-file (concat dotfiles-dir "custom.el"))
 
 (require 'package)
 (package-initialize)
@@ -74,9 +76,6 @@
 (regen-autoloads)
 
 ;; You can keep system- or user-specific customizations here
-(setq system-specific-config (concat dotfiles-dir system-name ".el")
-      user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name))
 (add-to-list 'load-path user-specific-dir)
 
 ;; Load custom.el

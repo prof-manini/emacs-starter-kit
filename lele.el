@@ -59,7 +59,7 @@
 
 ;; GNUS
 
-(setq gnus-home-directory (concat user-specific-dir "/gnus/"))
+(setq gnus-home-directory (concat esk-user-specific-dir "/gnus/"))
 (setq gnus-read-newsrc-file nil)
 (setq gnus-save-newsrc-file nil)
 

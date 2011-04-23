@@ -17,23 +17,23 @@
 
 ;; Load path etc.
 
-(setq dotfiles-dir (file-name-directory
+(setq esk-dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name))
-      autoload-file (concat dotfiles-dir "loaddefs.el")
-      package-user-dir (concat dotfiles-dir "elpa")
-      custom-file (concat dotfiles-dir "custom.el")
-      system-specific-config (concat dotfiles-dir system-name ".el")
-      user-specific-config (concat dotfiles-dir user-login-name ".el")
-      user-specific-dir (concat dotfiles-dir user-login-name))
+      esk-autoload-file (concat esk-dotfiles-dir "loaddefs.el")
+      package-user-dir (concat esk-dotfiles-dir "elpa")
+      esk-custom-file (concat esk-dotfiles-dir "custom.el")
+      esk-system-specific-config (concat esk-dotfiles-dir system-name ".el")
+      esk-user-specific-config (concat esk-dotfiles-dir user-login-name ".el")
+      esk-user-specific-dir (concat esk-dotfiles-dir user-login-name))
 
 ;; Load up ELPA, the package manager
 
-(add-to-list 'load-path dotfiles-dir)
+(add-to-list 'load-path esk-dotfiles-dir)
 
-(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit"))
-(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/auto-complete"))
-(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/emacs-dbgr"))
-(add-to-list 'load-path (concat dotfiles-dir "elpa-to-submit/yasnippet"))
+(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit"))
+(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/auto-complete"))
+(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/emacs-dbgr"))
+(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/yasnippet"))
 
 (require 'package)
 (package-initialize)
@@ -76,22 +76,22 @@
 (regen-autoloads)
 
 ;; You can keep system- or user-specific customizations here
-(add-to-list 'load-path user-specific-dir)
+(add-to-list 'load-path esk-user-specific-dir)
 
 ;; Load custom.el
-(load custom-file 'noerror)
+(load esk-custom-file 'noerror)
 
 ;; Load "system-name".el
-(if (file-exists-p system-specific-config) (load system-specific-config))
+(if (file-exists-p esk-system-specific-config) (load esk-system-specific-config))
 
 ;; Load "user-name".el
-(if (file-exists-p user-specific-config) (load user-specific-config))
+(if (file-exists-p esk-user-specific-config) (load esk-user-specific-config))
 
 ;; Overrides for possibly old bundled versions
-(add-to-list 'load-path (concat dotfiles-dir "overrides"))
+(add-to-list 'load-path (concat esk-dotfiles-dir "overrides"))
 
 ;; Automatically load all "user-name"/*.el files
-(if (file-exists-p user-specific-dir)
-    (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+(if (file-exists-p esk-user-specific-dir)
+    (mapc #'load (directory-files esk-user-specific-dir nil ".*el$")))
 
 ;;; init.el ends here

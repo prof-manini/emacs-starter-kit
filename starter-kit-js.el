@@ -35,7 +35,7 @@
               (local-file (file-relative-name
                            temp-file
                            (file-name-directory buffer-file-name))))
-         (list (concat dotfiles-dir "bin/jsl") (list "--nologo" local-file))))
+         (list (concat esk-dotfiles-dir "bin/jsl") (list "--nologo" local-file))))
 
      (setq flymake-allowed-file-name-masks
            (cons '(".+\\.js$"

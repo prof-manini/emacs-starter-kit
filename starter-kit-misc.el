@@ -34,7 +34,7 @@
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places")
+      save-place-file (concat esk-dotfiles-dir "places")
       scroll-preserve-screen-position t)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
@@ -118,7 +118,7 @@
 
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+                                        (concat esk-dotfiles-dir "backups")))))
 
 ;; nxhtml stuff
 (setq mumamo-chunk-coloring 'submode-colored
@@ -180,7 +180,7 @@
 
 ;; Yasnippet setup
 (yas/initialize)
-(yas/load-directory (concat dotfiles-dir "elpa-to-submit/yasnippet/snippets"))
+(yas/load-directory (concat esk-dotfiles-dir "elpa-to-submit/yasnippet/snippets"))
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/x-prompt))
 (setq yas/wrap-around-region 'cua)
 

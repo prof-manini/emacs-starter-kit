@@ -8,10 +8,10 @@
 
 ;; You should add registers here for the files you edit most often.
 
-(dolist (r `((?i (file . ,(concat dotfiles-dir "init.el")))
-             (?b (file . ,(concat dotfiles-dir "starter-kit-bindings.el")))
-             (?m (file . ,user-specific-config))
-             (?r (file . ,(concat dotfiles-dir "starter-kit-registers.el")))))
+(dolist (r `((?i (file . ,(concat esk-dotfiles-dir "init.el")))
+             (?b (file . ,(concat esk-dotfiles-dir "starter-kit-bindings.el")))
+             (?m (file . ,esk-user-specific-config))
+             (?r (file . ,(concat esk-dotfiles-dir "starter-kit-registers.el")))))
   (set-register (car r) (cadr r)))
 
 (provide 'starter-kit-registers)

@@ -1,12 +1,12 @@
 ;; starter-kit-python.el - setup of python stuff
-(require 'pymacs (concat dotfiles-dir "elpa-to-submit/pymacs.el"))
+(require 'pymacs (concat esk-dotfiles-dir "elpa-to-submit/pymacs.el"))
 
 (defun setup-ropemacs ()
   "Setup the ropemacs harness"
   (setenv "PYTHONPATH"
           (concat
            (getenv "PYTHONPATH") path-separator
-           (concat dotfiles-dir "python-libs/")))
+           (concat esk-dotfiles-dir "python-libs/")))
   (pymacs-load "ropemacs" "rope-")
 
   ;; Stops from erroring if there's a syntax err
@@ -100,7 +100,7 @@ is passed after the options."
        (flymake-command-setup "pep8"))
 
      (defun flymake-pylint-init ()
-       (flymake-command-setup "python" (list (concat dotfiles-dir "scripts/pylint-mod.py"))))
+       (flymake-command-setup "python" (list (concat esk-dotfiles-dir "scripts/pylint-mod.py"))))
 
      (defun flymake-disable-python-checkers ()
        "Disable all python checkers"

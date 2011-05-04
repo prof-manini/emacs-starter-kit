@@ -128,10 +128,6 @@
 
 ;; Associate modes with file extensions
 
-(autoload 'rst-mode "rst")
-(autoload 'po-mode "po-mode")
-
-
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
@@ -139,8 +135,13 @@
 (add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(pt\\|xml\\|xsl\\|rng\\|xhtml\\|zcml\\)\\'" . nxml-mode))
-(add-to-list 'auto-mode-alist '("\\.po[tx]?\\'\\|\\.po\\." . po-mode))
+
+(autoload 'rst-mode "rst")
 (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
+
+(autoload 'po-mode "po-mode")
+(add-to-list 'auto-mode-alist '("\\.po[tx]?\\'\\|\\.po\\." . po-mode))
+(modify-coding-system-alist 'file "\\.po[tx]?\\'\\|\\.po\\." 'po-find-file-coding-system)
 
 (eval-after-load 'grep
   '(when (boundp 'grep-find-ignored-files)

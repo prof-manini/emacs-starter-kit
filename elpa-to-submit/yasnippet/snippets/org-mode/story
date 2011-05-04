@@ -1,0 +1,137 @@
+# -*- mode: snippet -*-
+# name: story
+# expand-env: ((yas/indent-line nil))
+# --
+# -*- mode: org; coding: utf-8 -*-
+#+TITLE: ${1:Brief story title}
+#+AUTHOR: `(user-full-name)` <`user-mail-address`>
+#+LANGUAGE: it
+#+CATEGORY: APEPs
+#+SEQ_TODO: TODO WONTDO WiP DONE
+#+PROPERTY: Effort_ALL 0 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00
+#+COLUMNS: %40ITEM(Voce) %13Effort(Tempo stimato){:} %CLOCKSUM(Tempo effettivo)
+
+## IMPORTANTE: dopo aver espanso lo snippet per creare una nuova
+##             storia è opportuno salvarlo e ricaricarlo
+##             immediatamente: in questo modo Emacs terrà conto delle
+##             impostazioni particolari inserite nell'intestazione qui
+##             sopra.
+
+
+## Introduzione alla storia, con riferimenti di base al Redmine
+
+* $1
+  ${The whole story...}
+
+  Redmine URL: http://sviluppo.l.airpim.com/redmine/issues/${2:Redmine ID}
+
+
+## Nota bene
+
+# Ogni punto può essere "decorato" con una property "Effort" che
+# rappresenta il tempo stimato, in ore. Per inserire la property
+# utilizzare M-x org-set-property (C-c C-x p).
+
+# Quando si è su una voce:
+# - C-c C-x C-i per par partire il timer
+# - C-c C-x C-o per fermarlo
+
+# Con M-x org-todo (C-c C-t) si può ciclare lo stato di ciascun punto,
+# con i seguenti significati:
+#
+#    TODO: da fare con solerzia
+#  WONTDO: scartato, non si farà
+#     WiP: lavoro in corso d'opera
+#    DONE: lavoro terminato
+
+
+## Dettaglio obbiettivi della storia
+
+** Obbiettivi
+   :PROPERTIES:
+   :Effort:   0:15
+   :END:
+
+   Gli obbiettivi che ci si propone di conseguire sono i seguenti:
+   - $0
+
+
+## Preanalisi, elenco delle possibili soluzioni, con valutazione pro/contro
+
+** Pre analisi e strategia
+   :PROPERTIES:
+   :Effort:   2:00
+   :END:
+
+   Tra le possibili soluzioni si evidenziano i seguenti vincoli:
+   -
+
+
+## Analisi impatto sulle varie componenti
+
+** Impatto sulle varie componenti
+   :PROPERTIES:
+   :Effort:   1:00
+   :END:
+
+   La soluzione proposta comporta modifiche ai seguenti componenti:
+   -
+
+*** Ripercussioni su *core* e *api*
+
+*** Impatto sui diversi *client*
+
+**** Ripercussioni su *UI Pyjamas*
+
+**** Ripercussioni su *UI Android*
+
+
+## Analisi dettagliata dell'implementazione della soluzione scelta
+
+** Implementazione
+
+*** Analisi, documentazione e test
+    :PROPERTIES:
+    :Effort:   1:00
+    :END:
+
+    Tutte le nuove *api* introdotte dovranno essere sottoposte a
+    test e documentate plausibilmente in lingua inglese.
+
+    Per poter essere considerata conclusa la storia dovranno essere
+    implementati e superati con successo quanto meno i seguenti test:
+
+    -
+
+
+## Scomposizione della storia in pezzi ragionevolmente maneggiabili da
+## un singolo sviluppatore, con relativa stima delle tempistiche
+
+*** Features
+
+    Questa storia è stata scomposta nelle seguenti features
+
+**** Feature XXX
+     :PROPERTIES:
+     :Effort:   0:30
+     :END:
+
+    http://sviluppo.l.airpim.com/redmine/issues/xxx
+
+
+## Stato della storia
+
+** Resoconto
+
+   La storia è stata ascoltata con attenzione, ma non è stata
+   accettata in quanto ritenuta non idonea...
+
+# Usa C-c C-c con il cursore sulla riga +BEGIN per ricalcolare la
+# tabella
+
+#+BEGIN: columnview :hlines 1 :id global
+| Voce | Tempo stimato | Tempo effettivo |
+|------+---------------+-----------------|
+#+END:
+
+

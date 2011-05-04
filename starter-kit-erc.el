@@ -27,14 +27,29 @@
      (define-key erc-mode-map (kbd "C-c p") 'paste2-buffer-create)
 
      ;; notification
-     (require 'notifications)
-     (defun erc-global-notify (match-type nick message)
-       "Notify when a message is recieved."
-       (notifications-notify
-        :title nick
-        :body message
-        :app-icon "/usr/share/notify-osd/icons/gnome/scalable/status/notification-message-im.svg"
-        :urgency 'low))
+     (if (require 'notifications nil t)
+         ;; emacs 24
+         (defun erc-global-notify (match-type nick message)
+           "Notify when a message is received."
+           (notifications-notify
+            :title (format "%s in %s"
+                           (car (split-string nick "!"))
+                           (or (erc-default-target) "#unknown"))
+            :body (replace-regexp-in-string " +" " " message)
+            :app-icon "/usr/share/notify-osd/icons/gnome/scalable/status/notification-message-im.svg"
+            :urgency 'low
+            :timeout 2000))
+       ;; emacs < 24
+       (require 'notify)
+       (defun erc-global-notify (match-type nick message)
+         "Notify when a message is received."
+         (notify
+          (format "%s in %s"
+                  (car (split-string nick "!"))
+                  (or (erc-default-target) "#unknown"))
+          (replace-regexp-in-string " +" " " message)
+          :icon "/usr/share/notify-osd/icons/gnome/scalable/status/notification-message-im.svg"
+          :timeout 2000)))
      (add-hook 'erc-text-matched-hook 'erc-global-notify)))
 
 

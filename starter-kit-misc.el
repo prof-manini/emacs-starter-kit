@@ -83,9 +83,9 @@
         ido-use-filename-at-point nil
         ido-max-prospects 10
         ido-ignore-files '("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./"
-                           "\\`_darcs/" "\\`\\.bzr/")
+                           "\\`_darcs/" "\\`\\.bzr/" "\\.orig\\'")
         ido-ignore-directories '("\\`CVS/" "\\`\\.\\./" "\\`\\./"
-                                 "\\`_darcs/" "\\`\\.bzr/")
+                                 "\\`_darcs/" "\\`\\.bzr/" "\\.egg-info/\\'")
         ido-auto-merge-work-directories-length -1
         ))
 

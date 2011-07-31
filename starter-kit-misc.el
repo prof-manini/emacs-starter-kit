@@ -82,16 +82,16 @@
         ido-create-new-buffer 'always
         ido-use-filename-at-point nil
         ido-max-prospects 10
-        ido-ignore-files '("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./"
-                           "\\`_darcs/" "\\`\\.bzr/" "\\.orig\\'")
-        ido-ignore-directories '("\\`CVS/" "\\`\\.\\./" "\\`\\./"
-                                 "\\`_darcs/" "\\`\\.bzr/" "\\.egg-info/\\'")
+        ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.orig\\'")
+        ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
         ido-auto-merge-work-directories-length -1
         ))
 
 ;; but please use a better ordering, when dealing with Pyjamas for example...
 (setq ido-file-extensions-order '(".py" ".js" t))
 
+;; ignore some more directory patterns
+(add-to-list 'completion-ignored-extensions ".egg-info/")
 
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)

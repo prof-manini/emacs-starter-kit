@@ -260,17 +260,19 @@ Symbols matching the text at point are put first in the completion list."
 (defun activate-virtual-desktop ()
   "Turn on a virtualenv and its related desktop, in auto-save mode"
   (interactive)
-  (if desktop-save-mode
-      (message "Already active")
-    (eval-when-compile
-      (require 'desktop)
-      (require 'virtualenv))
-    (call-interactively 'virtualenv-activate)
-    (setq desktop-base-file-name "emacs.desktop")
-    (setq desktop-dirname (getenv "VIRTUAL_ENV"))
-    (setq desktop-save t)
-    (setq desktop-save-mode t)
-    (desktop-read desktop-dirname)))
+  (when desktop-save-mode
+    (virtualenv-deactivate)
+    (desktop-kill))
+
+  (eval-when-compile
+    (require 'desktop)
+    (require 'virtualenv))
+  (call-interactively 'virtualenv-activate)
+  (setq desktop-base-file-name "emacs.desktop")
+  (setq desktop-dirname (getenv "VIRTUAL_ENV"))
+  (setq desktop-save t)
+  (setq desktop-save-mode t)
+  (desktop-read desktop-dirname))
 
 (defun sort-words (reverse beg end)
   "Sort words in region alphabetically, in REVERSE if negative.

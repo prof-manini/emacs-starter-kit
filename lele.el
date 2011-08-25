@@ -7,6 +7,16 @@
 
 (setq user-mail-address "lele@metapensiero.it")
 
+(defun turn-on-subword-mode ()
+  (subword-mode 1))
+
+(add-hook 'coding-hook 'turn-on-subword-mode)
+
+(defun py-fix-underscore-syntax ()
+  (modify-syntax-entry ?_ "_" py-mode-syntax-table))
+
+(add-hook 'python-mode-hook 'py-fix-underscore-syntax)
+
 ;; Claws-mail
 
 (setq auto-mode-alist

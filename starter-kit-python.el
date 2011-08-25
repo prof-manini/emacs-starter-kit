@@ -189,6 +189,8 @@ it)"
             (py-pdbtrack-track-stack-file
              (buffer-substring (eshell-beginning-of-output) (eshell-end-of-output))))))
 
+(add-hook 'python-mode-hook 'run-coding-hook)
+
 ; Redefine the following function from python-mode.el: use
 ; eshell-last-xxx-end instead of comint-last-xxx-end
 

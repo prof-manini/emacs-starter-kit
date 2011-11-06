@@ -2,25 +2,21 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
-(autoload 'espresso-mode "espresso" "Start espresso-mode" t)
-(add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
-(add-hook 'espresso-mode-hook 'moz-minor-mode)
-;(add-hook 'espresso-mode-hook 'esk-paredit-nonlisp)
-(add-hook 'espresso-mode-hook 'run-coding-hook)
-(setq espresso-indent-level 4)
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
+(add-hook 'js-mode-hook 'moz-minor-mode)
+;(add-hook 'js-mode-hook 'esk-paredit-nonlisp)
+(add-hook 'js-mode-hook 'run-coding-hook)
+(setq js-indent-level 4)
 
-;; If you prefer js2-mode, use this instead:
-;; (add-to-list 'auto-mode-alist '("\\.js$" . espresso-mode))
-
-(eval-after-load 'espresso
+(eval-after-load 'js
   '(progn
-     ;;(define-key espresso-mode-map "{" 'paredit-open-curly)
-     ;;(define-key espresso-mode-map "}" 'paredit-close-curly-and-newline)
+     ;;(define-key js-mode-map "{" 'paredit-open-curly)
+     ;;(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
      ;; fixes problem with pretty function font-lock
-     (define-key espresso-mode-map (kbd ",") 'self-insert-command)
+     (define-key js-mode-map (kbd ",") 'self-insert-command)
      (font-lock-add-keywords
-      'espresso-mode `(("\\(function *\\)("
+      'js-mode `(("\\(function *\\)("
                         (0 (progn (compose-region (match-beginning 1)
                                                   (match-end 1) "ƒ")
                                   nil)))))
@@ -52,7 +48,7 @@
      (defun turn-on-flymake-jsl ()
        (flymake-mode 1))
 
-     (add-hook 'espresso-mode-hook 'turn-on-flymake-jsl)
+     (add-hook 'js-mode-hook 'turn-on-flymake-jsl)
      )
   )
 

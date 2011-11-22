@@ -101,7 +101,6 @@
 (global-set-key [end] 'end-of-line)
 (global-set-key [C-home] 'beginning-of-buffer)
 (global-set-key [C-end] 'end-of-buffer)
-(global-set-key "\C-m" 'newline-and-indent)
 (global-set-key [delete] 'delete-char)
 
 (global-set-key [C-left] 'backward-word)
@@ -109,6 +108,8 @@
 
 (global-set-key [M-left] 'previous-buffer)
 (global-set-key [M-right] 'next-buffer)
+
+(add-hook 'prog-mode-hook (lambda () (local-set-key "\C-m" 'newline-and-indent)))
 
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here

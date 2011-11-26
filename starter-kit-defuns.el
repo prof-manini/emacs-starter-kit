@@ -260,6 +260,7 @@ Symbols matching the text at point are put first in the completion list."
 (defun activate-virtual-desktop ()
   "Turn on a virtualenv and its related desktop, in auto-save mode"
   (interactive)
+  ;; Eventually deactivate current desktop
   (when desktop-save-mode
     (virtualenv-deactivate)
     (desktop-kill))
@@ -267,6 +268,7 @@ Symbols matching the text at point are put first in the completion list."
   (eval-when-compile
     (require 'desktop)
     (require 'virtualenv))
+
   (call-interactively 'virtualenv-activate)
   (setq desktop-base-file-name "emacs.desktop")
   (setq desktop-dirname (getenv "VIRTUAL_ENV"))

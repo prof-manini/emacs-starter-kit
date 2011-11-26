@@ -72,7 +72,7 @@
 (defun virtualenv-add-to-path (dir)
   "Add the specified path element to the Emacs PATH"
   (setenv "PATH"
-	  (virtualenv-append-path dir
+          (virtualenv-append-path dir
                                   (getenv "PATH"))))
 
 (defun virtualenv-current ()
@@ -88,15 +88,15 @@
   ;; Eventually deactivate previous virtualenv
   (when virtualenv-name
     (virtualenv-deactivate))
-  
+
   ;; Storing old variables
   (setq virtualenv-old-path (getenv "PATH"))
   (setq virtualenv-old-exec-path exec-path)
-  
+
   (setenv "VIRTUAL_ENV" dir)
   (virtualenv-add-to-path (concat dir "/bin"))
   (add-to-list 'exec-path (concat dir "/bin"))
-  
+
   (setq virtualenv-name (file-name-nondirectory dir))
 
   (message (concat "Virtualenv '" virtualenv-name "' activated."))
@@ -105,11 +105,11 @@
 (defun virtualenv-deactivate ()
   "Deactivate the current virtual enviroment"
   (interactive)
-  
+
   ;; Restoring old variables
   (setenv "PATH" virtualenv-old-path)
   (setq exec-path virtualenv-old-exec-path)
-  
+
   (message (concat "Virtualenv '" virtualenv-name "' deactivated."))
 
   (setq virtualenv-name nil)
@@ -122,8 +122,8 @@
 
 (defun virtualenv-workon-complete ()
   "return available completions for virtualenv-workon"
-  (let 
-      ;;Varlist				
+  (let
+      ;;Varlist
       ((filelist (directory-files virtualenv-workon-home t)))
     ;; Get only the basename from the list of the virtual environments
     ;; paths

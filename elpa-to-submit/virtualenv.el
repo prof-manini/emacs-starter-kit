@@ -85,6 +85,10 @@
   "Activate the virtualenv located in DIR"
   (interactive "DVirtualenv Directory: ")
 
+  ;; Removing the eventually present trailing slash
+  (when (string= (substring dir -1 nil) "/")
+    (setq dir (substring dir 0 -1)))
+
   ;; Eventually deactivate previous virtualenv
   (when virtualenv-name
     (virtualenv-deactivate))

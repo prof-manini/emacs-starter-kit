@@ -1,5 +1,19 @@
 ;; starter-kit-python.el - setup of python stuff
-(require 'pymacs (concat esk-dotfiles-dir "elpa-to-submit/pymacs.el"))
+
+(autoload 'virtualenv-activate "virtualenv"
+  "Activate a Virtual Environment specified by PATH" t)
+
+(autoload 'virtualenv-workon "virtualenv"
+  "Activate a Virtual Environment present using virtualenvwrapper" t)
+
+;; Use python-mode
+(autoload 'python-mode (concat esk-dotfiles-dir "elpa-to-submit/python-mode")
+  "Python mode" t)
+
+;; python-mode 6.0.4 requires the following
+(setq py-install-directory (concat esk-dotfiles-dir "elpa-to-submit"))
+
+(require 'pymacs (concat esk-dotfiles-dir "elpa-to-submit/pymacs"))
 
 (defun setup-ropemacs ()
   "Setup the ropemacs harness"
@@ -34,15 +48,6 @@
      ;; Ropemacs Configuration
      ;;==================================================
      ;;(setup-ropemacs)
-
-     ;;==================================================
-     ;; Virtualenv Commands
-     ;;==================================================
-     (autoload 'virtualenv-activate "virtualenv"
-       "Activate a Virtual Environment specified by PATH" t)
-
-     (autoload 'virtualenv-workon "virtualenv"
-       "Activate a Virtual Environment present using virtualenvwrapper" t)
 
      ;;==================================================
      ;; Flymake for python configuration

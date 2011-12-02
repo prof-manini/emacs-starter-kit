@@ -274,7 +274,8 @@ Symbols matching the text at point are put first in the completion list."
   (setq desktop-dirname (getenv "VIRTUAL_ENV"))
   (setq desktop-save t)
   (setq desktop-save-mode t)
-  (desktop-read desktop-dirname))
+  (desktop-read desktop-dirname)
+  (cd-absolute desktop-dirname))
 
 (defun sort-words (reverse beg end)
   "Sort words in region alphabetically, in REVERSE if negative.

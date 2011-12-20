@@ -1,12 +1,19 @@
 ;;; starter-kit-erc.el --- Some erc helpers
 ;;
 
+(defun erc-generate-log-file-name-brief (buffer target nick server port)
+  "Computes a log file name from the TARGET and SERVER only.
+This results in a filename of the form #channel@server.txt."
+  (let ((file (concat target "@" server ".txt")))
+    (convert-standard-filename file)))
+
 (eval-after-load 'erc
   '(progn
      ;; logging
      (setq erc-log-insert-log-on-open nil)
      (setq erc-log-channels t)
      (setq erc-log-channels-directory "~/irclogs/")
+     (setq erc-generate-log-file-name-function 'erc-generate-log-file-name-brief)
      (setq erc-save-buffer-on-part t)
      (setq erc-hide-timestamps nil)
 

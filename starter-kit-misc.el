@@ -35,8 +35,12 @@
                          space-before-tab
                          space-after-tab
                          indentation
+                         indentation::space
                          tabs)
-      whitespace-line-column 100
+      whitespace-global-modes '(emacs-lisp-mode
+                                javascript-mode
+                                makefile-mode
+                                python-mode)
       ediff-window-setup-function 'ediff-setup-windows-plain
       xterm-mouse-mode t
       save-place-file (concat esk-dotfiles-dir "places")
@@ -107,6 +111,7 @@
 (add-hook 'makefile-mode-hook
           #'(lambda ()
               (setq indent-tabs-mode t)
+              (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
               (add-hook 'before-save-hook 'whitespace-cleanup)
               ))
 

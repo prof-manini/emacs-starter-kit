@@ -18,10 +18,11 @@ This results in a filename of the form #channel@server.txt."
      (setq erc-hide-timestamps nil)
 
      (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
-     (add-hook 'erc-mode-hook '(lambda () (when (not (featurep 'xemacs))
-                                       (set (make-variable-buffer-local
-                                             'coding-system-for-write)
-                                            'emacs-mule))))
+     (add-hook 'erc-mode-hook '(lambda ()
+                                 (when (not (featurep 'xemacs))
+                                   (set (make-variable-buffer-local
+                                         'coding-system-for-write)
+                                        'emacs-mule))))
 
      (setq erc-auto-set-away nil)
      (setq erc-autoaway-mode nil)

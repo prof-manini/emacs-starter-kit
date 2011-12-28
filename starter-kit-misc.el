@@ -29,8 +29,14 @@
       require-final-newline t
       truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
-      whitespace-style '(trailing lines space-before-tab
-                                  indentation space-after-tab)
+      whitespace-style '(face
+                         trailing
+                         lines-tail
+                         empty
+                         space-before-tab
+                         space-after-tab
+                         indentation
+                         tabs)
       whitespace-line-column 100
       ediff-window-setup-function 'ediff-setup-windows-plain
       xterm-mouse-mode t
@@ -73,7 +79,6 @@
                     (list #'autopair-default-handle-action
                           #'autopair-python-triple-quote-action))))
 
-
 ;; ido-mode is like magic pixie dust!
 (when (> emacs-major-version 21)
   (ido-mode t)
@@ -93,7 +98,19 @@
 ;; ignore some more directory patterns
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 
+;; turn on global whitespace handling
+(global-whitespace-mode t)
+
+;; by default do not use TABs
 (set-default 'indent-tabs-mode nil)
+
+;; but Makefiles are an exception, TAB is mandatory at bol
+(add-hook 'makefile-mode-hook
+          #'(lambda ()
+              (setq indent-tabs-mode t)
+              (add-hook 'before-save-hook 'whitespace-cleanup)
+              ))
+
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 

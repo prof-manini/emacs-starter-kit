@@ -83,9 +83,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun turn-on-save-place-mode ()
   (setq save-place t))
 
-(defun turn-on-whitespace ()
-  (whitespace-mode t))
-
 (defun turn-on-paredit ()
   (paredit-mode t))
 
@@ -97,6 +94,9 @@ Symbols matching the text at point are put first in the completion list."
    nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 
+(defun cleanup-buffer-on-save ()
+  (add-hook 'before-save-hook 'whitespace-cleanup))
+
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
@@ -104,6 +104,7 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'idle-highlight)
+(add-hook 'coding-hook 'cleanup-buffer-on-save)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
@@ -116,14 +117,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
-
-(defun cleanup-buffer ()
-  "Perform a bunch of operations on the whitespace content of a buffer."
-  (interactive)
-  ;; this is really too much
-  ;;(indent-buffer)
-  (untabify-buffer)
-  (delete-trailing-whitespace))
 
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."

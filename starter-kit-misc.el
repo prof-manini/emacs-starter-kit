@@ -24,7 +24,6 @@
       transient-mark-mode t
       color-theme-is-global t
       shift-select-mode nil
-      mouse-yank-at-point t
       parens-require-spaces nil
       require-final-newline t
       truncate-partial-width-windows nil

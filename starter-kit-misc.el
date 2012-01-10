@@ -38,7 +38,7 @@
                          indentation::space
                          tabs)
       whitespace-global-modes '(emacs-lisp-mode
-                                javascript-mode
+                                js-mode
                                 makefile-mode
                                 python-mode)
       ediff-window-setup-function 'ediff-setup-windows-plain

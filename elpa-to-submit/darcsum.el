@@ -847,7 +847,7 @@ Convenience wrapper for `darcsum-start-process'."
         (message "No changes sent.")
         (darcsum-kill-process-and-buffer proc (current-buffer)))
 
-       ((darcsum-looking-at "\n*Do you really want to .+\\? ") ;; Should the last whitespace be there?
+       ((darcsum-looking-at "\n*Do you \\(really \\)?want to .+\\(\\?\\|more options:\\) ")
         (darcsum-process-send-string proc "y\n")
         (delete-region (point-min) (point-max)))
 

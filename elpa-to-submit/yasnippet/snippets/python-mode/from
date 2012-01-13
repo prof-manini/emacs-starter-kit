@@ -1,4 +1,5 @@
-#name : from ... import ...
+# name: from ... import ...
+# key: from
 # --
 from $1 import $2
 $0

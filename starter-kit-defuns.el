@@ -240,7 +240,7 @@ Symbols matching the text at point are put first in the completion list."
      (backend
       (vc-dir default-directory))
      (t
-      (message "No darcs or bzr repository in sight")))))
+      (message "No recognized VC repository in sight")))))
 
 (defun compile-next-makefile (command)
   "Run a compilation after changing the working directory"

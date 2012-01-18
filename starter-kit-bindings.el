@@ -50,9 +50,6 @@
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") 'eval-and-replace)
 
-;; So good!
-;;(global-set-key (kbd "C-x g") 'magit-status)
-
 ;; This is a little hacky since VC doesn't support git add internally
 ;; (eval-after-load 'vc
 ;;   (define-key vc-prefix-map "i" '(lambda () (interactive)

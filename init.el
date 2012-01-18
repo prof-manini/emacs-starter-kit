@@ -71,6 +71,7 @@
 (require 'starter-kit-python)
 (require 'starter-kit-completion)
 (require 'starter-kit-darcs)
+(require 'starter-kit-git)
 (require 'starter-kit-erc)
 (require 'starter-kit-skeletons)
 

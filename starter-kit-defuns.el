@@ -222,20 +222,25 @@ Symbols matching the text at point are put first in the completion list."
 ;;   (let ((name (file-relative-name file)))
 ;;     (vc-git-command buf 0 name "blame" "-w" rev)))
 
-(defun whatsnew-or-vc-dir ()
+(defun whatsnew-or-egg-status-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)
-  (eval-when-compile (require 'darcsum))
+  (eval-when-compile
+    (require 'darcsum)
+    (require 'egg))
   (let ((backend (vc-backend (buffer-file-name))))
-    (if (or (eq backend 'DARCS)
-            (darcsum-repository-root default-directory))
-        (darcsum-whatsnew default-directory)
+    (cond
+     ((or (eq backend 'DARCS) (darcsum-repository-root default-directory))
+      (darcsum-whatsnew default-directory))
+     ((eq backend 'Bzr)
       ;; vc gets confused when running status on sibling bzr dirs
-      (if (eq backend 'Bzr)
-          (vc-dir (locate-dominating-file default-directory ".bzr"))
-        (if backend
-            (vc-dir default-directory)
-          (message "No darcs or bzr repository in sight"))))))
+      (vc-dir (locate-dominating-file default-directory ".bzr")))
+     ((eq backend 'Git)
+      (egg-status))
+     (backend
+      (vc-dir default-directory))
+     (t
+      (message "No darcs or bzr repository in sight")))))
 
 (defun compile-next-makefile (command)
   "Run a compilation after changing the working directory"

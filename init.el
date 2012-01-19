@@ -97,4 +97,22 @@
 (if (file-exists-p esk-user-specific-dir)
     (mapc #'load (directory-files esk-user-specific-dir nil ".*el$")))
 
+;; The following is used by the Custom facility, and usually you don't
+;; want to commit changes made here: a better way it to manually move
+;; the settings to the pertinent username.el file and commit that
+;; instead.
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
 ;;; init.el ends here

@@ -41,6 +41,11 @@ command line executing the following two commands in row::
 I recommend redoing the latter whenever seems reasonable, that is
 after any configuration tweak you may do.
 
+If you prefer, the above instructions are executed more simply by a
+single ``make``::
+
+  $ make
+
 Java script lint
 ----------------
 

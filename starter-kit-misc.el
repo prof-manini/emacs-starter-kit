@@ -163,6 +163,12 @@
 (autoload 'po-mode "po-mode")
 (add-to-list 'auto-mode-alist '("\\.po[tx]?\\'\\|\\.po\\." . po-mode))
 (modify-coding-system-alist 'file "\\.po[tx]?\\'\\|\\.po\\." 'po-find-file-coding-system)
+(eval-after-load 'po-mode
+  '(progn
+     ;; Turn on and off longlines-mode to wrap when editing a message
+     ;; and unwrap before putting it back.
+     (add-hook 'po-subedit-mode-hook '(lambda () (longlines-mode 1)))
+     (add-hook 'po-subedit-exit-hook '(lambda () (longlines-mode 0)))))
 
 (eval-after-load 'grep
   '(when (boundp 'grep-find-ignored-files)

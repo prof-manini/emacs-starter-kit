@@ -288,6 +288,13 @@ Symbols matching the text at point are put first in the completion list."
 
 ;; Cycle thru a ring of dictionaries
 
+;; Uncomment/add desired languages. Alternatively, specific users may
+;; augment the ring adding something like
+;;
+;;  (ring-insert+extend lang-ring "castellano8" t)
+;;
+;; to their user.el file
+
 (let ((langs '("american"
                "italian"
                ; "castellano8"

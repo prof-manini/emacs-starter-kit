@@ -83,7 +83,7 @@
 (global-set-key [S-f6] 'previous-error)
 (global-set-key [f7] 'flymake-goto-next-error)
 (global-set-key [S-f7] 'flymake-goto-prev-error)
-(global-set-key [f8] 'whitespace-cleanup)
+(global-set-key [f8] 'cycle-ispell-languages)
 
 (global-set-key [f9] 'whatsnew-or-egg-status-or-vc-dir)
 (global-set-key [f10] 'eshell)

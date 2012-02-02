@@ -286,5 +286,23 @@ Symbols matching the text at point are put first in the completion list."
   (interactive "P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
+;; Cycle thru a ring of dictionaries
+
+(let ((langs '("american"
+               "italian"
+               ; "castellano8"
+               ; "deutsch8"
+               ; "francais"
+               ; "brasileiro"
+               )))
+  (setq lang-ring (make-ring (length langs)))
+  (dolist (elem langs) (ring-insert lang-ring elem)))
+
+(defun cycle-ispell-languages ()
+  (interactive)
+  (let ((lang (ring-ref lang-ring -1)))
+    (ring-insert lang-ring lang)
+    (ispell-change-dictionary lang)))
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

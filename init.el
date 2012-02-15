@@ -33,7 +33,6 @@
 
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit"))
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/auto-complete"))
-(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/emacs-dbgr"))
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/yasnippet"))
 
 (require 'package)

@@ -407,7 +407,7 @@ EDITABLE is ignored."
 
 ;;; History functions
 
-(defun vc-darcs-print-log (files &optional buffer)
+(defun vc-darcs-print-log (files &optional buffer &rest args)
   "Print the logfile for the current darcs repository."
   (vc-do-command buffer 'async vc-darcs-program-name files "changes"))
 

@@ -1,14 +1,20 @@
 # Simplify daily operations
 
-.PHONY: all recompile-init
+.PHONY: all clean distclean update-elpa recompile-init
 
 EMACS=emacs
 EMAX=$(EMACS) --batch -l ~/.emacs.d/init.el
 
-all: elpa/archives/elpa/archive-contents recompile-init
+all: update-elpa recompile-init
+
+clean:
+	find . -name '*.elc' -print0 | xargs --null rm
+
+distclean: clean
+	rm -rf elpa/*
+
+update-elpa:
+	$(EMAX)
 
 recompile-init:
 	$(EMAX) -f recompile-init
-
-elpa/archives/elpa/archive-contents:
-	$(EMAX)

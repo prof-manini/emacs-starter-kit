@@ -11,7 +11,7 @@ clean:
 	find . -name '*.elc' -print0 | xargs --null rm
 
 distclean: clean
-	rm -rf elpa/*
+	rm -rf elpa/* loaddefs.el
 
 update-elpa:
 	$(EMAX)

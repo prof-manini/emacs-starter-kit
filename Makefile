@@ -14,7 +14,7 @@ distclean: clean
 	rm -rf elpa/* loaddefs.el
 
 update-elpa:
-	$(EMAX)
+	$(EMAX) || $(EMAX)
 
 recompile-init:
 	$(EMAX) -f recompile-init

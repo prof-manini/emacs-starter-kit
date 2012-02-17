@@ -71,8 +71,10 @@
 (require 'starter-kit-js)
 (require 'starter-kit-python)
 (require 'starter-kit-completion)
-(require 'starter-kit-darcs)
-(require 'starter-kit-git)
+(if (locate-file "darcs" exec-path exec-suffixes 'file-executable-p)
+    (require 'starter-kit-darcs))
+(if (locate-file "git" exec-path exec-suffixes 'file-executable-p)
+    (require 'starter-kit-git))
 (require 'starter-kit-erc)
 (require 'starter-kit-skeletons)
 

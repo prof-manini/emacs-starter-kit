@@ -25,7 +25,8 @@
       esk-system-specific-config (concat esk-dotfiles-dir system-name)
       esk-user-specific-config (concat esk-dotfiles-dir user-login-name)
       esk-user-specific-dir (concat esk-dotfiles-dir user-login-name)
-      esk-overrides-dir (concat esk-dotfiles-dir "overrides"))
+      esk-overrides-dir (concat esk-dotfiles-dir "overrides")
+      custom-file (concat esk-user-specific-config ".el"))
 
 ;; Load up ELPA, the package manager
 
@@ -99,25 +100,5 @@
 ;; Automatically load all "user-name"/*.el files
 (if (file-exists-p esk-user-specific-dir)
     (mapc #'load (directory-files esk-user-specific-dir nil ".*el$")))
-
-;; The following is used by the Custom facility, and usually you don't
-;; want to commit changes made here: a better way it to manually move
-;; the settings to the pertinent username.el file and commit that
-;; instead.
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(egg-enable-tooltip t)
- '(longlines-show-hard-newlines t)
- )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;;; init.el ends here

@@ -4,11 +4,12 @@
 ;; Copyright (C) 2008  Linh Dang
 ;; Copyright (C) 2008  Marius Vollmer
 ;; Copyright (C) 2009  Tim Moore
-;; Copyright (C) 2011  byplayer
 ;; Copyright (C) 2010  Alexander Prusov
+;; Copyright (C) 2011  byplayer
 ;;
 ;; Special Thanks to
-;;   Antoine Levitt
+;;   Antoine Levitt, Bogolisk,
+;;   Christian Köstlin
 ;;
 ;; Egg is free software; you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
@@ -52,7 +53,7 @@
 (require 'ffap)
 (require 'diff-mode)
 
-(defconst egg-version "1.0.1")
+(defconst egg-version "1.0.2")
 
 (defgroup egg nil
   "Controlling Git from Emacs."
@@ -615,7 +616,7 @@ Return the output lines as a list of strings."
 (defsubst egg-buf-git-name (&optional buf)
   "return the repo-relative name of the file visited by BUF.
 if BUF was nil then use current-buffer"
-  (egg-file-git-name (buffer-file-name buf)))
+  (egg-file-git-name (file-truename (buffer-file-name buf))))
 
 (defsubst egg-files-git-name (files)
   "return the repo-relative name for each file in the list of files FILES."
@@ -2487,7 +2488,7 @@ rebase session."
 
 (defun egg-status-buffer-stage-untracked-file ()
   (interactive)
-  (let ((file (ffap-file-at-point)))
+  (let ((file (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
     (when (egg-sync-do-file file egg-git-command nil nil
                             (list "add" "--" file))
       (message "new file %s added" file))))
@@ -3296,15 +3297,13 @@ If INIT was not nil, then perform 1st-time initializations as well."
         (let ((inhibit-read-only t)
               (win (get-buffer-window (current-buffer))))
           (erase-buffer)
-          (if (windowp win) (egg-quit-buffer win))))
+          (kill-buffer)))
     (message "Please enter a log message!")
     (ding)))
 
 (defun egg-log-msg-cancel ()
   (interactive)
-  (if (> (length (window-list)) 1)
-      (delete-window)
-    (kill-buffer)))
+  (kill-buffer))
 
 (defun egg-log-msg-hist-cycle (&optional forward)
   "Cycle through message log history."

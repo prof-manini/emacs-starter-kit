@@ -114,6 +114,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(egg-enable-tooltip t)
+ '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
  '(longlines-show-hard-newlines t)
  )
 (custom-set-faces

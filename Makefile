@@ -8,7 +8,7 @@ EMAX=$(EMACS) --batch -l ~/.emacs.d/init.el
 all: update-elpa recompile-init
 
 clean:
-	find . -name '*.elc' -print0 | xargs --null rm
+	find . -name '*.elc' -print0 | xargs -r0 rm
 
 distclean: clean
 	rm -rf elpa/* loaddefs.el

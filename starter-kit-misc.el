@@ -104,10 +104,6 @@
 ;; turn on global whitespace handling
 (global-whitespace-mode t)
 
-;; by default do not use TABs
-(set-default 'indent-tabs-mode nil)
-(set-default 'whitespace-indent-tabs-mode nil)
-
 ;; but Makefiles are an exception, TAB is mandatory at bol
 (add-hook 'makefile-mode-hook
           #'(lambda ()

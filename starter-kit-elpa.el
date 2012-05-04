@@ -5,8 +5,6 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list 'idle-highlight
-                                   ;;'ruby-mode
-                                   ;;'inf-ruby
                                    'css-mode
                                    ;;'yaml-mode
                                    'find-file-in-project

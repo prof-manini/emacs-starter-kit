@@ -83,8 +83,8 @@
 
      (defun flymake-command-setup (command &optional options)
        "Setup the command to be used with flymake, the command
-will be called in this way: COMMAND OPTIONS FILE The FILE varible
-is passed after the options."
+will be called in this way: COMMAND OPTIONS FILE
+The FILE variable is passed after the options."
        ;; Make sure it's not a remote buffer or flymake would not work
        (when (not (current-file-remotep))
          (list command

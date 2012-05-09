@@ -99,7 +99,7 @@ The FILE variable is passed after the options."
 
      ;; Init functions!
      (defun flymake-pyflakes-init ()
-       (flymake-command-setup "pyflakes"))
+       (flymake-command-setup (concat esk-dotfiles-dir "bin/pyflakes")))
 
      (defun flymake-pep8-init ()
        (flymake-command-setup "pep8"))

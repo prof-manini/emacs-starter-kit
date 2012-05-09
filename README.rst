@@ -75,6 +75,23 @@ when that happens it should be installed from sourceforge_ instead::
   $ cd javascriptlint
   $ python setup.py install
 
+Python lint
+-----------
+
+To avoid depending on possibly outdated system-wide tool, current
+setup uses a “local” ``pyflakes``, that **must** be installed in the
+virtualenv created above. If you didn't install the `java script
+lint`_ tool, you must create the virtualenv::
+
+  $ cd ~/.emacs.d
+  $ virtualenv .
+
+Then install the ``pyflakes`` tool, with::
+
+  $ cd ~/.emacs.d
+  $ source bin/activate
+  $ pip install -U pyflakes
+
 Customization
 =============
 

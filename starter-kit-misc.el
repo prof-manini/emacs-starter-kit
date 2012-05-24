@@ -184,5 +184,9 @@
 (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt yas/x-prompt))
 (setq yas/wrap-around-region 'cua)
 
+(add-hook 'css-mode-hook 'run-coding-hook)
+(add-hook 'html-mode-hook 'run-coding-hook)
+(add-hook 'rst-mode-hook 'run-coding-hook)
+
 (provide 'starter-kit-misc)
 ;;; starter-kit-misc.el ends here

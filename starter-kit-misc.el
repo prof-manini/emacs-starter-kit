@@ -139,12 +139,6 @@
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat esk-dotfiles-dir "backups")))))
 
-;; nxhtml stuff
-(setq mumamo-chunk-coloring 'submode-colored
-      nxhtml-skip-welcome t
-      indent-region-mode t
-      rng-nxml-auto-validate-flag nil)
-
 ;; Associate modes with file extensions
 
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
@@ -183,11 +177,6 @@
   '(progn
      (set-face-foreground 'diff-added "green4")
      (set-face-foreground 'diff-removed "red3")))
-
-(eval-after-load 'mumamo
-  '(eval-after-load 'zenburn
-     '(ignore-errors (set-face-background
-                      'mumamo-background-chunk-submode "gray22"))))
 
 ;; Platform-specific stuff
 (when (eq system-type 'darwin)

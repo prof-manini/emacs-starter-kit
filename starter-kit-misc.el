@@ -37,10 +37,6 @@
                          indentation
                          indentation::space
                          tabs)
-      whitespace-global-modes '(emacs-lisp-mode
-                                js-mode
-                                makefile-mode
-                                python-mode)
       ediff-window-setup-function 'ediff-setup-windows-plain
       xterm-mouse-mode t
       save-place-file (concat esk-dotfiles-dir "places")
@@ -101,14 +97,10 @@
 ;; ignore some more directory patterns
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 
-;; turn on global whitespace handling
-(global-whitespace-mode t)
-
-;; but Makefiles are an exception, TAB is mandatory at bol
+;; Makefiles are an exception, TAB is mandatory at bol
 (add-hook 'makefile-mode-hook
           #'(lambda ()
               (setq indent-tabs-mode t)
-              (setq whitespace-indent-tabs-mode t)
               (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
               (add-hook 'before-save-hook 'whitespace-cleanup)
               ))

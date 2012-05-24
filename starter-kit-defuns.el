@@ -97,6 +97,9 @@ Symbols matching the text at point are put first in the completion list."
 (defun cleanup-buffer-on-save ()
   (add-hook 'before-save-hook 'whitespace-cleanup))
 
+(defun turn-on-whitespace-mode ()
+  (whitespace-mode))
+
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
@@ -105,6 +108,7 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'idle-highlight)
 (add-hook 'coding-hook 'cleanup-buffer-on-save)
+(add-hook 'coding-hook 'turn-on-whitespace-mode)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."

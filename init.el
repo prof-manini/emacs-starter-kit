@@ -15,11 +15,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; by default do not use TABs: do this very early, so that
-;; whitespace-mode fetches the same setting
+;; by default do not use TABs
 (set-default 'indent-tabs-mode nil)
-(setq indent-tabs-mode nil)
-(setq whitespace-indent-tabs-mode nil)
 
 ;; Load path etc.
 

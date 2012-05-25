@@ -5,7 +5,7 @@
 (require 'cl)
 
 (defvar starter-kit-packages (list 'find-file-in-project
-                                   ;;'magit
+                                   'magit
                                    ;;'gist
                                    )
   "Libraries that should be installed by default.")

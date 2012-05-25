@@ -4,8 +4,7 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages (list 'css-mode
-                                   ;;'yaml-mode
+(defvar starter-kit-packages (list ;;'yaml-mode
                                    'find-file-in-project
                                    ;;'magit
                                    ;;'gist

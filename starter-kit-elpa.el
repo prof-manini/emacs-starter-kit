@@ -4,8 +4,7 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages (list 'idle-highlight
-                                   'css-mode
+(defvar starter-kit-packages (list 'css-mode
                                    ;;'yaml-mode
                                    'find-file-in-project
                                    ;;'magit

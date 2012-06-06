@@ -98,12 +98,8 @@
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 
 ;; Makefiles are an exception, TAB is mandatory at bol
-(add-hook 'makefile-mode-hook
-          #'(lambda ()
-              (setq indent-tabs-mode t)
-              (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
-              (add-hook 'before-save-hook 'whitespace-cleanup)
-              ))
+(add-hook 'makefile-mode-hook 'turn-on-whitespace-mode-makefiles)
+(add-hook 'makefile-gmake-mode-hook 'turn-on-whitespace-mode-makefiles)
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)

@@ -100,6 +100,12 @@ Symbols matching the text at point are put first in the completion list."
 (defun turn-on-whitespace-mode ()
   (whitespace-mode))
 
+(defun turn-on-whitespace-mode-makefiles ()
+  (setq indent-tabs-mode t)
+  (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
+  (add-hook 'before-save-hook 'whitespace-cleanup)
+  (whitespace-mode))
+
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)

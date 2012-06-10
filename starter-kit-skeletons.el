@@ -23,7 +23,7 @@
   "Inserisci intestazione standard AirPIM."
   "[Progetto]: "
   comment-start " -*- coding: utf-8 -*- " comment-end "\n"
-  comment-start ":Progetto:  " str " -- " _ comment-end "\n"
+  comment-start ":Progetto:  AirPIM/" str " -- " _ comment-end "\n"
   comment-start ":Creato:    " (format-time-string "%c") comment-end "\n"
   comment-start ":Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
   comment-start ":Licenza:   Copyright (C) " (format-time-string "%Y") " Airpim S.r.l. Tutti i diritti riservati." comment-end "\n"

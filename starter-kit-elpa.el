@@ -6,7 +6,7 @@
 
 (defvar starter-kit-packages (list 'find-file-in-project
                                    'magit
-                                   ;;'gist
+                                   'egg
                                    )
   "Libraries that should be installed by default.")
 

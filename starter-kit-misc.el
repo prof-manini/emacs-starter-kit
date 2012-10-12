@@ -113,10 +113,6 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (random t) ;; Seed the random-number generator
 
-;; Hippie expand: at times perhaps too hip
-(delete 'try-expand-line hippie-expand-try-functions-list)
-(delete 'try-expand-list hippie-expand-try-functions-list)
-
 ;; Activate file backups
 (setq version-control t)
 (setq trim-versions-without-ask t)

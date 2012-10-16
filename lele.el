@@ -17,6 +17,7 @@
 
 (add-hook 'python-mode-hook 'py-fix-underscore-syntax)
 
+
 ;; Claws-mail
 
 (setq auto-mode-alist
@@ -28,7 +29,10 @@
 ;; ERC
 
 (defun erc-auto-login-with-netrc (server nick)
+  "Extract username and password from ~/.netrc to authenticate on freenode.net"
+
   (eval-when-compile (require 'erc) (require 'netrc))
+  (message "Authenticating %s on IRC server %s..." nick server)
   (when (require 'netrc nil t)
     (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
       (when freenode

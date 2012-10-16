@@ -72,6 +72,11 @@
               :full-name (user-full-name))
   (recentf-mode nil))
 
+(setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
+                                "324" "329" "332" "333" "353" "477"))
+(setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
+
+
 ;; GNUS
 
 (setq gnus-home-directory (concat esk-user-specific-dir "/gnus/"))

@@ -85,10 +85,10 @@
       (cons '(("\\.pt\\'" . "ZPT header") . intestazione-gpl)
             auto-insert-alist))
 (setq auto-insert-alist
-      (cons '(("\\.py\\'" . "Python header") . intestazione-airpim)
+      (cons '(("\\.py\\'" . "Python header") . intestazione-gpl)
             auto-insert-alist))
 (setq auto-insert-alist
-      (cons '(("\\.js\\'" . "Javascript header") . intestazione-airpim)
+      (cons '(("\\.js\\'" . "Javascript header") . intestazione-gpl)
             auto-insert-alist))
 (setq auto-insert-alist
       (cons '(("\\.org\\'" . "ORG header") . intestazione-org)

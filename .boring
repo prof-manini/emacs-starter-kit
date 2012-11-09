@@ -14,6 +14,7 @@
 (^|/)include
 (^|/)lib
 (^|/)loaddefs\.el
+(^|/)local
 (^|/)places
 (^|/)tramp
 (^|/)nxhtml

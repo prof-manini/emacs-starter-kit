@@ -75,6 +75,9 @@ when that happens it should be installed from sourceforge_ instead::
   $ cd javascriptlint
   $ python setup.py install
 
+There's also a branch of it on github_ that I'll try to keep merged
+with my own.
+
 Python lint
 -----------
 
@@ -148,3 +151,4 @@ __ http://javascriptlint.svn.sourceforge.net/viewvc/javascriptlint?view=revision
 .. _sourceforge: http://sourceforge.net/projects/javascriptlint/
 .. _nxhtml: http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html
 .. _rest: http://docutils.sourceforge.net/
+.. _github: https://github.com/davepacheco/javascriptlint

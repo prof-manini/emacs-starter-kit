@@ -4,10 +4,13 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages (list 'find-file-in-project
-                                   'magit
-                                   'egg
-                                   )
+(defvar starter-kit-packages
+  (list
+   'darcsum
+   'egg
+   'find-file-in-project
+   'magit
+   )
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()

@@ -37,7 +37,6 @@
 
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit"))
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/auto-complete"))
-(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/yasnippet"))
 
 (require 'package)
 (add-to-list 'package-archives
@@ -58,10 +57,10 @@
 (require 'recentf)
 (require 'open-next-line)
 (require 'tramp)
-(require 'yasnippet)
 
 ;; Load up starter kit customizations
 
+(require 'starter-kit-yasnippet)
 (require 'starter-kit-defuns)
 (require 'starter-kit-bindings)
 (require 'starter-kit-misc)

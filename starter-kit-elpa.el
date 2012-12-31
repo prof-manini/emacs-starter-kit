@@ -11,6 +11,7 @@
    'find-file-in-project
    'magit
    'vc-darcs
+   'yasnippet
    )
   "Libraries that should be installed by default.")
 

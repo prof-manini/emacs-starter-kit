@@ -22,9 +22,9 @@ Generatore
 
    revoke all privileges on sequence $1.$2_ids from public
    ;;
-   grant all privileges on sequence $1.$2_ids to group pqg_admins
+   grant all privileges on sequence $1.$2_ids to group pqg_dbas
    ;;
-   grant all privileges on sequence $1.$2_ids to group pqg_users
+   grant usage, select, update privileges on sequence $1.$2_ids to group pqg_users
 
 
 Tabella
@@ -48,7 +48,7 @@ Tabella
 
    revoke all privileges on table $1.$2 from public
    ;;
-   grant all privileges on table $1.$2 to group pqg_admins
+   grant all privileges on table $1.$2 to group pqg_dbas
    ;;
    grant select, insert, delete, update on table $1.$2 to group pqg_users
 

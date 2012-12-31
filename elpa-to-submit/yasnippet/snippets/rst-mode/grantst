@@ -8,6 +8,6 @@
 
    revoke all privileges on table $1.$2 from public
    ;;
-   grant all privileges on table $1.$2 to group amministratori
+   grant all privileges on table $1.$2 to group pqg_dbas
    ;;
-   grant select, insert, delete, update on table $1.$2 to group autorizzati
+   grant select, insert, delete, update on table $1.$2 to group pqg_users

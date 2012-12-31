@@ -10,6 +10,7 @@
    'egg
    'find-file-in-project
    'magit
+   'vc-darcs
    )
   "Libraries that should be installed by default.")
 

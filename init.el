@@ -58,7 +58,6 @@
 (require 'recentf)
 (require 'open-next-line)
 (require 'tramp)
-(require 'autopair)
 (require 'yasnippet)
 
 ;; Load up starter kit customizations

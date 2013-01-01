@@ -13,6 +13,7 @@
    'magit
    'vc-darcs
    'yasnippet
+   ; 'zenburn-theme
    )
   "Libraries that should be installed by default.")
 

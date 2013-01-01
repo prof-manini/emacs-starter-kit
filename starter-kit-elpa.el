@@ -11,6 +11,7 @@
    'egg
    'find-file-in-project
    'magit
+   'notify
    'vc-darcs
    'yasnippet
    ; 'zenburn-theme

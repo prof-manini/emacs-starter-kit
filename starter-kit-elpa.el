@@ -6,6 +6,7 @@
 
 (defvar starter-kit-packages
   (list
+   'auto-complete
    'darcsum
    'egg
    'find-file-in-project

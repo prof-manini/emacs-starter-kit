@@ -36,7 +36,6 @@
 (add-to-list 'load-path esk-dotfiles-dir)
 
 (add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit"))
-(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit/auto-complete"))
 
 (require 'package)
 (add-to-list 'package-archives

@@ -5,14 +5,11 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 (add-hook 'js-mode-hook 'moz-minor-mode)
-;(add-hook 'js-mode-hook 'esk-paredit-nonlisp)
 (add-hook 'js-mode-hook 'run-coding-hook)
 (setq js-indent-level 4)
 
 (eval-after-load 'js
   '(progn
-     ;;(define-key js-mode-map "{" 'paredit-open-curly)
-     ;;(define-key js-mode-map "}" 'paredit-close-curly-and-newline)
      ;; fixes problem with pretty function font-lock
      (define-key js-mode-map (kbd ",") 'self-insert-command)
      (font-lock-add-keywords

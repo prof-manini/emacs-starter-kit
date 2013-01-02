@@ -83,9 +83,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun turn-on-save-place-mode ()
   (setq save-place t))
 
-(defun turn-on-paredit ()
-  (paredit-mode t))
-
 (defun turn-off-tool-bar ()
   (tool-bar-mode -1))
 
@@ -210,12 +207,6 @@ Symbols matching the text at point are put first in the completion list."
   "If you can't pair program with a human, use this instead."
   (interactive)
   (message (if (y-or-n-p "Do you have a test for that? ") "Good." "Bad!")))
-
-(defun esk-paredit-nonlisp ()
-  "Turn on paredit mode for non-lisps."
-  (set (make-local-variable 'paredit-space-delimiter-chars)
-       (list ?\"))
-  (paredit-mode 1))
 
 (defun toggle-fullscreen ()
   (interactive)

@@ -38,7 +38,6 @@
                          indentation::space
                          tabs)
       ediff-window-setup-function 'ediff-setup-windows-plain
-      xterm-mouse-mode t
       save-place-file (concat esk-dotfiles-dir "places")
       scroll-preserve-screen-position t)
 
@@ -100,8 +99,11 @@
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
 
+;; Use a shorter answer
 (defalias 'yes-or-no-p 'y-or-n-p)
-(random t) ;; Seed the random-number generator
+
+;; Seed the random-number generator
+(random t)
 
 ;; Activate file backups
 (setq version-control t)

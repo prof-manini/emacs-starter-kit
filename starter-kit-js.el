@@ -8,6 +8,8 @@
 (add-hook 'js-mode-hook 'run-coding-hook)
 (setq js-indent-level 4)
 
+(eval-when-compile (require 'flymake))
+
 (eval-after-load 'js
   '(progn
      ;; fixes problem with pretty function font-lock
@@ -21,6 +23,8 @@
      ;; Adapted from http://www.emacswiki.org/emacs/FlymakeJavaScript,
      ;; to http://www.javascriptlint.com/index.htm: we assume it has
      ;; been installed under ~/.emacs.d/, possibly using a virtualenv.
+
+     (require 'flymake)
 
      (defun flymake-jsl-init ()
        (let* ((temp-file (flymake-init-create-temp-buffer-copy

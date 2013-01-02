@@ -68,6 +68,8 @@
      ;;    (flymake-add-checker flymake-newchecker-init)
 
      (require 'tramp-cmds)
+     (require 'flymake)
+
      ;; Utilities that increase legibility and reduce code duplication
      (defun current-file-remotep ()
        "Tell if the file is remote"
@@ -89,10 +91,6 @@ The FILE variable is passed after the options."
        (when (not (current-file-remotep))
          (list command
                (append options (list (flymake-create-copy-file))))))
-
-     (when (require 'flymake "flymake-patch" t)
-       (setq flymake-info-line-regex
-             (append flymake-info-line-regex '("unused$" "^redefinition" "used$"))))
 
      ;; I'm using individual well-defined names to be able to remove them
      ;; in some way

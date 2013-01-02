@@ -129,6 +129,11 @@
 (autoload 'po-mode "po-mode")
 (add-to-list 'auto-mode-alist '("\\.po[tx]?\\'\\|\\.po\\." . po-mode))
 (modify-coding-system-alist 'file "\\.po[tx]?\\'\\|\\.po\\." 'po-find-file-coding-system)
+
+;; longlines-mode has been obsoleted by visual-line-mode, but the
+;; latter does not do the right thing IMHO...
+(unless (fboundp 'longlines-mode)
+  (autoload 'longlines-mode "obsolete/longlines"))
 (eval-after-load 'po-mode
   '(progn
      ;; Turn on and off longlines-mode to wrap when editing a message

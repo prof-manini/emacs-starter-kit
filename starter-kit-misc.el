@@ -72,20 +72,17 @@
 (electric-pair-mode nil)
 
 ;; ido-mode is like magic pixie dust!
-(when (> emacs-major-version 21)
-  (ido-mode t)
-  (setq ido-enable-prefix nil
-        ido-enable-flex-matching t
-        ido-create-new-buffer 'always
-        ido-use-filename-at-point nil
-        ido-max-prospects 10
-        ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.orig\\'")
-        ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
-        ido-auto-merge-work-directories-length -1
-        ))
-
-;; but please use a better ordering, when dealing with Pyjamas for example...
-(setq ido-file-extensions-order '(".py" ".js" t))
+(ido-mode t)
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point nil
+      ido-max-prospects 10
+      ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.orig\\'")
+      ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
+      ido-auto-merge-work-directories-length -1
+      ido-file-extensions-order '(".py" ".js" t)
+      )
 
 ;; ignore some more directory patterns
 (add-to-list 'completion-ignored-extensions ".egg-info/")

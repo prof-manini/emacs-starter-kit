@@ -38,6 +38,10 @@
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
 
+;; Activate global winner mode: [C-c left] will restore previous
+;; window configuration
+(winner-mode 1)
+
 ;; If you want to be able to M-x without meta (phones, etc)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 

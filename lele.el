@@ -79,14 +79,8 @@
 
 ;; GNUS
 
+; store all GNUS staff under my own subdirectory, not tracked by darcs
 (setq gnus-home-directory (concat esk-user-specific-dir "/gnus/"))
-(setq gnus-read-newsrc-file nil)
-(setq gnus-save-newsrc-file nil)
-
-(setq gnus-default-posting-charset (quote utf-8))
-(setq gnus-permanently-visible-groups ".")
-(setq gnus-summary-line-format "%U%R%z%d %(%[%-20,20a%]%) %I%s\n")
-
 
 ;; reStructuredText
 

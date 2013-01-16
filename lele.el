@@ -18,10 +18,14 @@
 
 ;; ERC
 
+(eval-when-compile
+  (require 'netrc)
+  (require 'erc)
+  (require 'erc-join))
+
 (defun erc-auto-login-with-netrc (server nick)
   "Extract username and password from ~/.netrc to authenticate on freenode.net"
 
-  (eval-when-compile (require 'erc) (require 'netrc))
   (message "Authenticating %s on IRC server %s..." nick server)
   (when (require 'netrc nil t)
     (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
@@ -35,8 +39,6 @@
 
 (defun start-erc-session ()
   "Start an ERC session on freenode.net"
-
-  (eval-when-compile (require 'erc) (require 'erc-join))
 
   ;; Load credentials from ~/.netrc if present
   (add-hook 'erc-after-connect 'erc-auto-login-with-netrc)

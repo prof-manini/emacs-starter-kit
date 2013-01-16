@@ -103,6 +103,9 @@ Symbols matching the text at point are put first in the completion list."
   (add-hook 'before-save-hook 'whitespace-cleanup)
   (whitespace-mode))
 
+(defun turn-on-subword-mode ()
+  (subword-mode 1))
+
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
@@ -111,6 +114,7 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'cleanup-buffer-on-save)
 (add-hook 'coding-hook 'turn-on-whitespace-mode)
+(add-hook 'coding-hook 'turn-on-subword-mode)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."

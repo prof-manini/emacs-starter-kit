@@ -95,9 +95,10 @@
 (defun mine-emacs ()
   "Connect to IRC and activate Emacs server, but ask first."
   (interactive)
-  (if (y-or-n-p "IRC? ") (start-erc-session))
-  (if (y-or-n-p "Emacs server? ") (server-start))
   (set-frame-font "DejaVu Sans Mono-10" t)
+  (if (y-or-n-p "Emacs server? ") (server-start))
+  (if (y-or-n-p "GNUS? ") (gnus))
+  (if (y-or-n-p "IRC? ") (start-erc-session))
   (message "Have a nice day!"))
 
 

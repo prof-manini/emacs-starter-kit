@@ -2,6 +2,11 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
+(eval-when-compile
+  (require 'cl)
+  (require 'desktop)
+  (require 'virtualenv))
+
 (require 'thingatpt)
 (require 'imenu)
 
@@ -266,10 +271,6 @@ Symbols matching the text at point are put first in the completion list."
   (when desktop-save-mode
     (virtualenv-deactivate)
     (desktop-kill))
-
-  (eval-when-compile
-    (require 'desktop)
-    (require 'virtualenv))
 
   (call-interactively 'virtualenv-activate)
   (setq desktop-base-file-name "emacs.desktop")

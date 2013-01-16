@@ -7,11 +7,6 @@
 
 (setq user-mail-address "lele@metapensiero.it")
 
-(defun py-fix-underscore-syntax ()
-  (modify-syntax-entry ?_ "_" py-mode-syntax-table))
-
-(add-hook 'python-mode-hook 'py-fix-underscore-syntax)
-
 
 ;; Claws-mail
 

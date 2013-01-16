@@ -13,6 +13,13 @@
 ;; python-mode 6.0.4 requires the following
 (setq py-install-directory (concat esk-dotfiles-dir "elpa-to-submit"))
 
+;; rectify the underscore char syntax, python-mode sets it to "word",
+;; I prefer "symbol"
+(defun py-fix-underscore-syntax ()
+  (modify-syntax-entry ?_ "_" py-mode-syntax-table))
+
+(add-hook 'python-mode-hook 'py-fix-underscore-syntax)
+
 (require 'pymacs (concat esk-dotfiles-dir "elpa-to-submit/pymacs"))
 
 (defun setup-ropemacs ()

@@ -117,5 +117,8 @@
   "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
+(global-set-key (kbd "C-\"") 'double-quote-word)
+(global-set-key (kbd "M-\"") 'double-quote-word-behind)
+
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here

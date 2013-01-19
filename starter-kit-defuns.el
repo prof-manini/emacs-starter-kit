@@ -371,5 +371,18 @@ Symbols matching the text at point are put first in the completion list."
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
+(defun double-quote-word (&optional reverse)
+  "Wrap word at point (previous if REVERSE) between double quote chars."
+  (interactive "P")
+  (if reverse (forward-word -1) (forward-word))
+  (insert-char ?\")
+  (if reverse (forward-word) (forward-word -1))
+  (insert-char ?\"))
+
+(defun double-quote-word-behind ()
+  "Wrap previous word between double quote chars."
+  (interactive)
+  (double-quote-word 1))
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

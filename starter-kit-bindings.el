@@ -96,6 +96,7 @@
 (global-set-key [M-f10] (lambda () (interactive) (eshell t))) ; Start a new eshell even if one is active
 (global-set-key [f11] 'activate-virtual-desktop)
 (global-set-key [f12] 'auto-fill-mode)
+(global-set-key [S-f12] 'linum-mode)
 (global-set-key [M-f12] 'menu-bar-mode)
 
 ;; Other global keys

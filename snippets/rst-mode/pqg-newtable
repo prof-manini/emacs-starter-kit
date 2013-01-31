@@ -36,7 +36,7 @@ Tabella
              Tabella public.TimeStamped
 
    create table $1.$2 (
-       ${3:primarykey} ${4:$$(yas/choose-value '("smallid_t" "largeid_t" "stringid_t"))} not null,
+       ${3:primarykey} ${4:$$(yas/choose-value '("smallint_t" "largeint_t"))} not null,
        $0
 
        constraint pk_$2 primary key ($3),

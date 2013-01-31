@@ -32,7 +32,8 @@ Tabella
 
 .. patchdb:script:: Tabella $1.$2
    :description: Creazione della tabella $1.$2
-   :depends: Schema $1, Tabella public.TimeStamped
+   :depends: Schema $1,
+             Tabella public.TimeStamped
 
    create table $1.$2 (
        ${3:primarykey} ${4:$$(yas/choose-value '("smallid_t" "largeid_t" "stringid_t"))} not null,
@@ -58,7 +59,9 @@ Gestione timestamp
 
 .. patchdb:script:: Funzione inserimento $1.$2
    :description: Inizializzazione di un nuovo record in $1.$2
-   :depends: Tabella $1.$2, Generatore $1.$2_ids, Funzione auth.user()
+   :depends: Tabella $1.$2,
+             Generatore $1.$2_ids,
+             Funzione auth.user()
 
    create or replace function $1.initialize_$2()
    returns trigger as $$
@@ -79,7 +82,8 @@ Gestione timestamp
 
 .. patchdb:script:: Trigger inserimento $1.$2
    :description: Trigger all'inserimento di un nuovo record in $1.$2
-   :depends: Tabella $1.$2, Funzione inserimento $1.$2
+   :depends: Tabella $1.$2,
+             Funzione inserimento $1.$2
 
    create trigger trg_ins_ts_$1_$2
      before insert
@@ -90,7 +94,8 @@ Gestione timestamp
 
 .. patchdb:script:: Trigger aggiornamento $1.$2
    :description: Trigger all'aggiornamento di un record in $1.$2
-   :depends: Tabella $1.$2, Funzione public.update_timestamp()
+   :depends: Tabella $1.$2,
+             Funzione public.update_timestamp()
 
    create trigger trg_upd_ts_$1_$2
      before update
@@ -109,7 +114,8 @@ Chiavi esterne
 
 .. patchdb:script:: FKs $1.$2->auth.users
    :description: Foreign keys da $1.$2 su auth.users
-   :depends: Tabella $1.$2, Tabella auth.users
+   :depends: Tabella $1.$2,
+             Tabella auth.users
 
    alter table $1.$2
           add constraint fk_$2_created_by foreign key (created_by)

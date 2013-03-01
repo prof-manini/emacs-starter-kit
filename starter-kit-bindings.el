@@ -79,9 +79,9 @@
 (global-set-key [S-f2] 'query-replace-regexp)
 (global-set-key [f3] 'grep)
 (global-set-key [S-f3] 'grep-find)
-(global-set-key [f4] 'call-last-kbd-macro)
-(global-set-key [S-f4] 'name-last-kbd-macro)
-(global-set-key [M-f4] 'edit-named-kbd-macro)
+(global-set-key [f4] 'kmacro-end-or-call-macro)
+(global-set-key [S-f4] 'kmacro-start-macro-or-insert-counter)
+(global-set-key [M-f4] 'kmacro-edit-macro-repeat)
 
 (global-set-key [f5] 'compile-next-makefile)
 (global-set-key [f6] 'next-error)

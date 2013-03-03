@@ -74,6 +74,16 @@
 ; store all GNUS staff under my own subdirectory, not tracked by darcs
 (setq gnus-home-directory (concat esk-user-specific-dir "/gnus/"))
 
+; shutdown gnus if active, when exiting emacs
+(defun gnus-grace-exit-before-kill-emacs ()
+  (if (and (fboundp 'gnus-alive-p)
+           (gnus-alive-p))
+      (let ((noninteractive t))
+        (gnus-group-exit))))
+
+(add-hook 'kill-emacs-hook 'gnus-grace-exit-before-kill-emacs)
+
+
 ;; reStructuredText
 
 (require 'rst)

@@ -74,6 +74,7 @@
 (if (locate-file "git" exec-path exec-suffixes 'file-executable-p)
     (require 'starter-kit-git))
 (require 'starter-kit-erc)
+(require 'starter-kit-jabber)
 (require 'starter-kit-skeletons)
 
 (regen-autoloads)

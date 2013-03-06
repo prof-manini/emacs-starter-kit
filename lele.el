@@ -69,6 +69,15 @@
 ;; (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
 
 
+;; JABBER
+
+(when (require 'jabber nil t)
+  (setq jabber-account-list
+    '(("lelegaifax@gmail.com"
+       (:network-server . "talk.google.com")
+       (:connection-type . ssl)))))
+
+
 ;; GNUS
 
 ; store all GNUS staff under my own subdirectory, not tracked by darcs
@@ -109,6 +118,7 @@
   (if (y-or-n-p "Emacs server? ") (server-start))
   (if (y-or-n-p "GNUS? ") (gnus))
   (if (y-or-n-p "IRC? ") (start-erc-session))
+  (if (y-or-n-p "Jabber? ") (jabber-connect-all))
   (message "Have a nice day!"))
 
 

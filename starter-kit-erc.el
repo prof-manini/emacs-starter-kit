@@ -44,7 +44,7 @@ This results in a filename of the form #channel@server.txt."
                            (car (split-string nick "!"))
                            (or (erc-default-target) "#unknown"))
             :body (replace-regexp-in-string " +" " " message)
-            :app-icon "/usr/share/notify-osd/icons/gnome/scalable/status/notification-message-im.svg"
+            :app-icon "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg"
             :urgency 'low
             :timeout 2000))
        ;; emacs < 24
@@ -56,7 +56,7 @@ This results in a filename of the form #channel@server.txt."
                   (car (split-string nick "!"))
                   (or (erc-default-target) "#unknown"))
           (replace-regexp-in-string " +" " " message)
-          :icon "/usr/share/notify-osd/icons/gnome/scalable/status/notification-message-im.svg"
+          :icon "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg"
           :timeout 2000)))
      (add-hook 'erc-text-matched-hook 'erc-global-notify)))
 

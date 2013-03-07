@@ -132,17 +132,29 @@
 ;;(add-hook 'rst-mode-hook 'rst-text-mode-bindings)
 
 
-;; My wmii automatically starts up "emacs -f mine-emacs"
+(defun mine-emacs (&optional dont-ask)
+  "Connect to IRC, GNUS, Jabber and activate Emacs server, but ask first.
+If DONT-ASK is non-nil, interactively when invoked with a prefix arg,
+start everything unconditionally."
+  (interactive "P")
 
-(defun mine-emacs ()
-  "Connect to IRC and activate Emacs server, but ask first."
-  (interactive)
   (set-frame-font "DejaVu Sans Mono-10" t)
-  (if (y-or-n-p "Emacs server? ") (server-start))
-  (if (y-or-n-p "GNUS? ") (gnus))
-  (if (y-or-n-p "IRC? ") (start-erc-session))
-  (if (y-or-n-p "Jabber? ") (jabber-connect-all))
+
+  (if (or dont-ask (y-or-n-p "Emacs server? ")) (server-start))
+  (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
+  (if (or dont-ask (y-or-n-p "IRC? ")) (start-erc-session))
+  (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
+
   (message "Have a nice day!"))
+
+
+;; My wmii automatically starts up "emacs -f mine-emacs-!"
+;; My i3 automatically does
+;;  exec --no-startup-id i3-msg 'workspace 4; exec emacs -f mine-emacs-!; workspace 1'
+
+(defun mine-emacs-! ()
+  "Unconditionally start my emacs setup."
+  (mine-emacs t))
 
 
 ;; Customize will write the settings here

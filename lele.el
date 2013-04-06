@@ -49,6 +49,7 @@
            "#linuxtrent"
            "#darcs"
            "#sqlalchemy"
+           "#trac"
            "#airpim"
            )))
   (setq erc-email-userid user-mail-address)

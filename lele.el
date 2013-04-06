@@ -165,8 +165,7 @@ start everything unconditionally."
  ;; If there is more than one, they won't work right.
  '(egg-enable-tooltip t)
  '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
- '(longlines-show-hard-newlines t)
- )
+ '(longlines-show-hard-newlines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

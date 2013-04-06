@@ -77,8 +77,9 @@
       ido-create-new-buffer 'always
       ido-use-filename-at-point nil
       ido-max-prospects 10
-      ido-ignore-files '("\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.orig\\'")
-      ido-ignore-directories '("\\`\\.\\./" "\\`\\./")
+      ido-ignore-files '("\\`#" "\\`.#" "\\.orig\\'"
+                         "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")
+      ido-ignore-directories '("\\`\\.\\./" "\\`\\./" "\\`__pycache__/")
       ido-auto-merge-work-directories-length -1
       ido-file-extensions-order '(".py" ".js" t)
       )

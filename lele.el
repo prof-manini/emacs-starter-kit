@@ -48,8 +48,6 @@
            "#rafanass"
            "#linuxtrent"
            "#darcs"
-           "#revctrl"
-           "#tailor"
            "#sqlalchemy"
            "#airpim"
            )))

@@ -16,6 +16,8 @@ This results in a filename of the form #channel@server.txt."
      (setq erc-generate-log-file-name-function 'erc-generate-log-file-name-brief)
      (setq erc-save-buffer-on-part t)
      (setq erc-hide-timestamps nil)
+     (setq erc-notifications-icon
+           "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg")
 
      (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
      (add-hook 'erc-mode-hook '(lambda ()
@@ -26,35 +28,26 @@ This results in a filename of the form #channel@server.txt."
 
      (setq erc-auto-set-away nil)
      (setq erc-autoaway-mode nil)
-     (setq erc-modules (quote (autoaway autojoin button fill irccontrols
-                                        match netsplit noncommands completion
-                                        readonly ring smiley stamp track)))
-
-     ;; notification
-     (if (require 'notifications nil t)
-         ;; emacs 24
-         (defun erc-global-notify (match-type nick message)
-           "Notify when a message is received."
-           (notifications-notify
-            :title (format "%s in %s"
-                           (car (split-string nick "!"))
-                           (or (erc-default-target) "#unknown"))
-            :body (replace-regexp-in-string " +" " " message)
-            :app-icon "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg"
-            :urgency 'low
-            :timeout 2000))
-       ;; emacs < 24
-       (require 'notify)
-       (defun erc-global-notify (match-type nick message)
-         "Notify when a message is received."
-         (notify
-          (format "%s in %s"
-                  (car (split-string nick "!"))
-                  (or (erc-default-target) "#unknown"))
-          (replace-regexp-in-string " +" " " message)
-          :icon "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg"
-          :timeout 2000)))
-     (add-hook 'erc-text-matched-hook 'erc-global-notify)))
+     (setq erc-modules
+           (quote
+            (
+             autojoin
+             button
+             completion
+             fill
+             hl-nicks
+             irccontrols
+             match
+             move-to-prompt
+             netsplit
+             noncommands
+             notifications
+             readonly
+             ring
+             smiley
+             stamp
+             track
+             )))))
 
 
 (provide 'starter-kit-erc)

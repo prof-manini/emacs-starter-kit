@@ -12,7 +12,7 @@
 (define-skeleton intestazione-gpl
   "Inserisci intestazione standard GPLv3."
   "[Progetto]: "
-  comment-start " -*- coding: utf-8 -*- " comment-end "\n"
+  comment-start "-*- coding: utf-8 -*- " comment-end "\n"
   comment-start ":Progetto:  " str " -- " _ comment-end "\n"
   comment-start ":Creato:    " (format-time-string "%c") comment-end "\n"
   comment-start ":Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
@@ -22,7 +22,7 @@
 (define-skeleton intestazione-airpim
   "Inserisci intestazione standard AirPIM."
   "[Progetto]: "
-  comment-start " -*- coding: utf-8 -*- " comment-end "\n"
+  comment-start "-*- coding: utf-8 -*- " comment-end "\n"
   comment-start ":Progetto:  AirPIM/" str " -- " _ comment-end "\n"
   comment-start ":Creato:    " (format-time-string "%c") comment-end "\n"
   comment-start ":Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"

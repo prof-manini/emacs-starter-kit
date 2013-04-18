@@ -53,13 +53,13 @@
            "#airpim"
            )))
   (setq erc-email-userid user-mail-address)
-  (setq erc-nick "lelit")
+  (setq erc-nick '("lelit" "lelix" "lelit" "lelix"))
 
   (erc-autojoin-mode 1)
 
   (erc-select :server "irc.freenode.net"
               :port 6667
-              :nick erc-nick
+              :nick "lelit"
               :full-name (user-full-name))
   (recentf-mode nil))
 
@@ -163,6 +163,7 @@ start everything unconditionally."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(egg-enable-tooltip t)
  '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
  '(longlines-show-hard-newlines t))

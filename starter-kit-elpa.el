@@ -10,6 +10,8 @@
    'darcsum
    'egg
    'find-file-in-project
+   'flymake-cursor
+   'flymake-python-pyflakes
    'magit
    'notify
    'vc-darcs

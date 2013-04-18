@@ -122,14 +122,6 @@
 ;; aggiorna automaticamente il contents
 (add-hook 'rst-adjust-hook 'rst-toc-update)
 
-;; disabilita il font-lock dei titoli, dei code-blocks... che rallenta
-;; troppo!
-(setq rst-mode-lazy nil)
-(setq rst-directive-face 'font-lock-builtin-face)
-
-;; Attiva i bindings standard (vedi C-c p)
-;;(add-hook 'rst-mode-hook 'rst-text-mode-bindings)
-
 
 (defun mine-emacs (&optional dont-ask)
   "Connect to IRC, GNUS, Jabber and activate Emacs server, but ask first.

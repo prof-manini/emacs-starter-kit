@@ -109,7 +109,11 @@ Symbols matching the text at point are put first in the completion list."
   (whitespace-mode))
 
 (defun turn-on-subword-mode ()
-  (subword-mode 1))
+  (subword-mode 1)
+  ; change the minor mode lighter from the default " ," to something
+  ; better
+  (let ((entry (assq 'subword-mode minor-mode-alist)))
+    (when entry (setcdr entry '(" sw")))))
 
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)

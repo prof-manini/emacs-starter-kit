@@ -17,6 +17,7 @@
 
 (setq gnus-permanently-visible-groups ".")
 (setq gnus-summary-line-format "%U%R%z%d %(%[%-20,20a%]%) %I%s\n")
+(setq gnus-summary-same-subject "⤷")
 
 ;; prefer plain text alternative
 (setq mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*")

@@ -96,7 +96,8 @@
 
 (global-set-key [f8] 'cycle-ispell-languages)
 
-(global-set-key [f9] 'whatsnew-or-egg-status-or-vc-dir)
+(global-set-key [f9] 'whatsnew-or-magit-status-or-vc-dir)
+
 (global-set-key [f10] 'eshell)
 (global-set-key [S-f10] 'shell)
 (global-set-key [M-f10] (lambda () (interactive) (eshell t))) ; Start a new eshell even if one is active

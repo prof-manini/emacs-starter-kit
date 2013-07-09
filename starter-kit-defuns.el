@@ -260,12 +260,12 @@ Symbols matching the text at point are put first in the completion list."
 ;;   (let ((name (file-relative-name file)))
 ;;     (vc-git-command buf 0 name "blame" "-w" rev)))
 
-(defun whatsnew-or-egg-status-or-vc-dir ()
+(defun whatsnew-or-magit-status-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)
   (eval-when-compile
     (require 'darcsum)
-    (require 'egg))
+    (require 'magit))
   (let ((backend (vc-backend (buffer-file-name))))
     (cond
      ((or (eq backend 'DARCS) (darcsum-repository-root default-directory))
@@ -274,7 +274,7 @@ Symbols matching the text at point are put first in the completion list."
       ;; vc gets confused when running status on sibling bzr dirs
       (vc-dir (locate-dominating-file default-directory ".bzr")))
      ((eq backend 'Git)
-      (egg-status))
+      (magit-status default-directory))
      (backend
       (vc-dir default-directory))
      (t

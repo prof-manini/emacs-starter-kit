@@ -8,7 +8,6 @@
   (list
    'auto-complete
    'darcsum
-   'egg
    'erc-hl-nicks
    'find-file-in-project
    'flymake-cursor

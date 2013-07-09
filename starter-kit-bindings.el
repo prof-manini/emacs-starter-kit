@@ -75,26 +75,34 @@
 
 ;; Function keys bindings
 (global-set-key [f1] 'hippie-expand)   ; alias di M-/
+
 (global-set-key [f2] 'query-replace)    ; alias di M-%
 (global-set-key [S-f2] 'query-replace-regexp)
+
 (global-set-key [f3] 'grep)
 (global-set-key [S-f3] 'grep-find)
+
 (global-set-key [f4] 'kmacro-end-or-call-macro)
 (global-set-key [S-f4] 'kmacro-start-macro-or-insert-counter)
 (global-set-key [M-f4] 'kmacro-edit-macro-repeat)
 
 (global-set-key [f5] 'compile-next-makefile)
+
 (global-set-key [f6] 'next-error)
 (global-set-key [S-f6] 'previous-error)
+
 (global-set-key [f7] 'flymake-goto-next-error)
 (global-set-key [S-f7] 'flymake-goto-prev-error)
+
 (global-set-key [f8] 'cycle-ispell-languages)
 
 (global-set-key [f9] 'whatsnew-or-egg-status-or-vc-dir)
 (global-set-key [f10] 'eshell)
 (global-set-key [S-f10] 'shell)
 (global-set-key [M-f10] (lambda () (interactive) (eshell t))) ; Start a new eshell even if one is active
+
 (global-set-key [f11] 'activate-virtual-desktop)
+
 (global-set-key [f12] 'auto-fill-mode)
 (global-set-key [S-f12] 'linum-mode)
 (global-set-key [M-f12] 'menu-bar-mode)

@@ -158,7 +158,8 @@ start everything unconditionally."
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(egg-enable-tooltip t)
  '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
- '(longlines-show-hard-newlines t))
+ '(longlines-show-hard-newlines t)
+ '(scss-compile-at-save nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

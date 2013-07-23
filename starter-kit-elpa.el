@@ -15,6 +15,7 @@
    'magit
    ; 'notify ;; emacs < 24
    'vc-darcs
+   'scss-mode
    'yasnippet
    ; 'zenburn-theme
    )

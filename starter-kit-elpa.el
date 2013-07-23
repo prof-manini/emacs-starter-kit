@@ -13,7 +13,7 @@
    'flymake-cursor
    'flymake-python-pyflakes
    'magit
-   'notify
+   ; 'notify ;; emacs < 24
    'vc-darcs
    'yasnippet
    ; 'zenburn-theme

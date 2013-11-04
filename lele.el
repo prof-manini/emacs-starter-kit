@@ -159,6 +159,7 @@ start everything unconditionally."
  '(egg-enable-tooltip t)
  '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
  '(longlines-show-hard-newlines t)
+ '(git-commit-summary-max-length 70)
  '(scss-compile-at-save nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

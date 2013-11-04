@@ -13,6 +13,8 @@
    'flymake-cursor
    'flymake-python-pyflakes
    'magit
+   'git-commit-mode
+   'git-rebase-mode
    ; 'notify ;; emacs < 24
    'vc-darcs
    'scss-mode

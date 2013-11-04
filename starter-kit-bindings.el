@@ -97,6 +97,7 @@
 (global-set-key [f8] 'cycle-ispell-languages)
 
 (global-set-key [f9] 'whatsnew-or-magit-status-or-vc-dir)
+(global-set-key [S-f9] 'magit-blame-mode)
 
 (global-set-key [f10] 'eshell)
 (global-set-key [S-f10] 'shell)

@@ -19,6 +19,7 @@
    'vc-darcs
    'scss-mode
    'yasnippet
+   'js2-mode
    ; 'zenburn-theme
    )
   "Libraries that should be installed by default.")

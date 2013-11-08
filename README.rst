@@ -46,38 +46,6 @@ single ``make``::
 
   $ make
 
-Java script lint
-----------------
-
-If you are going to code in Javascript you'll need to install the
-excellent javascriptlint_ tool, written in Python on top of the
-spidermonkey engine.
-
-I suggest these further steps::
-
-  $ cd ~/.emacs.d
-  $ virtualenv .
-  $ source bin/activate
-
-As I'm writing these notes, `SVN revision 302`__ has some quirks, that
-I cured in this branch::
-
-  $ cd /tmp
-  $ darcs get --lazy http://darcs.metapensiero.it/our/lele/javascriptlint
-  $ cd javascriptlint
-  $ python setup.py install
-
-I'd expect that in a very short time the upstream will be fixed, and
-when that happens it should be installed from sourceforge_ instead::
-
-  $ cd /tmp
-  $ svn co https://javascriptlint.svn.sourceforge.net/svnroot/javascriptlint/trunk javascriptlint
-  $ cd javascriptlint
-  $ python setup.py install
-
-There's also a branch of it on github_ that I'll try to keep merged
-with my own.
-
 Python lint
 -----------
 

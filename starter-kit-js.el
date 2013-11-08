@@ -2,56 +2,39 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
-(add-hook 'js-mode-hook 'moz-minor-mode)
-(add-hook 'js-mode-hook 'run-coding-hook)
-(setq js-indent-level 4)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(eval-when-compile (require 'flymake))
+(defun js2-apply-jsl-declares ()
+  "Extract top level //jsl:declare XXX comments"
+  (setq js2-additional-externs
+        (nconc (js2-get-jsl-declares)
+               js2-additional-externs)))
 
-(eval-after-load 'js
+(defun js2-get-jsl-declares ()
+  (loop for node in (js2-ast-root-comments js2-mode-ast)
+        when (and (js2-comment-node-p node)
+                  (save-excursion
+                    (goto-char (+ 2 (js2-node-abs-pos node)))
+                    (looking-at "jsl:declare ")))
+        append (js2-get-jsl-declares-in
+                (match-end 0)
+                (js2-node-abs-end node))))
+
+(defun js2-get-jsl-declares-in (beg end)
+  (let (res)
+    (save-excursion
+      (goto-char beg)
+      (while (re-search-forward js2-mode-identifier-re end t)
+        (push (match-string-no-properties 0) res)))
+    (nreverse res)))
+
+(eval-after-load 'js2-mode
   '(progn
-     ;; fixes problem with pretty function font-lock
-     (define-key js-mode-map (kbd ",") 'self-insert-command)
-     (font-lock-add-keywords
-      'js-mode `(("\\(function *\\)("
-                        (0 (progn (compose-region (match-beginning 1)
-                                                  (match-end 1) "ƒ")
-                                  nil)))))
-
-     ;; Adapted from http://www.emacswiki.org/emacs/FlymakeJavaScript,
-     ;; to http://www.javascriptlint.com/index.htm: we assume it has
-     ;; been installed under ~/.emacs.d/, possibly using a virtualenv.
-
-     (require 'flymake)
-
-     (defun flymake-jsl-init ()
-       (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                          'flymake-create-temp-inplace))
-              (local-file (file-relative-name
-                           temp-file
-                           (file-name-directory buffer-file-name))))
-         (list (concat esk-dotfiles-dir "bin/jsl") (list "--nologo" local-file))))
-
-     (setq flymake-allowed-file-name-masks
-           (cons '(".+\\.js$"
-                   flymake-jsl-init
-                   flymake-simple-cleanup
-                   flymake-get-real-file-name)
-                 flymake-allowed-file-name-masks))
-
-     (setq flymake-err-line-patterns
-           (cons '("^\\(.*\\)(\\([[:digit:]]+\\)): warning: \\(.+\\)$"
-                   1 2 nil 3)
-                 flymake-err-line-patterns))
-
-     (defun turn-on-flymake-jsl ()
-       (flymake-mode 1))
-
-     (add-hook 'js-mode-hook 'turn-on-flymake-jsl)
-     )
-  )
+     (add-hook 'js2-mode-hook 'run-coding-hook)
+     (add-hook 'js2-mode-hook
+               (lambda ()
+                 (add-hook 'js2-post-parse-callbacks
+                           'js2-apply-jsl-declares nil t)))))
 
 (provide 'starter-kit-js)
 ;;; starter-kit-js.el ends here

@@ -119,7 +119,7 @@
 
 (require 'rst)
 
-;; aggiorna automaticamente il contents
+;; automatically update contents summary
 (add-hook 'rst-adjust-hook 'rst-toc-update)
 
 

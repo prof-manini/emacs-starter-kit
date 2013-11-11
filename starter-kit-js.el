@@ -39,7 +39,8 @@
      (add-hook 'js2-mode-hook
                (lambda ()
                  (add-hook 'js2-post-parse-callbacks
-                           'js2-apply-jsl-declares nil t)))))
+                           'js2-apply-jsl-declares nil t)
+                 (js2-reparse t)))))
 
 (provide 'starter-kit-js)
 ;;; starter-kit-js.el ends here

@@ -34,6 +34,13 @@
   '(progn
      (defadvice js2-mode (after rename-modeline activate)
         (setq mode-name "JS2"))
+
+     (font-lock-add-keywords
+      'js2-mode `(("\\(function *\\)("
+                   (0 (progn (compose-region (match-beginning 1)
+                                             (match-end 1) "ƒ")
+                             nil)))))
+
      (define-key js2-mode-map [f7] 'js2-display-error-list)
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook

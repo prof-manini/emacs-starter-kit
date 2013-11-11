@@ -34,6 +34,7 @@
   '(progn
      (defadvice js2-mode (after rename-modeline activate)
         (setq mode-name "JS2"))
+     (define-key js2-mode-map [f7] 'js2-display-error-list)
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook
                (lambda ()

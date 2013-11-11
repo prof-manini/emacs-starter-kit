@@ -32,6 +32,8 @@
 
 (eval-after-load 'js2-mode
   '(progn
+     (defadvice js2-mode (after rename-modeline activate)
+        (setq mode-name "JS2"))
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook
                (lambda ()

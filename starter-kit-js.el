@@ -30,6 +30,11 @@
         (push (match-string-no-properties 0) res)))
     (nreverse res)))
 
+(defun js2-electric-layout-post-self-insert-function ()
+  "Like the standard, but indent the new line accordingly with the mode"
+  (electric-layout-post-self-insert-function)
+  (indent-according-to-mode))
+
 (eval-after-load 'js2-mode
   '(progn
      (defadvice js2-mode (after rename-modeline activate)
@@ -42,6 +47,8 @@
                              nil)))))
 
      (define-key js2-mode-map [f7] 'js2-display-error-list)
+     (add-hook 'post-self-insert-hook
+               #'js2-electric-layout-post-self-insert-function)
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook
                (lambda ()

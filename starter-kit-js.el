@@ -47,11 +47,12 @@
                              nil)))))
 
      (define-key js2-mode-map [f7] 'js2-display-error-list)
-     (add-hook 'post-self-insert-hook
-               #'js2-electric-layout-post-self-insert-function)
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook
                (lambda ()
+                 (add-hook 'post-self-insert-hook
+                           'js2-electric-layout-post-self-insert-function
+                           nil 'local)
                  (add-hook 'js2-post-parse-callbacks
                            'js2-apply-jsl-declares nil t)
                  (js2-reparse t)))))

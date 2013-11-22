@@ -54,7 +54,7 @@
                            'js2-electric-layout-post-self-insert-function
                            nil 'local)
                  (add-hook 'js2-post-parse-callbacks
-                           'js2-apply-jsl-declares nil t)
+                           'js2-apply-jsl-declares nil 'local)
                  (js2-reparse t)))))
 
 (provide 'starter-kit-js)

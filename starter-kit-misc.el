@@ -140,8 +140,8 @@
   '(progn
      ;; Turn on and off longlines-mode to wrap when editing a message
      ;; and unwrap before putting it back.
-     (add-hook 'po-subedit-mode-hook '(lambda () (longlines-mode 1)))
-     (add-hook 'po-subedit-exit-hook '(lambda () (longlines-mode 0)))))
+     (add-hook 'po-subedit-mode-hook (lambda () (longlines-mode 1)))
+     (add-hook 'po-subedit-exit-hook (lambda () (longlines-mode 0)))))
 
 (eval-after-load 'grep
   '(when (boundp 'grep-find-ignored-files)

@@ -50,6 +50,7 @@
      (add-hook 'js2-mode-hook 'run-coding-hook)
      (add-hook 'js2-mode-hook
                (lambda ()
+                 (set-fill-column 95)
                  (add-hook 'post-self-insert-hook
                            'js2-electric-layout-post-self-insert-function
                            nil 'local)

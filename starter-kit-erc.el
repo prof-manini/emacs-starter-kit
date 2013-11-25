@@ -1,6 +1,8 @@
 ;;; starter-kit-erc.el --- Some erc helpers
 ;;
 
+(eval-when-compile (require 'erc))
+
 (defun erc-generate-log-file-name-brief (buffer target nick server port)
   "Computes a log file name from the TARGET and SERVER only.
 This results in a filename of the form #channel@server.txt."
@@ -20,11 +22,11 @@ This results in a filename of the form #channel@server.txt."
            "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg")
 
      (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
-     (add-hook 'erc-mode-hook '(lambda ()
-                                 (when (not (featurep 'xemacs))
-                                   (set (make-variable-buffer-local
-                                         'coding-system-for-write)
-                                        'emacs-mule))))
+     (add-hook 'erc-mode-hook (lambda ()
+                                (when (not (featurep 'xemacs))
+                                  (set (make-local-variable
+                                        'coding-system-for-write)
+                                       'emacs-mule))))
 
      (setq erc-auto-set-away nil)
      (setq erc-autoaway-mode nil)

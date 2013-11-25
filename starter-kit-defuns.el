@@ -183,7 +183,7 @@ Symbols matching the text at point are put first in the completion list."
         (generated-autoload-file esk-autoload-file))
     (when (or force-regen
               (not (file-exists-p esk-autoload-file))
-              (some (lambda (f) (file-newer-than-file-p f esk-autoload-file))
+              (cl-some (lambda (f) (file-newer-than-file-p f esk-autoload-file))
                     (directory-files autoload-dir t "\\.el$")))
       (message "Updating autoloads...")
       (let (emacs-lisp-mode-hook)

@@ -394,5 +394,24 @@ Symbols matching the text at point are put first in the completion list."
   (interactive)
   (double-quote-word 1))
 
+(defun move-line-down ()
+  "Transpose current and following lines."
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  "Transpose current and previous lines."
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+
 (provide 'starter-kit-defuns)
 ;;; starter-kit-defuns.el ends here

@@ -381,18 +381,32 @@ Symbols matching the text at point are put first in the completion list."
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
+(defun quote-word (quote reverse)
+  "Wrap word at point (previous if REVERSE) between `quote` chars."
+  (if reverse (forward-word -1) (forward-word))
+  (insert-char quote)
+  (if reverse (forward-word) (forward-word -1))
+  (insert-char quote))
+
+(defun single-quote-word (&optional reverse)
+  "Wrap word at point (previous if REVERSE) between single quote chars."
+  (interactive "P")
+  (quote-word ?\' reverse))
+
+(defun single-quote-word-behind ()
+  "Wrap previous word between single quote chars."
+  (interactive)
+  (quote-word ?\' 1))
+
 (defun double-quote-word (&optional reverse)
   "Wrap word at point (previous if REVERSE) between double quote chars."
   (interactive "P")
-  (if reverse (forward-word -1) (forward-word))
-  (insert-char ?\")
-  (if reverse (forward-word) (forward-word -1))
-  (insert-char ?\"))
+  (quote-word ?\" reverse))
 
 (defun double-quote-word-behind ()
   "Wrap previous word between double quote chars."
   (interactive)
-  (double-quote-word 1))
+  (quote-word ?\" 1))
 
 (defun move-line-down ()
   "Transpose current and following lines."

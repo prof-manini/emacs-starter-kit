@@ -134,8 +134,8 @@
 (global-set-key (kbd "C-\"") 'double-quote-word)
 (global-set-key (kbd "M-\"") 'double-quote-word-behind)
 
-(global-set-key (kbd "<C-S-down>") 'move-line-down)
-(global-set-key (kbd "<C-S-up>") 'move-line-up)
+(global-set-key (kbd "<C-S-down>") 'move-text-down)
+(global-set-key (kbd "<C-S-up>") 'move-text-up)
 
 (provide 'starter-kit-bindings)
 ;;; starter-kit-bindings.el ends here

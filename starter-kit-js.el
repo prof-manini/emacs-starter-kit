@@ -37,17 +37,16 @@
 
 (eval-after-load 'js2-mode
   '(progn
-     (defadvice js2-mode (after rename-modeline activate)
-        (setq mode-name "JS2"))
+     (add-hook 'js2-mode-hook 'run-coding-hook)
 
+     ;; Prettify the function keyword
      (font-lock-add-keywords
       'js2-mode `(("\\(function *\\)("
                    (0 (progn (compose-region (match-beginning 1)
                                              (match-end 1) "ƒ")
                              nil)))))
 
-     (define-key js2-mode-map [f7] 'js2-display-error-list)
-     (add-hook 'js2-mode-hook 'run-coding-hook)
+     ;; Register some mode-specific hooks
      (add-hook 'js2-mode-hook
                (lambda ()
                  (set-fill-column 95)
@@ -56,7 +55,24 @@
                            nil 'local)
                  (add-hook 'js2-post-parse-callbacks
                            'js2-apply-jsl-declares nil 'local)
-                 (js2-reparse t)))))
+                 (js2-reparse t)))
+
+     ;; Nice warnings/errors summary on F7
+     (define-key js2-mode-map [f7] 'js2-display-error-list)
+
+     ;; Display warnings/errors on the mode line
+     (add-hook 'js2-parse-finished-hook
+               (lambda ()
+                 (setq mode-name "JS2")
+                 (when (> (length js2-parsed-errors) 0)
+                   (setq mode-name
+                         (concat mode-name
+                                 (format ":%dE" (length js2-parsed-errors)))))
+                 (when (> (length js2-parsed-warnings) 0)
+                   (setq mode-name
+                         (concat mode-name
+                                 (format ":%dW" (length js2-parsed-warnings)))))
+                 (force-mode-line-update)))))
 
 (provide 'starter-kit-js)
 ;;; starter-kit-js.el ends here

@@ -1,9 +1,5 @@
-;-*- coding: utf-8 -*-
-;:Progetto:  dot.emacs -- Standard skeletons
-;:Creato:    ven 06 feb 2004 00:56:45 CET
-;:Autore:    Lele Gaifax <lele@metapensiero.it>
-;:Licenza:   GNU General Public License version 3 or later
-;
+;;; Standard skeletons
+;;
 
 (require 'autoinsert)
 
@@ -93,6 +89,3 @@
 (setq auto-insert-alist
       (cons '(("\\.org\\'" . "ORG header") . intestazione-org)
             auto-insert-alist))
-
-(provide 'starter-kit-skeletons)
-;;; starter-kit-skeletons.el ends here

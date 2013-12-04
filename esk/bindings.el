@@ -1,6 +1,4 @@
 ;;; starter-kit-bindings.el --- Set up some handy key bindings
-;;
-;; Part of the Emacs Starter Kit.
 
 ;; You know, like Readline.
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
@@ -137,5 +135,5 @@
 (global-set-key (kbd "<C-S-down>") 'move-text-down)
 (global-set-key (kbd "<C-S-up>") 'move-text-up)
 
-(provide 'starter-kit-bindings)
-;;; starter-kit-bindings.el ends here
+(global-set-key (kbd "C-o") 'open-next-line)
+(global-set-key (kbd "M-o") 'open-previous-line)

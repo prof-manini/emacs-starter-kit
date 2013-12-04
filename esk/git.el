@@ -16,6 +16,3 @@
      (defadvice magit-mode-quit-window (around magit-restore-screen activate)
        ad-do-it
        (jump-to-register :magit-fullscreen))))
-
-(provide 'starter-kit-git)
-;;; starter-kit-git.el ends here

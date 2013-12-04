@@ -1,6 +1,5 @@
 ;;; starter-kit-misc.el --- Things that don't fit anywhere else
 ;;
-;; Part of the Emacs Starter Kit
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -38,7 +37,7 @@
                          indentation::space
                          tabs)
       ediff-window-setup-function 'ediff-setup-windows-plain
-      save-place-file (concat esk-dotfiles-dir "places")
+      save-place-file (concat esk-top-dir "places")
       scroll-preserve-screen-position t)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
@@ -114,7 +113,7 @@
 
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat esk-dotfiles-dir "backups")))))
+                                        (concat esk-top-dir "backups")))))
 
 ;; Associate modes with file extensions
 
@@ -125,7 +124,6 @@
 (autoload 'rst-mode "rst")
 (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
 
-(autoload 'po-mode "po-mode")
 (add-to-list 'auto-mode-alist '("\\.po[tx]?\\'\\|\\.po\\." . po-mode))
 (modify-coding-system-alist 'file "\\.po[tx]?\\'\\|\\.po\\." 'po-find-file-coding-system)
 
@@ -172,6 +170,3 @@
 (add-hook 'css-mode-hook 'run-coding-hook)
 (add-hook 'html-mode-hook 'run-coding-hook)
 (add-hook 'rst-mode-hook 'run-coding-hook)
-
-(provide 'starter-kit-misc)
-;;; starter-kit-misc.el ends here

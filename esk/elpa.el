@@ -1,6 +1,5 @@
 ;;; starter-kit-elpa.el --- Install a base set of packages automatically.
 ;;
-;; Part of the Emacs Starter Kit
 
 (require 'cl)
 
@@ -51,5 +50,3 @@ just have to assume it's online."
 (when (esk-online?)
   (unless package-archive-contents (package-refresh-contents))
   (starter-kit-elpa-install))
-
-(provide 'starter-kit-elpa)

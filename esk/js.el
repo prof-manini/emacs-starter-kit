@@ -1,6 +1,5 @@
 ;;; starter-kit-js.el --- Some helpful Javascript helpers
 ;;
-;; Part of the Emacs Starter Kit
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -73,6 +72,3 @@
                          (concat mode-name
                                  (format ":%dW" (length js2-parsed-warnings)))))
                  (force-mode-line-update)))))
-
-(provide 'starter-kit-js)
-;;; starter-kit-js.el ends here

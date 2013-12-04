@@ -18,32 +18,45 @@
 ;; by default do not use TABs
 (set-default 'indent-tabs-mode nil)
 
-;; Load path etc.
 
-(setq esk-dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name))
-      esk-autoload-file (concat esk-dotfiles-dir "loaddefs.el")
-      package-user-dir (concat esk-dotfiles-dir "elpa")
-      esk-custom-file (concat esk-dotfiles-dir "custom")
-      esk-system-specific-config (concat esk-dotfiles-dir system-name)
-      esk-user-specific-config (concat esk-dotfiles-dir user-login-name)
-      esk-user-specific-dir (concat esk-dotfiles-dir user-login-name)
-      esk-overrides-dir (concat esk-dotfiles-dir "overrides")
-      custom-file (concat esk-user-specific-config ".el"))
+;;; Common variables
 
-;; Load up ELPA, the package manager
+(setq
 
-(add-to-list 'load-path esk-dotfiles-dir)
+ ;; top directory, usually ~/.emacs.d/
+ esk-top-dir (file-name-directory (or (buffer-file-name) load-file-name))
 
-(add-to-list 'load-path (concat esk-dotfiles-dir "elpa-to-submit"))
+ ;; starter kit lisp sources directory
+ esk-lisp-dir (concat esk-top-dir "esk/")
+
+ ;; not-yet-packaged-packages directory
+ esk-autoload-dir (concat esk-top-dir "elpa-to-submit/")
+
+ ;; directory where user specific stuff go
+ esk-user-specific-dir (concat esk-top-dir user-login-name "/")
+
+ ;; directory containing overrides
+ esk-overrides-dir (concat esk-top-dir "overrides/")
+
+ ;; user specific configuration file
+ esk-user-specific-config (concat esk-top-dir user-login-name))
+
+
+;;; Load up ELPA, the package manager
+
+;; directory where emacs packages are installed
+(setq package-user-dir (concat esk-top-dir "elpa/"))
 
 (require 'package)
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
 (package-initialize)
-(require 'starter-kit-elpa)
+
+(load (concat esk-lisp-dir "elpa"))
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
@@ -54,41 +67,58 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-(require 'open-next-line)
 (require 'tramp)
+
+;; Autoloaded stuff
+
+(add-to-list 'load-path esk-autoload-dir)
+
+(defun esk-regen-autoloads (&optional force-regen)
+  "Regenerate the autoload definitions file if necessary and load it."
+  (interactive "P")
+  (let ((generated-autoload-file (concat esk-autoload-dir "loaddefs.el")))
+    (when (or force-regen
+              (not (file-exists-p generated-autoload-file))
+              (cl-some (lambda (f)
+                         (file-newer-than-file-p f generated-autoload-file))
+                    (directory-files esk-autoload-dir t "\\.el$")))
+      (message "Updating autoload file %s..." generated-autoload-file)
+      (let (emacs-lisp-mode-hook)
+        (update-directory-autoloads esk-autoload-dir)))
+    (load generated-autoload-file)))
+
+(esk-regen-autoloads)
 
 ;; Load up starter kit customizations
 
-(require 'starter-kit-yasnippet)
-(require 'starter-kit-defuns)
-(require 'starter-kit-bindings)
-(require 'starter-kit-misc)
-(require 'starter-kit-registers)
-(require 'starter-kit-eshell)
-(require 'starter-kit-lisp)
-(require 'starter-kit-js)
-(require 'starter-kit-python)
-(require 'starter-kit-completion)
+(load (concat esk-lisp-dir "yasnippet"))
+(load (concat esk-lisp-dir "defuns"))
+(load (concat esk-lisp-dir "bindings"))
+(load (concat esk-lisp-dir "misc"))
+(load (concat esk-lisp-dir "registers"))
+(load (concat esk-lisp-dir "eshell"))
+(load (concat esk-lisp-dir "lisp"))
+(load (concat esk-lisp-dir "js"))
+(load (concat esk-lisp-dir "python"))
+(load (concat esk-lisp-dir "completion"))
 (if (locate-file "darcs" exec-path exec-suffixes 'file-executable-p)
-    (require 'starter-kit-darcs))
+    (load (concat esk-lisp-dir "darcs")))
 (if (locate-file "git" exec-path exec-suffixes 'file-executable-p)
-    (require 'starter-kit-git))
-(require 'starter-kit-erc)
-(require 'starter-kit-jabber)
-(require 'starter-kit-skeletons)
+    (load (concat esk-lisp-dir "git")))
+(load (concat esk-lisp-dir "erc"))
+(load (concat esk-lisp-dir "jabber"))
+(load (concat esk-lisp-dir "skeletons"))
 
-(regen-autoloads)
+;; Load generic customizations
+(load (concat esk-top-dir "custom") 'noerror)
 
-;; You can keep system- or user-specific customizations here
-(add-to-list 'load-path esk-user-specific-dir)
+;; Load system specific customizations
+(load (concat esk-top-dir system-name) 'noerror)
 
-;; Load custom.el
-(load esk-custom-file 'noerror)
+;; Where emacs will write user custom settings
+(setq custom-file (concat esk-user-specific-config ".el"))
 
-;; Load "system-name".el
-(load esk-system-specific-config 'noerror)
-
-;; Load "user-name".el
+;; Load user specific customizations
 (load esk-user-specific-config 'noerror)
 
 ;; Overrides for possibly old bundled versions

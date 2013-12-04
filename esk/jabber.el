@@ -1,4 +1,5 @@
 ;;; starter-kit-jabber.el --- Some jabber helpers
+;;
 
 (eval-after-load 'jabber
   '(progn
@@ -42,7 +43,3 @@
               :timeout 2000)))))
 
      (add-hook 'jabber-alert-message-hooks 'jabber-notify)))
-
-
-(provide 'starter-kit-jabber)
-;;; starter-kit-jabber.el ends here

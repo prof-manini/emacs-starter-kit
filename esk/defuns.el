@@ -1,6 +1,5 @@
 ;;; starter-kit-defuns.el --- Define some custom functions
 ;;
-;; Part of the Emacs Starter Kit
 
 (eval-when-compile
   (require 'cl)
@@ -162,23 +161,9 @@ Symbols matching the text at point are put first in the completion list."
 (defun recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory esk-dotfiles-dir 0)
+  (byte-recompile-directory esk-top-dir 0)
   ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat esk-dotfiles-dir "elpa-to-submit/") 0))
-
-(defun regen-autoloads (&optional force-regen)
-  "Regenerate the autoload definitions file if necessary and load it."
-  (interactive "P")
-  (let ((autoload-dir (concat esk-dotfiles-dir "/elpa-to-submit"))
-        (generated-autoload-file esk-autoload-file))
-    (when (or force-regen
-              (not (file-exists-p esk-autoload-file))
-              (cl-some (lambda (f) (file-newer-than-file-p f esk-autoload-file))
-                    (directory-files autoload-dir t "\\.el$")))
-      (message "Updating autoloads...")
-      (let (emacs-lisp-mode-hook)
-        (update-directory-autoloads autoload-dir))))
-  (load esk-autoload-file))
+  (byte-recompile-directory (concat esk-top-dir "elpa-to-submit/") 0))
 
 (defun sudo-edit (&optional arg)
   (interactive "p")
@@ -429,5 +414,17 @@ Symbols matching the text at point are put first in the completion list."
   (interactive "*p")
   (move-text-internal (- arg)))
 
-(provide 'starter-kit-defuns)
-;;; starter-kit-defuns.el ends here
+(defun open-next-line (arg)
+  "Move to the next line and then open a line."
+  (interactive "p")
+  (end-of-line)
+  (open-line arg)
+  (forward-line 1)
+  (indent-according-to-mode))
+
+(defun open-previous-line (arg)
+  "Open a new line before the current one."
+  (interactive "p")
+  (beginning-of-line)
+  (open-line arg)
+  (indent-according-to-mode))

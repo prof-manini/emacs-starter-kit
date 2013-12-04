@@ -50,7 +50,3 @@ This results in a filename of the form #channel@server.txt."
              stamp
              track
              )))))
-
-
-(provide 'starter-kit-erc)
-;;; starter-kit-erc.el ends here

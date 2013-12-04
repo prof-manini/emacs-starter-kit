@@ -1,4 +1,5 @@
 ;;; starter-kit-completion.el --- A few common completion tricks
+
 (defun ac-eshell-mode-setup ()
   (add-to-list 'ac-sources 'ac-source-files-in-current-dir))
 
@@ -46,6 +47,3 @@
   (add-to-list 'ac-sources 'ac-source-yasnippet))
 
 (add-hook 'python-mode-hook 'ac-python-mode-setup)
-
-(provide 'starter-kit-completion)
-;;; starter-kit-completion.el ends here

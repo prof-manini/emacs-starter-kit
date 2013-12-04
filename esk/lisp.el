@@ -1,6 +1,5 @@
 ;;; starter-kit-lisp.el --- Some helpful Lisp code
 ;;
-;; Part of the Emacs Starter Kit
 
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)
 (define-key lisp-mode-shared-map (kbd "C-c l") "lambda")
@@ -64,6 +63,3 @@
                      (0 (progn (compose-region (match-beginning 1)
                                                (match-end 1) "ƒ")
                                nil))))))
-
-(provide 'starter-kit-lisp)
-;; starter-kit-lisp.el ends here

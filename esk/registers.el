@@ -1,6 +1,5 @@
 ;;; starter-kit-registers.el --- Set up registers
 ;;
-;; Part of the Emacs Starter Kit
 
 ;; Registers allow you to jump to a file or other location
 ;; quickly. Use C-x r j followed by the letter of the register (i for
@@ -8,11 +7,8 @@
 
 ;; You should add registers here for the files you edit most often.
 
-(dolist (r `((?i (file . ,(concat esk-dotfiles-dir "init.el")))
-             (?b (file . ,(concat esk-dotfiles-dir "starter-kit-bindings.el")))
+(dolist (r `((?i (file . ,(concat esk-top-dir "init.el")))
+             (?b (file . ,(concat esk-lisp-dir "bindings.el")))
              (?m (file . ,esk-user-specific-config))
-             (?r (file . ,(concat esk-dotfiles-dir "starter-kit-registers.el")))))
+             (?r (file . ,(concat esk-lisp-dir "registers.el")))))
   (set-register (car r) (cadr r)))
-
-(provide 'starter-kit-registers)
-;;; starter-kit-registers.el ends here

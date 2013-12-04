@@ -11,6 +11,3 @@
 (add-to-list 'vc-handled-backends 'DARCS)
 (autoload 'vc-darcs-find-file-hook "vc-darcs")
 (add-hook 'find-file-hooks 'vc-darcs-find-file-hook)
-
-(provide 'starter-kit-darcs)
-;;; starter-kit-darcs.el ends here

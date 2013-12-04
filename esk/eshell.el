@@ -1,6 +1,5 @@
 ;;; starter-kit-eshell.el --- Making the defaults a bit saner
 ;;
-;; Part of the Emacs Starter Kit
 
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t
@@ -32,13 +31,3 @@
 
 (defun eshell/find (dir &rest opts)
   (find-dired dir (mapconcat 'identity opts " ")))
-
-;; Port features from
-;; http://blog.peepcode.com/tutorials/2009/shell-method-missing/shell_method_missing.rb
-;; * cloning git repos, github repos
-;; * downloading http urls
-;; * extracting archives
-;; * changing to directories
-
-(provide 'starter-kit-eshell)
-;;; starter-kit-eshell.el ends here

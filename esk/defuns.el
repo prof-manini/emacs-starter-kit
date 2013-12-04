@@ -402,7 +402,7 @@ Symbols matching the text at point are put first in the completion list."
       (forward-line)
       (when (or (< arg 0) (not (eobp)))
         (transpose-lines arg))
-      (forward-line -1)))))
+      (forward-line (if (< arg 0) -2 -1))))))
 
 (defun move-text-down (arg)
   "Move region (transient-mark-mode active) or current line arg lines down."

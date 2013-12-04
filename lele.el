@@ -162,7 +162,8 @@ start everything unconditionally."
  '(git-commit-summary-max-length 70)
  '(scss-compile-at-save nil)
  '(js2-indent-switch-body t)
- '(js2-include-jslint-globals nil))
+ '(js2-include-jslint-globals nil)
+ '(windmove-window-distance-delta 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

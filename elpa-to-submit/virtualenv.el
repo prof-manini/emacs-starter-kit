@@ -81,6 +81,7 @@
   (message virtualenv-name)
   )
 
+;;;###autoload
 (defun virtualenv-activate (dir)
   "Activate the virtualenv located in DIR"
   (interactive "DVirtualenv Directory: ")
@@ -138,6 +139,7 @@
     )
   )
 
+;;;###autoload
 (defun virtualenv-workon (name)
   "Issue a virtualenvwrapper-like virtualenv-workon command"
   (interactive (list (completing-read "Virtualenv: " (virtualenv-workon-complete))))

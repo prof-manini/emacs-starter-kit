@@ -1165,6 +1165,7 @@ Initialize or replace current translation with the original message"))])
     po-mode-map)
   "Keymap for PO mode.")
 
+;;;###autoload
 (defun po-mode ()
   "Major mode for translators when they edit PO files.
 

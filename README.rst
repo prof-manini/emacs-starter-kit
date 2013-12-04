@@ -29,30 +29,27 @@ safe place, maybe simply::
 
 Then fetch a copy of this repository::
 
-  $ darcs get --lazy http://darcs.metapensiero.it/our/lele/emacs-starter-kit/ .emacs.d
+  $ darcs get --lazy http://hub.darcs.net/lelit/emacs-starter-kit .emacs.d
 
-The very first time you execute Emacs with the new configuration it
-will download further packages from ELPA_; I usually do that from the
-command line executing the following two commands in row::
+Eventually tweak the file ``.emacs.d/esk/elpa.el`` adjusting the list
+of external packages.
 
-  $ emacs --batch -l ~/.emacs.d/init.el
-  $ emacs --batch -l ~/.emacs.d/init.el -f recompile-init
+Finally run::
+
+  $ make
+
+The very first execution will download a few packages from ELPA_. It
+will also recompile elisp sources as needed.
 
 I recommend redoing the latter whenever seems reasonable, that is
 after any configuration tweak you may do.
-
-If you prefer, the above instructions are executed more simply by a
-single ``make``::
-
-  $ make
 
 Python lint
 -----------
 
 To avoid depending on possibly outdated system-wide tool, current
-setup uses a “local” ``pyflakes``, that **must** be installed in the
-virtualenv created above. If you didn't install the `java script
-lint`_ tool, you must create the virtualenv::
+setup uses a “local” ``pyflakes``, that **must** be installed in a
+virtualenv::
 
   $ cd ~/.emacs.d
   $ virtualenv .
@@ -112,11 +109,7 @@ automatically load it in every Emacs session::
   $ echo '(load (concat dotfiles-dir "nxhtml/autostart.elc"))' >> your-user-name.el
 
 .. _emacs starter kit: http://github.com/technomancy/emacs-starter-kit/
-__ http://github.com/gabrielelanaro/emacs-starter-kit/
+__ https://github.com/gabrielelanaro/emacs-starter-kit
 .. _elpa: http://tromey.com/elpa
-.. _javascriptlint: http://www.javascriptlint.com/
-__ http://javascriptlint.svn.sourceforge.net/viewvc/javascriptlint?view=revision&revision=302
-.. _sourceforge: http://sourceforge.net/projects/javascriptlint/
 .. _nxhtml: http://ourcomments.org/Emacs/nXhtml/doc/nxhtml.html
 .. _rest: http://docutils.sourceforge.net/
-.. _github: https://github.com/davepacheco/javascriptlint

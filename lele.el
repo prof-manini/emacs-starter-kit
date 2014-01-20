@@ -122,6 +122,9 @@
 ;; automatically update contents summary
 (add-hook 'rst-adjust-hook 'rst-toc-update)
 
+;; disable new auto indent
+(add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))
+
 
 (defun mine-emacs (&optional dont-ask)
   "Connect to IRC, GNUS, Jabber and activate Emacs server, but ask first.

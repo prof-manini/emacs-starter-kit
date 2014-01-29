@@ -84,9 +84,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun turn-on-hl-line-mode ()
   (if window-system (hl-line-mode t)))
 
-(defun turn-on-save-place-mode ()
-  (setq save-place t))
-
 (defun turn-off-tool-bar ()
   (tool-bar-mode -1))
 
@@ -120,7 +117,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
-(add-hook 'coding-hook 'turn-on-save-place-mode)
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'cleanup-buffer-on-save)
 (add-hook 'coding-hook 'turn-on-whitespace-mode)
@@ -138,13 +134,6 @@ Symbols matching the text at point are put first in the completion list."
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
-
-(defun recentf-ido-find-file ()
-  "Find a recent file using ido."
-  (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
-    (when file
-      (find-file file))))
 
 ;; Other
 

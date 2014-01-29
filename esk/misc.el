@@ -37,7 +37,6 @@
                          indentation::space
                          tabs)
       ediff-window-setup-function 'ediff-setup-windows-plain
-      save-place-file (concat esk-top-dir "places")
       scroll-preserve-screen-position t)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
@@ -58,10 +57,6 @@
 
 ;; Enable syntax highlighting for older Emacsen that have it off
 (global-font-lock-mode t)
-
-;; Save a list of recent files visited.
-(setq recentf-max-saved-items 30)
-(recentf-mode 1)
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)

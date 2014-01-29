@@ -60,8 +60,7 @@
   (erc-select :server "irc.freenode.net"
               :port 6667
               :nick "lelit"
-              :full-name (user-full-name))
-  (recentf-mode nil))
+              :full-name (user-full-name)))
 
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477"))

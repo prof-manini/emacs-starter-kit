@@ -158,8 +158,6 @@ start everything unconditionally."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
- '(egg-enable-tooltip t)
- '(egg-show-key-help-in-buffers (quote (:log :file-log :reflog :diff)))
  '(longlines-show-hard-newlines t)
  '(git-commit-summary-max-length 70)
  '(scss-compile-at-save nil)

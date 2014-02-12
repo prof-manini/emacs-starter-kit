@@ -43,7 +43,6 @@
      ;; Register some mode-specific hooks
      (add-hook 'js2-mode-hook
                (lambda ()
-                 (set-fill-column 95)
                  (add-hook 'js2-post-parse-callbacks
                            'js2-apply-jsl-declares nil 'local)
                  (js2-reparse t)))

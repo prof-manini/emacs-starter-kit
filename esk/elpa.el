@@ -14,6 +14,7 @@
    'magit
    'git-commit-mode
    'git-rebase-mode
+   'mo-git-blame
    'vc-darcs
    'scss-mode
    'yasnippet

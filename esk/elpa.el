@@ -3,7 +3,7 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages
+(defvar esk-packages
   (list
    'auto-complete
    'darcsum
@@ -11,21 +11,21 @@
    'find-file-in-project
    'flymake-cursor
    'flymake-python-pyflakes
-   'magit
    'git-commit-mode
    'git-rebase-mode
-   'mo-git-blame
-   'vc-darcs
-   'scss-mode
-   'yasnippet
    'js2-mode
+   'magit
+   'mo-git-blame
+   'scss-mode
+   'vc-darcs
+   'yasnippet
    )
   "Libraries that should be installed by default.")
 
-(defun starter-kit-elpa-install ()
+(defun esk-install-packages ()
   "Install all starter-kit packages that aren't installed."
   (interactive)
-  (dolist (package starter-kit-packages)
+  (dolist (package esk-packages)
     (unless (or (member package package-activated-list)
                 (functionp package))
       (message "Installing %s" (symbol-name package))
@@ -48,4 +48,4 @@ just have to assume it's online."
 ;; On your first run, this should pull in all the base packages.
 (when (esk-online?)
   (unless package-archive-contents (package-refresh-contents))
-  (starter-kit-elpa-install))
+  (esk-install-packages))

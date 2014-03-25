@@ -48,16 +48,16 @@ Python lint
 -----------
 
 To avoid depending on possibly outdated system-wide tool, current
-setup uses a “local” ``pyflakes``, that **must** be installed in a
-virtualenv::
+setup uses a “local” ``pyflakes``: it shall be installed in the virtualenv
+associated with the `virtual desktop` that gets activated with ``F11``,
+located either at the same level or under that in an ``env`` subdirectory.
 
-  $ cd ~/.emacs.d
-  $ virtualenv .
+In this way, it will be run with the right interpreter for the selected
+project, either Python 2 or Python 3::
 
-Then install the ``pyflakes`` tool, with::
-
-  $ cd ~/.emacs.d
-  $ source bin/activate
+  $ cd /path/to/project
+  $ virtualenv env
+  $ source env/bin/activate
   $ pip install -U pyflakes
 
 Customization

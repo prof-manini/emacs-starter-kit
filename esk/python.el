@@ -9,5 +9,3 @@
 (require 'flymake-cursor)
 
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(setq flymake-python-pyflakes-executable
-      (concat esk-top-dir "bin/pyflakes"))

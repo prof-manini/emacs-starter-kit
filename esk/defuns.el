@@ -261,6 +261,34 @@ Symbols matching the text at point are put first in the completion list."
     (compile cd-command)
     (setq compile-command command)))
 
+(defun esk-virtualenv-activate (dir)
+  "Activate the virtualenv located in DIR."
+
+  ;; Removing the eventually present trailing slash
+  (when (string= (substring dir -1 nil) "/")
+    (setq dir (substring dir 0 -1)))
+
+  ;; Eventually deactivate previous virtualenv
+  (when virtualenv-name
+    (virtualenv-deactivate))
+
+  ;; Storing old variables
+  (setq virtualenv-old-path (getenv "PATH"))
+  (setq virtualenv-old-exec-path exec-path)
+
+  (setq virtualenv-name (file-name-nondirectory dir))
+
+  ;; I usually have the concrete virtual env isolated in a "env"
+  ;; subdirectory, so use that if it exists.
+  (if (file-exists-p (concat dir "/env/bin"))
+      (setq dir (concat dir "/env")))
+
+  (setenv "VIRTUAL_ENV" dir)
+  (virtualenv-add-to-path (concat dir "/bin"))
+  (add-to-list 'exec-path (concat dir "/bin"))
+
+  (message (concat "Virtualenv '" virtualenv-name "' activated.")))
+
 (defun activate-virtual-desktop ()
   "Turn on a virtualenv and its related desktop, in auto-save mode"
   (interactive)

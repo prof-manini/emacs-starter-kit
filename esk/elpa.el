@@ -18,6 +18,7 @@
    'mo-git-blame
    'scss-mode
    'vc-darcs
+   'whitespace-cleanup-mode
    'yasnippet
    )
   "Libraries that should be installed by default.")

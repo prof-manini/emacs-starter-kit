@@ -93,7 +93,7 @@ Symbols matching the text at point are put first in the completion list."
           1 font-lock-warning-face t))))
 
 (defun cleanup-buffer-on-save ()
-  (add-hook 'before-save-hook 'whitespace-cleanup))
+  (whitespace-cleanup-mode 1))
 
 (defun turn-on-whitespace-mode ()
   (whitespace-mode))

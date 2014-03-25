@@ -47,13 +47,12 @@ after any configuration tweak you may do.
 Python lint
 -----------
 
-To avoid depending on possibly outdated system-wide tool, current
-setup uses a “local” ``pyflakes``: it shall be installed in the virtualenv
-associated with the `virtual desktop` that gets activated with ``F11``,
-located either at the same level or under that in an ``env`` subdirectory.
-
-In this way, it will be run with the right interpreter for the selected
-project, either Python 2 or Python 3::
+The ``flymake``-based syntax checker for Python relies on ``pyflakes`` being
+present on your system. You can either install it system-wide (for example
+installing it with ``apt-get install pyflakes``) or have it inside the
+specific virtualenv associated with the `virtual desktop` that gets activated
+with ``M-x activate-virtual-desktop`` (by default bound to ``F11``), located
+either at the same level or under that in an ``env`` subdirectory::
 
   $ cd /path/to/project
   $ virtualenv env

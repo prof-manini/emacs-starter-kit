@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Sencha Override
+# key: extov
+# --
+//jsl:declare Ext
+
+Ext.define('$0.overrides.${1:$(substring yas/text (1+ (string-match-p "\\." yas/text)))}', {
+   override: '${1:class}',
+
+});

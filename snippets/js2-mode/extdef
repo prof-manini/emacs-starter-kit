@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Sencha Define
+# key: extdef
+# --
+//jsl:declare Ext
+
+Ext.define('${1:class}', {
+   extend: '${2:superclass}',
+   ${3:xtype: '${4:xtype or C-d to delete}',
+   }
+   config: {
+       $0
+   }
+});

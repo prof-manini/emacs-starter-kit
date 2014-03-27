@@ -8,22 +8,23 @@
 (define-skeleton intestazione-gpl
   "Inserisci intestazione standard GPLv3."
   "[Progetto]: "
-  comment-start "-*- coding: utf-8 -*- " comment-end "\n"
-  comment-start ":Progetto:  " str " -- " _ comment-end "\n"
-  comment-start ":Creato:    " (format-time-string "%c") comment-end "\n"
-  comment-start ":Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
-  comment-start ":Licenza:   " "GNU General Public License version 3 or later" comment-end "\n"
-  comment-start comment-end "\n\n")
+  comment-start `(delete-horizontal-space) " -*- coding: utf-8 -*-" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Progetto:  " str " -- " _ comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Creato:    " (format-time-string "%c") comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Licenza:   GNU General Public License version 3 or later" comment-end "\n"
+  comment-start `(delete-horizontal-space) comment-end "\n\n")
 
-(define-skeleton intestazione-airpim
-  "Inserisci intestazione standard AirPIM."
+(define-skeleton intestazione-gpl-block-comment
+  "Inserisci intestazione standard GPLv3 (block comment)."
   "[Progetto]: "
-  comment-start "-*- coding: utf-8 -*- " comment-end "\n"
-  comment-start ":Progetto:  AirPIM/" str " -- " _ comment-end "\n"
-  comment-start ":Creato:    " (format-time-string "%c") comment-end "\n"
-  comment-start ":Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
-  comment-start ":Licenza:   Copyright (C) " (format-time-string "%Y") " Airpim S.r.l. Tutti i diritti riservati." comment-end "\n"
-  comment-start comment-end) "\n\n"
+  comment-start
+  " -*- coding: utf-8 -*-\n"
+  " * :Progetto:  " str " -- " _ "\n"
+  " * :Creato:    " (format-time-string "%c") "\n"
+  " * :Autore:    " (user-full-name) " <" user-mail-address ">" "\n"
+  " * :Licenza:   " "GNU General Public License version 3 or later\n"
+  " " comment-end "\n\n")
 
 (define-skeleton intestazione-org
   "Intestazione per i file ORG."
@@ -85,6 +86,12 @@
             auto-insert-alist))
 (setq auto-insert-alist
       (cons '(("\\.js\\'" . "Javascript header") . intestazione-gpl)
+            auto-insert-alist))
+(setq auto-insert-alist
+      (cons '(("\\.css\\'" . "CSS header") . intestazione-gpl-block-comment)
+            auto-insert-alist))
+(setq auto-insert-alist
+      (cons '(("\\.scss\\'" . "SCSS header") . intestazione-gpl-block-comment)
             auto-insert-alist))
 (setq auto-insert-alist
       (cons '(("\\.org\\'" . "ORG header") . intestazione-org)

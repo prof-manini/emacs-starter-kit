@@ -195,7 +195,8 @@
     (kill-buffer)
     (set-window-configuration winconf)
     (switch-to-buffer original-buffer)
-    (goto-line original-line)))
+    (goto-char (point-min))
+    (forward-line original-line)))
 
 (defun eet/conclude ()
   "Used in eet/mode to confirm changes and close the popup window."

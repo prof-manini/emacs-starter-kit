@@ -89,40 +89,78 @@
 ;;       <label>{fullname}</label>
 ;;   </div>
 ;;
+;; The template definition may contain a configuration object defining template member
+;; functions, for example:
+;;
+;;   tpl: [
+;;       '<div class=\'bh-summary\'>',
+;;       '    <header>{header}</header>',
+;;       '',
+;;       '    <label>{[this.uppercase(fullname)]}</label>',
+;;       '</div>',
+;;       {
+;;         uppercase: function(s) {
+;;           return s.toUpperCase();
+;;         }
+;;       }
+;;   ]
+;;
+;; Such object is ignored and left in place as-is.
+;;
 ;; Confirm the changes with `C-c C-c', abort them with `C-c C-k'.
 
 (defun js2-edit-extjs-template-at-point ()
+  "Edit an array of strings representing an ExtJS template in a different buffer."
   (interactive)
   (let* ((ppss (syntax-ppss))
          (inner-sexp-start (nth 1 ppss))
-         (current-line-offset (- (line-number-at-pos (point))
-                                 (line-number-at-pos inner-sexp-start))))
+         (current-line (line-number-at-pos (point))))
     (when inner-sexp-start
       (save-excursion
         (goto-char inner-sexp-start)
         (when (looking-at "\\[[\s\n]+['\"]")
-          (forward-sexp 1)
-          (eet/edit (1+ inner-sexp-start) (1- (point)))
-          (forward-line (1- current-line-offset)))))))
+          (eet/edit (1+ inner-sexp-start) (eet/find-template-end) current-line))))))
 
-(defun eet/edit (start end)
+(defun eet/find-template-end ()
+  "Find and return the end of the template."
+  (let (end)
+    (save-excursion
+      (forward-sexp 1)
+      (forward-char -1)
+      (setq end (point))
+      ;; Here the point is over the ending ']': go backward by one s-exp, that
+      ;; may be either the last string, or the optional configuration object;
+      ;; in the latter case, search backward for the comma separator
+      (forward-sexp -1)
+      (when (looking-at "{")
+        (search-backward ",")
+        (setq end (point))))
+    end))
+
+(defun eet/edit (start end current-line)
+  "Extract the template from the array of strings into a new buffer."
   (let ((template (buffer-substring-no-properties start end))
-        (original-buffer (current-buffer)))
-    (select-window (split-window-vertically -4))
+        (original-buffer (current-buffer))
+        (winconf (current-window-configuration)))
     (switch-to-buffer (generate-new-buffer "*template-edit*"))
+    (delete-other-windows-internal)
     (insert template)
     (eet/implode)
     (set-buffer-modified-p nil)
     (goto-char (point-min))
     (when (looking-at "<")
       (html-mode))
-    (enlarge-window (1- (line-number-at-pos (point-max))))
     (eet/mode 1)
     (set (make-local-variable 'eet/original-buffer) original-buffer)
     (set (make-local-variable 'eet/original-start) start)
-    (set (make-local-variable 'eet/original-end) end)))
+    (set (make-local-variable 'eet/original-end) end)
+    (set (make-local-variable 'eet/original-line) current-line)
+    (set (make-local-variable 'eet/original-winconf) winconf)
+    (message "Type C-c C-c to confirm changes, C-c C-k to abort")))
 
 (defun eet/implode ()
+  "Remove string quotes from each line and unescape remaining text."
+  (insert "\n")
   (whitespace-cleanup)
   (goto-char (point-min))
   (let ((start (point))
@@ -149,35 +187,49 @@
         (insert quote)))))
 
 (defun eet/abort ()
-  "Used in template-edit-mode to close the popup window"
+  "Used in template-edit-mode to close the popup window."
   (interactive)
-  (kill-buffer)
-  (delete-window))
+  (let ((winconf eet/original-winconf)
+        (original-buffer eet/original-buffer)
+        (original-line eet/original-line))
+    (kill-buffer)
+    (set-window-configuration winconf)
+    (switch-to-buffer original-buffer)
+    (goto-line original-line)))
 
 (defun eet/conclude ()
+  "Used in eet/mode to confirm changes and close the popup window."
   (interactive)
   (let ((line (eet/explode))
         (contents (buffer-substring-no-properties (point-min) (- (point-max) 2)))
         (original-buffer eet/original-buffer)
         (original-start eet/original-start)
-        (original-end eet/original-end))
+        (original-end eet/original-end)
+        (winconf eet/original-winconf))
     (kill-buffer)
-    (delete-window)
+    (set-window-configuration winconf)
     (switch-to-buffer original-buffer)
     (goto-char original-start)
     (delete-char (- original-end original-start))
     (insert "\n")
     (insert contents)
-    (insert "\n")
+    ;; If we are looking at a comma it means that what follows is the template
+    ;; configuration object, otherwise insert a newline to properly indent the
+    ;; ending ']'
+    (unless (looking-at ",")
+      (insert "\n"))
     (let ((end (1+ (point))))
       (goto-char original-start)
       (forward-line line)
       (indent-region original-start end))))
 
 (defun eet/explode ()
-  (whitespace-cleanup)
+  "Reinsert string quotes around each line and separate them with an ending comma."
   (let ((current-line (line-number-at-pos (point)))
         start)
+    (goto-char (point-max))
+    (insert "\n")
+    (whitespace-cleanup)
     (goto-char (point-min))
     (while (and (re-search-forward "^" nil t)
                 (not (eobp)))
@@ -209,7 +261,7 @@
     (define-key map (kbd "C-c C-k") 'eet/abort)
     (define-key map (kbd "C-c C-c") 'eet/conclude)
     map)
-  "Keymap for template-edit minor mode.")
+  "Keymap for eet/mode minor mode.")
 
 (define-minor-mode eet/mode
   "Minor mode for useful keybindings while editing template."

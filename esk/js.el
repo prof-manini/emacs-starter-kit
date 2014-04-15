@@ -109,17 +109,32 @@
 ;;
 ;; Confirm the changes with `C-c C-c', abort them with `C-c C-k'.
 
+(defvar-local eet/template-buffer nil
+  "The buffer containing the template being edited.")
+
+(defvar-local eet/template-start nil
+  "The position in the original buffer where the template begins.")
+
+(defvar-local eet/template-end nil
+  "The position in the original buffer where the template ends.")
+
+(defvar-local eet/original-line nil
+  "The line containing the point in the original buffer when the template edit began.")
+
+(defvar-local eet/original-winconf nil
+  "The windows configuration when the template edit began.")
+
 (defun js2-edit-extjs-template-at-point ()
   "Edit an array of strings representing an ExtJS template in a different buffer."
   (interactive)
   (let* ((ppss (syntax-ppss))
          (inner-sexp-start (nth 1 ppss))
-         (current-line (line-number-at-pos (point))))
+         (line (line-number-at-pos (point))))
     (when inner-sexp-start
       (save-excursion
         (goto-char inner-sexp-start)
         (when (looking-at "\\[[\s\n]+['\"]")
-          (eet/edit (1+ inner-sexp-start) (eet/find-template-end) current-line))))))
+          (eet/edit (1+ inner-sexp-start) (eet/find-template-end) line))))))
 
 (defun eet/find-template-end ()
   "Find and return the end of the template."
@@ -137,31 +152,31 @@
         (setq end (point))))
     end))
 
-(defun eet/edit (start end current-line)
+(defun eet/edit (start end line)
   "Extract the template from the array of strings into a new buffer."
   (let ((template (buffer-substring-no-properties start end))
-        (original-buffer (current-buffer))
+        (template-buffer (current-buffer))
         (winconf (current-window-configuration)))
     (switch-to-buffer (generate-new-buffer "*template-edit*"))
     (delete-other-windows-internal)
-    (insert template)
+    ;; Insert the original template strings, ensuring the presence of an
+    ;; end-of-line after the last string
+    (insert template "\n")
     (eet/implode)
-    (set-buffer-modified-p nil)
     (goto-char (point-min))
     (when (looking-at "<")
       (html-mode))
     (eet/mode 1)
-    (set (make-local-variable 'eet/original-buffer) original-buffer)
-    (set (make-local-variable 'eet/original-start) start)
-    (set (make-local-variable 'eet/original-end) end)
-    (set (make-local-variable 'eet/original-line) current-line)
-    (set (make-local-variable 'eet/original-winconf) winconf)
+    (set-buffer-modified-p nil)
+    (setq eet/template-buffer template-buffer
+          eet/template-start start
+          eet/template-end end
+          eet/original-line line
+          eet/original-winconf winconf)
     (message "Type C-c C-c to confirm changes, C-c C-k to abort")))
 
 (defun eet/implode ()
   "Remove string quotes from each line and unescape remaining text."
-  (insert "\n")
-  (whitespace-cleanup)
   (goto-char (point-min))
   (let ((start (point))
         quote)
@@ -174,7 +189,8 @@
       (eet/unescape-line quote)
       (eet/unescape-line "\\")
       (forward-line)
-      (setq start (point)))))
+      (setq start (point))))
+  (whitespace-cleanup))
 
 (defun eet/unescape-line (quote)
   (save-excursion
@@ -190,11 +206,11 @@
   "Used in template-edit-mode to close the popup window."
   (interactive)
   (let ((winconf eet/original-winconf)
-        (original-buffer eet/original-buffer)
+        (template-buffer eet/template-buffer)
         (original-line eet/original-line))
     (kill-buffer)
     (set-window-configuration winconf)
-    (switch-to-buffer original-buffer)
+    (switch-to-buffer template-buffer)
     (goto-char (point-min))
     (forward-line original-line)))
 
@@ -203,15 +219,15 @@
   (interactive)
   (let ((line (eet/explode))
         (contents (buffer-substring-no-properties (point-min) (- (point-max) 2)))
-        (original-buffer eet/original-buffer)
-        (original-start eet/original-start)
-        (original-end eet/original-end)
+        (template-buffer eet/template-buffer)
+        (template-start eet/template-start)
+        (template-end eet/template-end)
         (winconf eet/original-winconf))
     (kill-buffer)
     (set-window-configuration winconf)
-    (switch-to-buffer original-buffer)
-    (goto-char original-start)
-    (delete-char (- original-end original-start))
+    (switch-to-buffer template-buffer)
+    (goto-char template-start)
+    (delete-char (- template-end template-start))
     (insert "\n")
     (insert contents)
     ;; If we are looking at a comma it means that what follows is the template
@@ -220,17 +236,18 @@
     (unless (looking-at ",")
       (insert "\n"))
     (let ((end (1+ (point))))
-      (goto-char original-start)
+      (goto-char template-start)
       (forward-line line)
-      (indent-region original-start end))))
+      (indent-region template-start end))))
 
 (defun eet/explode ()
   "Reinsert string quotes around each line and separate them with an ending comma."
-  (let ((current-line (line-number-at-pos (point)))
-        start)
+  (save-excursion
     (goto-char (point-max))
-    (insert "\n")
-    (whitespace-cleanup)
+    (insert "\n"))
+  (whitespace-cleanup)
+  (let ((line (line-number-at-pos (point)))
+        start)
     (goto-char (point-min))
     (while (and (re-search-forward "^" nil t)
                 (not (eobp)))
@@ -244,7 +261,7 @@
         (insert ","))
       (forward-line)
       (setq start (point)))
-    current-line))
+    line))
 
 (defun eet/escape-line (quote)
   (save-excursion

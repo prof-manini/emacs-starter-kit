@@ -159,8 +159,7 @@
   (let ((template (buffer-substring-no-properties start end))
         (template-buffer (current-buffer))
         (winconf (current-window-configuration)))
-    (switch-to-buffer (generate-new-buffer "*template-edit*"))
-    (delete-other-windows-internal)
+    (pop-to-buffer (generate-new-buffer "*template-edit*"))
     ;; Insert the original template strings, ensuring the presence of an
     ;; end-of-line after the last string
     (insert template "\n")

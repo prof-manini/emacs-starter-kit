@@ -187,24 +187,25 @@
       (end-of-line)
       (search-backward quote)
       (kill-line)
-      (eet/unescape-line quote)
-      (eet/unescape-line "\\")
+      (eet/unescape-char-in-line quote)
+      (eet/unescape-char-in-line "\\")
       (forward-line)
       (setq start (point))))
   (whitespace-cleanup))
 
-(defun eet/unescape-line (quote)
+(defun eet/unescape-char-in-line (char)
+  "Drop the escape from given CHARs in the current line."
   (save-excursion
     (let (start)
       (beginning-of-line)
       (setq start (point))
       (end-of-line)
-      (while (search-backward (concat "\\" quote) start t)
+      (while (search-backward (concat "\\" char) start t)
         (replace-match "")
-        (insert quote)))))
+        (insert char)))))
 
 (defun eet/abort ()
-  "Used in template-edit-mode to close the popup window."
+  "Used in eet/mode to close the popup window."
   (interactive)
   (let ((winconf eet/original-winconf)
         (template-buffer eet/template-buffer)
@@ -253,8 +254,8 @@
     (while (and (re-search-forward "^" nil t)
                 (not (eobp)))
       (setq start (point))
-      (eet/escape-line "\\")
-      (eet/escape-line "'")
+      (eet/escape-char-in-line "\\")
+      (eet/escape-char-in-line "'")
       (insert "'")
       (end-of-line)
       (insert "'")
@@ -264,15 +265,16 @@
       (setq start (point)))
     line))
 
-(defun eet/escape-line (quote)
+(defun eet/escape-char-in-line (char)
+  "Escape given CHARs in current line."
   (save-excursion
     (let (start)
       (beginning-of-line)
       (setq start (point))
       (end-of-line)
-      (while (search-backward quote start t)
+      (while (search-backward char start t)
         (replace-match "")
-        (insert "\\" quote)
+        (insert "\\" char)
         (backward-char 2)))))
 
 (defvar eet/mode-map

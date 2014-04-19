@@ -130,11 +130,13 @@
   (let* ((ppss (syntax-ppss))
          (inner-sexp-start (nth 1 ppss))
          (line (line-number-at-pos (point))))
-    (when inner-sexp-start
-      (save-excursion
-        (goto-char inner-sexp-start)
-        (when (looking-at "\\[[\s\n]+['\"]")
-          (eet/edit (1+ inner-sexp-start) (eet/find-template-end) line))))))
+    (if inner-sexp-start
+        (save-excursion
+          (goto-char inner-sexp-start)
+          (if (looking-at "\\[[\s\n]+['\"]")
+              (eet/edit (1+ inner-sexp-start) (eet/find-template-end) line)
+            (message "Not within an array of strings!")))
+      (message "Not within a sexp!"))))
 
 (defun eet/find-template-end ()
   "Find and return the end of the template."

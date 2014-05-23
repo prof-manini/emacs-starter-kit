@@ -96,7 +96,8 @@ Symbols matching the text at point are put first in the completion list."
   (whitespace-cleanup-mode 1))
 
 (defun turn-on-whitespace-mode ()
-  (whitespace-mode))
+  (whitespace-mode)
+  (remove-hook 'write-file-functions 'whitespace-write-file-hook t))
 
 (defun turn-on-whitespace-mode-makefiles ()
   (setq indent-tabs-mode t)

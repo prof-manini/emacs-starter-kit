@@ -24,7 +24,7 @@
       color-theme-is-global t
       shift-select-mode nil
       parens-require-spaces nil
-      require-final-newline t
+      mode-require-final-newline 'ask
       truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
       whitespace-style '(face

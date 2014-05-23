@@ -307,7 +307,8 @@ Symbols matching the text at point are put first in the completion list."
     (setq desktop-dirname dir)
     (setq desktop-save t)
     (setq desktop-save-mode t)
-    (desktop-read dir)
+    (unless (desktop-read dir)
+      (dired dir))
     (setq server-name (md5 dir)))
   (server-start))
 

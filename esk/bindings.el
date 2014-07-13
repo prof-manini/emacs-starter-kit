@@ -129,11 +129,11 @@
   "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)
 
-(global-set-key (kbd "C-\'") 'single-quote-word)
-(global-set-key (kbd "M-\'") 'single-quote-word-behind)
+(global-set-key (kbd "C-\'") 'single-quote-symbol)
+(global-set-key (kbd "M-\'") 'single-quote-symbol-behind)
 
-(global-set-key (kbd "C-\"") 'double-quote-word)
-(global-set-key (kbd "M-\"") 'double-quote-word-behind)
+(global-set-key (kbd "C-\"") 'double-quote-symbol)
+(global-set-key (kbd "M-\"") 'double-quote-symbol-behind)
 
 (global-set-key (kbd "<C-S-down>") 'move-text-down)
 (global-set-key (kbd "<C-S-up>") 'move-text-up)

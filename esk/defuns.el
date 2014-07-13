@@ -379,32 +379,32 @@ Symbols matching the text at point are put first in the completion list."
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
-(defun quote-word (quote reverse)
-  "Wrap word at point (previous if REVERSE) between `quote` chars."
-  (if reverse (forward-word -1) (forward-word))
+(defun quote-symbol (quote reverse)
+  "Wrap symbol at point (previous if REVERSE) between `quote` chars."
+  (if reverse (forward-symbol -1) (forward-symbol 1))
   (insert-char quote)
-  (if reverse (forward-word) (forward-word -1))
+  (if reverse (forward-symbol 1) (forward-symbol -1))
   (insert-char quote))
 
-(defun single-quote-word (&optional reverse)
-  "Wrap word at point (previous if REVERSE) between single quote chars."
+(defun single-quote-symbol (&optional reverse)
+  "Wrap symbol at point (previous if REVERSE) between single quote chars."
   (interactive "P")
-  (quote-word ?\' reverse))
+  (quote-symbol ?\' reverse))
 
-(defun single-quote-word-behind ()
-  "Wrap previous word between single quote chars."
+(defun single-quote-symbol-behind ()
+  "Wrap previous symbol between single quote chars."
   (interactive)
-  (quote-word ?\' 1))
+  (quote-symbol ?\' 1))
 
-(defun double-quote-word (&optional reverse)
-  "Wrap word at point (previous if REVERSE) between double quote chars."
+(defun double-quote-symbol (&optional reverse)
+  "Wrap symbol at point (previous if REVERSE) between double quote chars."
   (interactive "P")
-  (quote-word ?\" reverse))
+  (quote-symbol ?\" reverse))
 
-(defun double-quote-word-behind ()
-  "Wrap previous word between double quote chars."
+(defun double-quote-symbol-behind ()
+  "Wrap previous symbol between double quote chars."
   (interactive)
-  (quote-word ?\" 1))
+  (quote-symbol ?\" 1))
 
 (defun move-text-internal (arg)
   (cond

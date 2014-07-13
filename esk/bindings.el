@@ -117,6 +117,9 @@
 (global-set-key [C-left] 'backward-word)
 (global-set-key [C-right] 'forward-word)
 
+(global-set-key [C-S-left] 'backward-symbol)
+(global-set-key [C-S-right] 'forward-symbol)
+
 (global-set-key [M-left] 'previous-buffer)
 (global-set-key [M-right] 'next-buffer)
 

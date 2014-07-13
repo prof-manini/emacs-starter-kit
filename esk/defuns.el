@@ -451,3 +451,11 @@ Symbols matching the text at point are put first in the completion list."
   (beginning-of-line)
   (open-line arg)
   (indent-according-to-mode))
+
+(unless (fboundp 'backward-symbol)
+  (defun backward-symbol (&optional arg)
+    "Move backward until encountering the beginning of a word.
+With argument ARG, do this that many times.
+If ARG is omitted or nil, move point backward one word."
+    (interactive "^p")
+    (forward-symbol (- (or arg 1)))))

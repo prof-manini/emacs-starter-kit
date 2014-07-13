@@ -73,7 +73,8 @@
   (setq jabber-account-list
         '(("lelegaifax@gmail.com"
            (:network-server . "talk.google.com")
-           (:connection-type . ssl))))
+           (:connection-type . ssl)))
+        jabber-auto-reconnect t)
 
   ;; Load authentication password from ~/.netrc if present
 

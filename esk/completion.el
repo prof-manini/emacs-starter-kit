@@ -9,6 +9,8 @@
 
 ;; Do What I Mean mode
 (setq ac-dwim t)
+;; and don't try to be smarter than me on case match
+(setq ac-ignore-case nil)
 (ac-config-default)
 
 ;; set also the completion for eshell

@@ -158,7 +158,8 @@
   "Extract the template from the array of strings into a new buffer."
   (let ((template (buffer-substring-no-properties start end))
         (template-buffer (current-buffer))
-        (winconf (current-window-configuration)))
+        (winconf (current-window-configuration))
+        (offset-lines (- line (line-number-at-pos start))))
     (pop-to-buffer (generate-new-buffer "*template-edit*"))
     ;; Insert the original template strings, ensuring the presence of an
     ;; end-of-line after the last string
@@ -168,6 +169,8 @@
     (when (looking-at "<")
       (html-mode))
     (eet/mode 1)
+    (forward-line (1- offset-lines))
+    (hl-line-highlight)
     (set-buffer-modified-p nil)
     (setq eet/template-buffer template-buffer
           eet/template-start start
@@ -214,7 +217,7 @@
     (set-window-configuration winconf)
     (switch-to-buffer template-buffer)
     (goto-char (point-min))
-    (forward-line original-line)))
+    (forward-line (1- original-line))))
 
 (defun eet/conclude ()
   "Used in eet/mode to confirm changes and close the popup window."

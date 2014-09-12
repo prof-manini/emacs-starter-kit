@@ -16,3 +16,5 @@
      (defadvice magit-mode-quit-window (around magit-restore-screen activate)
        ad-do-it
        (jump-to-register :magit-fullscreen))))
+
+(require 'magit)

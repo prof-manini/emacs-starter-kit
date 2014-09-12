@@ -70,6 +70,8 @@
 ;; Autoloaded stuff
 
 (add-to-list 'load-path esk-autoload-dir)
+(add-to-list 'load-path (concat esk-autoload-dir "magit"))
+(add-to-list 'load-path (concat esk-autoload-dir "git-modes"))
 
 (defun esk-regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."

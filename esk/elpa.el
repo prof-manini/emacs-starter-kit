@@ -11,10 +11,11 @@
    'find-file-in-project
    'flymake-cursor
    'flymake-python-pyflakes
-   'git-commit-mode
-   'git-rebase-mode
+;;; Use magit-next until it gets merged into master
+;   'git-commit-mode
+;   'git-rebase-mode
+;   'magit
    'js2-mode
-   'magit
    'mo-git-blame
    'scss-mode
    'vc-darcs

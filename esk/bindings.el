@@ -78,6 +78,7 @@
 
 (global-set-key [f3] 'grep)
 (global-set-key [S-f3] 'grep-find)
+(global-set-key [M-f3] 'git-grep)
 
 (global-set-key [f4] 'kmacro-end-or-call-macro)
 (global-set-key [S-f4] 'kmacro-start-macro-or-insert-counter)

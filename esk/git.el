@@ -17,4 +17,15 @@
        ad-do-it
        (jump-to-register :magit-fullscreen))))
 
+(defun git-grep (command-args)
+  "Use the `grep' machinery to run `git grep'."
+  (interactive
+   (let ((sap (thing-at-point 'symbol))
+         (grep-command "git grep -n --color=always "))
+     (list (read-shell-command "Run git grep (like this): "
+                               (if sap (concat grep-command sap)
+                                 grep-command)))))
+  ; pipe thru cat, to avoid the "terminal not fully functional" error
+  (compilation-start (concat command-args " | cat") 'grep-mode))
+
 (require 'magit)

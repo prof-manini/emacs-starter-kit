@@ -21,7 +21,7 @@ recompile-init:
 
 MAGIT_DIR := $(abspath elpa-to-submit/magit)
 GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)
-DASH_DIR := $(abspath $(wildcard elpa/dash-2*))
+DASH_DIR = $(abspath $(wildcard elpa/dash-2*))
 
 magit-next: $(GIT_MODES_DIR) $(MAGIT_DIR)
 	(cd $(GIT_MODES_DIR) && git pull)

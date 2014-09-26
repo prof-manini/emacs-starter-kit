@@ -19,14 +19,18 @@ update-elpa:
 recompile-init:
 	$(EMAX) -f recompile-init
 
-magit-next: elpa-to-submit/git-modes elpa-to-submit/magit
-	(cd elpa-to-submit/git-modes && git pull)
-	make -C elpa-to-submit/git-modes EFLAGS="-L ~/.emacs.d/elpa/dash-*" lisp
-	(cd elpa-to-submit/magit && git pull)
-	make -C elpa-to-submit/magit EFLAGS="-L ../git-modes -L ~/.emacs.d/elpa/dash-*" lisp
+MAGIT_DIR := $(abspath elpa-to-submit/magit)
+GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)
+DASH_DIR := $(abspath $(wildcard elpa/dash-2*))
 
-elpa-to-submit/magit:
+magit-next: $(GIT_MODES_DIR) $(MAGIT_DIR)
+	(cd $(GIT_MODES_DIR) && git pull)
+	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" lisp
+	(cd $(MAGIT_DIR) && git pull)
+	make -C $(MAGIT_DIR) EFLAGS="-L $(GIT_MODES_DIR) -L $(DASH_DIR)" lisp
+
+$(MAGIT_DIR):
 	git clone --branch next https://github.com/magit/magit.git $@
 
-elpa-to-submit/git-modes:
+$(GIT_MODES_DIR):
 	git clone --branch next https://github.com/magit/git-modes.git $@

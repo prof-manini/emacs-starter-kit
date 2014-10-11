@@ -334,7 +334,7 @@ Symbols matching the text at point are put first in the completion list."
 ;; to their user.el file
 
 (let ((langs '("american"
-               "italian"
+               "italiano"
                ; "castellano8"
                ; "deutsch8"
                ; "francais"

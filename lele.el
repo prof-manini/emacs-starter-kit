@@ -52,7 +52,6 @@
            "#darcs"
            "#sqlalchemy"
            "#trac"
-           "#airpim"
            )))
   (setq erc-email-userid user-mail-address)
   (setq erc-nick '("lelit" "lelix" "lelit" "lelix"))

@@ -152,13 +152,18 @@ start everything unconditionally."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
- '(whitespace-line-column nil)
  '(fill-column 95)
- '(longlines-show-hard-newlines t)
  '(git-commit-summary-max-length 70)
- '(scss-compile-at-save nil)
- '(js2-indent-switch-body t)
  '(js2-include-jslint-globals nil)
+ '(js2-indent-switch-body t)
+ '(longlines-show-hard-newlines t)
+ '(message-kill-buffer-on-exit t)
+ '(notmuch-fcc-dirs "metapensiero/Sent")
+ '(scss-compile-at-save nil)
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "mail.arstecnica.it")
+ '(smtpmail-smtp-service 25)
+ '(whitespace-line-column nil)
  '(windmove-window-distance-delta 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

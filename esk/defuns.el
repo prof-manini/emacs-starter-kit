@@ -459,3 +459,12 @@ With argument ARG, do this that many times.
 If ARG is omitted or nil, move point backward one word."
     (interactive "^p")
     (forward-symbol (- (or arg 1)))))
+
+(defun transpose-symbols (arg)
+  "Interchange symbols around point, leaving point at end of them.
+With prefix arg ARG, effect is to take word before or around point
+and drag it forward past ARG other words (backward if ARG negative).
+If ARG is zero, the words around or after point and around or after mark
+are interchanged."
+  (interactive "*p")
+  (transpose-subr 'forward-symbol arg))

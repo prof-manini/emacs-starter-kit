@@ -125,6 +125,8 @@
 (global-set-key [M-left] 'previous-buffer)
 (global-set-key [M-right] 'next-buffer)
 
+(global-set-key (kbd "M-T") 'transpose-symbols)
+
 (add-hook 'prog-mode-hook (lambda () (local-set-key "\C-m" 'newline-and-indent)))
 
 (autoload 'zap-up-to-char "misc"

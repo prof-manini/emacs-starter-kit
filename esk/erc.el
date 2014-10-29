@@ -1,4 +1,4 @@
-;;; starter-kit-erc.el --- Some erc helpers
+;;; erc.el --- Some erc helpers
 ;;
 
 (eval-when-compile (require 'erc))
@@ -16,18 +16,12 @@ This results in a filename of the form #channel@server.txt."
      (setq erc-log-channels t)
      (setq erc-log-channels-directory "~/irclogs/")
      (setq erc-generate-log-file-name-function 'erc-generate-log-file-name-brief)
-     (setq erc-save-buffer-on-part t)
+     (setq erc-log-write-after-send t)
+     (setq erc-log-write-after-insert t)
+     (setq erc-save-buffer-on-part nil)
      (setq erc-hide-timestamps nil)
      (setq erc-notifications-icon
            "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg")
-
-     (add-hook 'erc-insert-post-hook 'erc-save-buffer-in-logs)
-     (add-hook 'erc-mode-hook (lambda ()
-                                (when (not (featurep 'xemacs))
-                                  (set (make-local-variable
-                                        'coding-system-for-write)
-                                       'emacs-mule))))
-
      (setq erc-auto-set-away nil)
      (setq erc-autoaway-mode nil)
      (setq erc-modules

@@ -1,4 +1,5 @@
 ;;; starter-kit-bindings.el --- Set up some handy key bindings
+;;
 
 ;; You know, like Readline.
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
@@ -141,3 +142,8 @@
 
 (global-set-key (kbd "C-o") 'open-next-line)
 (global-set-key (kbd "M-o") 'open-previous-line)
+
+(defvar esk-menu-map (make-sparse-keymap "Quick Menu")
+  "A map containing quick menu items.")
+
+(global-set-key (kbd "<menu>") esk-menu-map)

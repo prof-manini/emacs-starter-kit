@@ -5,7 +5,9 @@
 ;:Licenza:   GNU General Public License version 3 or later
 ;
 
-(setq user-mail-address "lele@metapensiero.it")
+
+(setq user-mail-address "lele@metapensiero.it"
+      user-full-name "Lele Gaifax")
 
 
 ;; Claws-mail
@@ -126,6 +128,7 @@ start everything unconditionally."
   (set-frame-font "DejaVu Sans Mono-10" t)
 
   (if (or dont-ask (y-or-n-p "Emacs server? ")) (server-start))
+  (if (or dont-ask (y-or-n-p "Notmuch? ")) (notmuch))
   (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
   (if (or dont-ask (y-or-n-p "IRC? ")) (start-erc-session))
   (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))

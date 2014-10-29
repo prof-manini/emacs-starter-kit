@@ -108,6 +108,7 @@
 (load (concat esk-lisp-dir "erc"))
 (load (concat esk-lisp-dir "jabber"))
 (load (concat esk-lisp-dir "skeletons"))
+(load (concat esk-lisp-dir "gnus"))
 
 ;; Load generic customizations
 (load (concat esk-top-dir "custom") 'noerror)

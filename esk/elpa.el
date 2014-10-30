@@ -19,6 +19,7 @@
    'mo-git-blame
    'scss-mode
    'vc-darcs
+   'wgrep
    'whitespace-cleanup-mode
    'yasnippet
    )

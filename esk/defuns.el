@@ -1,4 +1,4 @@
-;;; starter-kit-defuns.el --- Define some custom functions
+;;; esk/defuns.el --- Define some custom functions
 ;;
 
 (eval-when-compile

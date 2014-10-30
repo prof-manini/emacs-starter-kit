@@ -1,4 +1,4 @@
-;;; starter-kit-js.el --- Some helpful Javascript helpers
+;;; esk/js.el --- Some helpful Javascript helpers
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

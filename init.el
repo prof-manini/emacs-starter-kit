@@ -54,7 +54,24 @@
 
 (package-initialize)
 
-(load (concat esk-lisp-dir "elpa"))
+
+(defun esk-load (file)
+  "Load a source file and its per-user override."
+  (let ((full-path (concat esk-lisp-dir file))
+        (user-override (concat esk-user-specific-dir file)))
+    (load full-path)
+    (if (file-exists-p (concat user-override ".el"))
+        (load user-override))))
+
+;; Define and load external packages
+
+(esk-load "elpa")
+
+;; On your first run, this should pull in all the base packages.
+(when (esk-online?)
+  (unless package-archive-contents (package-refresh-contents))
+  (esk-install-packages))
+
 
 ;; These should be loaded on startup rather than autoloaded on demand
 ;; since they are likely to be used in every session
@@ -70,6 +87,7 @@
 (add-to-list 'load-path esk-autoload-dir)
 (add-to-list 'load-path (concat esk-autoload-dir "magit"))
 (add-to-list 'load-path (concat esk-autoload-dir "git-modes"))
+
 
 (defun esk-regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."
@@ -87,27 +105,36 @@
 
 (esk-regen-autoloads)
 
+
 ;; Load up starter kit customizations
 
-(load (concat esk-lisp-dir "yasnippet"))
-(load (concat esk-lisp-dir "defuns"))
-(load (concat esk-lisp-dir "bindings"))
-(load (concat esk-lisp-dir "misc"))
-(load (concat esk-lisp-dir "registers"))
-(load (concat esk-lisp-dir "eshell"))
-(load (concat esk-lisp-dir "lisp"))
-(load (concat esk-lisp-dir "js"))
-(load (concat esk-lisp-dir "python"))
-(load (concat esk-lisp-dir "completion"))
+(mapc 'esk-load '(; generic customizations
+                  "defuns"
+                  "bindings"
+                  "misc"
+                  "registers"
+
+                  ; major modes
+                  "erc"
+                  "eshell"
+                  "jabber"
+                  "js"
+                  "lisp"
+                  "python"
+
+                  ; extensions
+                  "completion"
+                  "gnus"
+                  "notmuch"
+                  "skeletons"
+                  "yasnippet"
+                  ))
+
 (if (locate-file "darcs" exec-path exec-suffixes 'file-executable-p)
-    (load (concat esk-lisp-dir "darcs")))
+    (esk-load "darcs"))
+
 (if (locate-file "git" exec-path exec-suffixes 'file-executable-p)
-    (load (concat esk-lisp-dir "git")))
-(load (concat esk-lisp-dir "erc"))
-(load (concat esk-lisp-dir "jabber"))
-(load (concat esk-lisp-dir "skeletons"))
-(load (concat esk-lisp-dir "notmuch"))
-(load (concat esk-lisp-dir "gnus"))
+    (esk-load "git"))
 
 ;; Load generic customizations
 (load (concat esk-top-dir "custom") 'noerror)
@@ -124,9 +151,5 @@
 ;; Overrides for possibly old bundled versions
 (if (file-exists-p esk-overrides-dir)
     (add-to-list 'load-path esk-overrides-dir))
-
-;; Automatically load all "user-name"/*.el files
-(if (file-exists-p esk-user-specific-dir)
-    (mapc #'load (directory-files esk-user-specific-dir nil ".*el$")))
 
 ;;; init.el ends here

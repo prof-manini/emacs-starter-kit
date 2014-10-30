@@ -1,4 +1,4 @@
-;;; starter-kit-bindings.el --- Set up some handy key bindings
+;;; esk/bindings.el --- Set up some handy key bindings
 ;;
 
 ;; You know, like Readline.

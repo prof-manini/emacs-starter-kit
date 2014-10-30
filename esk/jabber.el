@@ -1,4 +1,4 @@
-;;; starter-kit-jabber.el --- Some jabber helpers
+;;; esk/jabber.el --- Some jabber helpers
 ;;
 
 (eval-after-load 'jabber

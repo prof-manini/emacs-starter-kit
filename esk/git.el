@@ -1,4 +1,4 @@
-;;; starter-kit-git.el --- Some git helpers
+;;; esk/git.el --- Some git helpers
 ;;
 
 (eval-after-load 'magit

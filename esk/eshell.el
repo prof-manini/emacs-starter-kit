@@ -1,4 +1,4 @@
-;;; starter-kit-eshell.el --- Making the defaults a bit saner
+;;; esk/eshell.el --- Making the defaults a bit saner
 ;;
 
 (setq eshell-cmpl-cycle-completions nil

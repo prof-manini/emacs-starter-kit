@@ -1,4 +1,4 @@
-;;; Yasnippet setup
+;;; esk/yasnippet.el --- Yasnippet setup
 ;;
 
 (require 'yasnippet)

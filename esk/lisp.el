@@ -1,4 +1,4 @@
-;;; starter-kit-lisp.el --- Some helpful Lisp code
+;;; esk/lisp.el --- Some helpful Lisp code
 ;;
 
 (define-key read-expression-map (kbd "TAB") 'lisp-complete-symbol)

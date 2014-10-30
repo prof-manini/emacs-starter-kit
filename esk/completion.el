@@ -1,4 +1,5 @@
-;;; starter-kit-completion.el --- A few common completion tricks
+;;; esk/completion.el --- A few common completion tricks
+;;
 
 (defun ac-eshell-mode-setup ()
   (add-to-list 'ac-sources 'ac-source-files-in-current-dir))

@@ -1,4 +1,4 @@
-;;; notmuch.el --- Notmuch customization
+;;; esk/notmuch.el --- Notmuch customization
 ;;
 
 (when (fboundp 'notmuch)

@@ -11,7 +11,7 @@ Introduction
 ============
 
 I don't like ``git``, and after a brief period with ``bzr`` I decided
-to switch back to ``darcs``, that simple and awesome expecially for
+to switch back to ``darcs``, that is simple and awesome expecially for
 this kind of project, where usually each single user will want to
 customize this and that with as little as possible interferences with
 whatever upstream is doing, and still being able to record his own
@@ -72,8 +72,11 @@ detail.
 
 You can also create a sub directory of ``.emacs.d`` named after your
 account, for example I have a ``.emacs.d/lele/`` where I store `GNUS`
-details and state. If it exists, that directory is also added to the
-Emacs's `load-path`.
+details and state. This directory may contain specific overrides to any
+of the customization modules: for example, you can see in
+``.emacs.d/lele/elpa.el`` how I augmented the set of external packages
+loaded from the ELPA archives. That file gets loaded just after
+``.emacs.d/elpa.el``.
 
 If you need to override some module provided either by the
 emacs-starter-kit or by your system, or maybe you just wanna evaluate

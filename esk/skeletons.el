@@ -1,4 +1,4 @@
-;;; Standard skeletons
+;;; esk/skeletons.el --- Standard skeletons
 ;;
 
 (require 'autoinsert)

@@ -1,4 +1,4 @@
-;;; starter-kit-registers.el --- Set up registers
+;;; esk/registers.el --- Set up registers
 ;;
 
 ;; Registers allow you to jump to a file or other location

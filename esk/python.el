@@ -1,4 +1,4 @@
-;;; starter-kit-python.el - setup of python stuff
+;;; esk/python.el --- setup of python stuff
 ;;
 
 (require 'python)

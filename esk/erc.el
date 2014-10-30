@@ -1,4 +1,4 @@
-;;; erc.el --- Some erc helpers
+;;; esk/erc.el --- Some erc helpers
 ;;
 
 (eval-when-compile (require 'erc))

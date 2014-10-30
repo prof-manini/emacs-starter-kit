@@ -1,4 +1,4 @@
-;;; gnus.el --- Gnus customization
+;;; esk/gnus.el --- Gnus customization
 ;;
 
 (eval-when-compile (require 'gnus))

@@ -1,4 +1,4 @@
-;;; starter-kit-elpa.el --- Install a base set of packages automatically.
+;;; esk/elpa.el --- Install a base set of packages automatically.
 ;;
 
 (require 'cl)
@@ -46,8 +46,3 @@ just have to assume it's online."
                                                    (car iface)))))))
             (network-interface-list))
     t))
-
-;; On your first run, this should pull in all the base packages.
-(when (esk-online?)
-  (unless package-archive-contents (package-refresh-contents))
-  (esk-install-packages))

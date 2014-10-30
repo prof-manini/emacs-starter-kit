@@ -1,4 +1,4 @@
-;;; starter-kit-darcs.el --- Some darcs helpers
+;;; esk/darcs.el --- Some darcs helpers
 ;;
 
 ;; darcsum -- http://joyful.com/repos/darcsum

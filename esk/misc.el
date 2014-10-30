@@ -1,4 +1,4 @@
-;;; starter-kit-misc.el --- Things that don't fit anywhere else
+;;; esk/misc.el --- Things that don't fit anywhere else
 ;;
 
 (when window-system

@@ -7,6 +7,7 @@
   (list
    'auto-complete
    'darcsum
+   'dash
    'erc-hl-nicks
    'find-file-in-project
    'flymake-cursor

@@ -62,12 +62,16 @@
                  (setq mode-name "JS2")
                  (when (> (length js2-parsed-errors) 0)
                    (setq mode-name
-                         (concat mode-name
-                                 (format ":%dE" (length js2-parsed-errors)))))
+                         (list mode-name
+                               ":"
+                               (propertize (format "%dE" (length js2-parsed-errors))
+                                           'face 'error))))
                  (when (> (length js2-parsed-warnings) 0)
                    (setq mode-name
-                         (concat mode-name
-                                 (format ":%dW" (length js2-parsed-warnings)))))
+                         (list mode-name
+                               ":"
+                               (propertize (format "%dW" (length js2-parsed-warnings))
+                                           'face 'warning))))
                  (force-mode-line-update)))))
 
 ;; Avoid escape nightmares by editing ExtJS templates in separate buffer

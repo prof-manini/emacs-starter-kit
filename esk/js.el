@@ -47,6 +47,9 @@
                            'js2-apply-jsl-declares nil 'local)
                  (js2-reparse t)))
 
+     ;; Activate imenu support
+     (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+
      ;; Nice warnings/errors summary on F7
      (define-key js2-mode-map [f7] 'js2-display-error-list)
 

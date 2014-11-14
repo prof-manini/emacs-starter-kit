@@ -22,7 +22,7 @@
 Without a prefix argument the search is executed in the default-directory of the
 current buffer, otherwise it considers the whole Git repository."
   (interactive
-   (let ((sap (thing-at-point 'symbol))
+   (let ((sap (thing-at-point 'symbol t))
          (grep-command "git grep -n --color=always "))
      (list (read-shell-command "Run git grep (like this): "
                                (if sap (concat grep-command sap)

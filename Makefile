@@ -25,9 +25,9 @@ DASH_DIR = $(abspath $(wildcard elpa/dash-2*))
 
 magit-next: $(GIT_MODES_DIR) $(MAGIT_DIR)
 	(cd $(GIT_MODES_DIR) && git pull)
-	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" lisp
+	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" clean lisp
 	(cd $(MAGIT_DIR) && git pull)
-	make -C $(MAGIT_DIR) EFLAGS="-L $(GIT_MODES_DIR) -L $(DASH_DIR)" lisp
+	make -C $(MAGIT_DIR) EFLAGS="-L $(GIT_MODES_DIR) -L $(DASH_DIR)" clean lisp
 
 $(MAGIT_DIR):
 	git clone --branch next https://github.com/magit/magit.git $@

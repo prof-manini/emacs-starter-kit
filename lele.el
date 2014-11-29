@@ -10,14 +10,6 @@
       user-full-name "Lele Gaifax")
 
 
-;; Claws-mail
-
-(setq auto-mode-alist
-      (cons '("/tmpmsg\\." . text-mode)
-            auto-mode-alist))
-(setq magic-mode-alist nil)
-
-
 ;; ERC
 
 (eval-when-compile

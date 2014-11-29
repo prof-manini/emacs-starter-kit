@@ -12,8 +12,9 @@
 
 ;; ERC
 
+(require 'netrc)
+
 (eval-when-compile
-  (require 'netrc)
   (require 'erc)
   (require 'erc-join))
 
@@ -21,15 +22,15 @@
   "Extract username and password from ~/.netrc to authenticate on freenode.net"
 
   (message "Authenticating %s on IRC server %s..." nick server)
-  (when (require 'netrc nil t)
-    (let ((freenode (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
-      (when freenode
-        (let ((freenode-password (netrc-get freenode "password"))
-              (freenode-username (netrc-get freenode "login")))
-          (when (string= freenode-username nick)
+  (let ((host (netrc-machine (netrc-parse "~/.netrc") "freenode.net" t)))
+    (if host
+        (let ((password (netrc-get host "password"))
+              (username (netrc-get host "login")))
+          (when (string= username nick)
             (setq erc-prompt-for-password nil)
             (erc-message "PRIVMSG"
-                         (concat "NickServ identify " freenode-password))))))))
+                         (concat "NickServ identify " password))))
+      (message "... credentials not found in ~/.netrc!"))))
 
 (defun start-erc-session ()
   "Start an ERC session on freenode.net"

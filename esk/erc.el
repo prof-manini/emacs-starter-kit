@@ -11,7 +11,6 @@ This results in a filename of the form #channel@server.txt."
 
 (eval-after-load 'erc
   '(progn
-     ;; logging
      (setq erc-log-insert-log-on-open nil)
      (setq erc-log-channels t)
      (setq erc-log-channels-directory "~/irclogs/")
@@ -33,6 +32,7 @@ This results in a filename of the form #channel@server.txt."
              fill
              hl-nicks
              irccontrols
+             log
              match
              move-to-prompt
              netsplit

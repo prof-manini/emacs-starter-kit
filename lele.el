@@ -36,7 +36,7 @@
   "Start an ERC session on freenode.net"
 
   ;; Load credentials from ~/.netrc if present
-  (add-hook 'erc-after-connect 'erc-auto-login-with-netrc)
+  ;(add-hook 'erc-after-connect 'erc-auto-login-with-netrc)
 
   (setq erc-autojoin-channels-alist
         '(("freenode.net"
@@ -46,15 +46,22 @@
            "#sqlalchemy"
            "#trac"
            )))
-  (setq erc-email-userid user-mail-address)
-  (setq erc-nick '("lelit" "lelix" "lelit" "lelix"))
+  (setq erc-nick '("lelit" "lelix"))
 
   (erc-autojoin-mode 1)
 
-  (erc-select :server "irc.freenode.net"
-              :port 6667
-              :nick "lelit"
-              :full-name (user-full-name)))
+  (message "Connecting to ZNC on daneel.arstecnica.it...")
+  (let ((host (netrc-machine (netrc-parse "~/.netrc") "irc.arstecnica.it" t)))
+    (if host
+        (let ((password (netrc-get host "password")))
+          (setq erc-email-userid (netrc-get host "login"))
+          (erc-open "daneel.arstecnica.it"
+                    7777
+                    "lelit"
+                    (user-full-name)
+                    t
+                    password))
+      (message "... credentials not found in ~/.netrc!"))))
 
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477"))

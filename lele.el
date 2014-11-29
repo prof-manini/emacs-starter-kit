@@ -10,12 +10,6 @@
       user-full-name "Lele Gaifax")
 
 
-;; GNUS
-
-; store all GNUS staff under my own subdirectory, not tracked by darcs
-(setq gnus-home-directory (concat esk-user-specific-dir "gnus/"))
-
-
 ;; reStructuredText
 
 (require 'rst)

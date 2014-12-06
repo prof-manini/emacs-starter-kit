@@ -127,8 +127,6 @@
 
 (global-set-key (kbd "M-T") 'transpose-symbols)
 
-(add-hook 'prog-mode-hook (lambda () (local-set-key "\C-m" 'newline-and-indent)))
-
 (autoload 'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.")
 (global-set-key (kbd "M-Z") 'zap-up-to-char)

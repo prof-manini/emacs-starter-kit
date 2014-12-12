@@ -31,7 +31,7 @@
 
 (eval-after-load 'js2-mode
   '(progn
-     (add-hook 'js2-mode-hook 'run-coding-hook)
+     (add-hook 'js2-mode-hook #'run-coding-hook)
 
      ;; Prettify the function keyword
      (font-lock-add-keywords
@@ -43,18 +43,17 @@
      ;; Register some mode-specific hooks
      (add-hook 'js2-mode-hook
                (lambda ()
-                 (add-hook 'js2-post-parse-callbacks
-                           'js2-apply-jsl-declares nil 'local)
+                 (add-hook 'js2-post-parse-callbacks #'js2-apply-jsl-declares nil 'local)
                  (js2-reparse t)))
 
      ;; Activate imenu support
-     (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+     (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 
      ;; Nice warnings/errors summary on F7
-     (define-key js2-mode-map [f7] 'js2-display-error-list)
+     (define-key js2-mode-map [f7] #'js2-display-error-list)
 
      ;; Bind js2-edit-extjs-template-at-point to C-c t
-     (define-key js2-mode-map (kbd "C-c t") 'js2-edit-extjs-template-at-point)
+     (define-key js2-mode-map (kbd "C-c t") #'js2-edit-extjs-template-at-point)
 
      ;; Display warnings/errors on the mode line
      (add-hook 'js2-parse-finished-hook
@@ -290,8 +289,8 @@
 
 (defvar eet/mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c C-k") 'eet/abort)
-    (define-key map (kbd "C-c C-c") 'eet/conclude)
+    (define-key map (kbd "C-c C-k") #'eet/abort)
+    (define-key map (kbd "C-c C-c") #'eet/conclude)
     map)
   "Keymap for eet/mode minor mode.")
 

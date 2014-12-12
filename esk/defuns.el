@@ -96,12 +96,12 @@ Symbols matching the text at point are put first in the completion list."
 
 (defun turn-on-whitespace-mode ()
   (whitespace-mode)
-  (remove-hook 'write-file-functions 'whitespace-write-file-hook t))
+  (remove-hook 'write-file-functions #'whitespace-write-file-hook t))
 
 (defun turn-on-whitespace-mode-makefiles ()
   (setq indent-tabs-mode t)
   (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
-  (add-hook 'before-save-hook 'whitespace-cleanup)
+  (add-hook 'before-save-hook #'whitespace-cleanup)
   (whitespace-mode))
 
 (defun turn-on-subword-mode ()
@@ -114,14 +114,14 @@ Symbols matching the text at point are put first in the completion list."
 (defun set-string-delimiters-electric-pairs ()
   (set (make-local-variable 'electric-pair-pairs) '((?\" . ?\") (?\' . ?\'))))
 
-(add-hook 'coding-hook 'local-column-number-mode)
-(add-hook 'coding-hook 'local-comment-auto-fill)
-(add-hook 'coding-hook 'turn-on-hl-line-mode)
-(add-hook 'coding-hook 'add-watchwords)
-(add-hook 'coding-hook 'cleanup-buffer-on-save)
-(add-hook 'coding-hook 'turn-on-whitespace-mode)
-(add-hook 'coding-hook 'turn-on-subword-mode)
-(add-hook 'coding-hook 'set-string-delimiters-electric-pairs)
+(add-hook 'coding-hook #'local-column-number-mode)
+(add-hook 'coding-hook #'local-comment-auto-fill)
+(add-hook 'coding-hook #'turn-on-hl-line-mode)
+(add-hook 'coding-hook #'add-watchwords)
+(add-hook 'coding-hook #'cleanup-buffer-on-save)
+(add-hook 'coding-hook #'turn-on-whitespace-mode)
+(add-hook 'coding-hook #'turn-on-subword-mode)
+(add-hook 'coding-hook #'set-string-delimiters-electric-pairs)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
@@ -212,8 +212,8 @@ Symbols matching the text at point are put first in the completion list."
              (splitter
               (if (= (car this-win-edges)
                      (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
+                  #'split-window-horizontally
+                #'split-window-vertically)))
         (delete-other-windows)
         (let ((first-win (selected-window)))
           (funcall splitter)
@@ -469,4 +469,4 @@ and drag it forward past ARG other words (backward if ARG negative).
 If ARG is zero, the words around or after point and around or after mark
 are interchanged."
   (interactive "*p")
-  (transpose-subr 'forward-symbol arg))
+  (transpose-subr #'forward-symbol arg))

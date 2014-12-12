@@ -30,4 +30,4 @@
   (eshell/cd (locate-dominating-file default-directory "src")))
 
 (defun eshell/find (dir &rest opts)
-  (find-dired dir (mapconcat 'identity opts " ")))
+  (find-dired dir (mapconcat #'identity opts " ")))

@@ -14,7 +14,7 @@ This results in a filename of the form #channel@server.txt."
      (setq erc-log-insert-log-on-open nil)
      (setq erc-log-channels t)
      (setq erc-log-channels-directory "~/irclogs/")
-     (setq erc-generate-log-file-name-function 'erc-generate-log-file-name-brief)
+     (setq erc-generate-log-file-name-function #'erc-generate-log-file-name-brief)
      (setq erc-log-write-after-send t)
      (setq erc-log-write-after-insert t)
      (setq erc-save-buffer-on-part nil)

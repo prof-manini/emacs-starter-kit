@@ -1,9 +1,9 @@
 ;;; esk/lisp.el --- Some helpful Lisp code
 ;;
 
-(define-key lisp-mode-shared-map (kbd "C-c l") "lambda")
 (define-key lisp-mode-shared-map (kbd "TAB") 'completion-at-point)
-(define-key lisp-mode-shared-map (kbd "C-c v") 'eval-buffer)
+(define-key lisp-mode-shared-map (kbd "C-c l") "lambda")
+(define-key lisp-mode-shared-map (kbd "C-c v") #'eval-buffer)
 
 (defface esk-paren-face
    '((((class color) (background dark))
@@ -22,9 +22,9 @@
                                     ,(make-char 'greek-iso8859-7 107))
                     nil))))))
 
-(add-hook 'emacs-lisp-mode-hook 'pretty-lisp-lambdas)
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'esk-remove-elc-on-save)
+(add-hook 'emacs-lisp-mode-hook #'pretty-lisp-lambdas)
+(add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook #'esk-remove-elc-on-save)
 
 (defun esk-remove-elc-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
@@ -34,7 +34,7 @@
               (if (file-exists-p (concat buffer-file-name "c"))
                   (delete-file (concat buffer-file-name "c"))))))
 
-(define-key emacs-lisp-mode-map (kbd "M-.") 'find-function-at-point)
+(define-key emacs-lisp-mode-map (kbd "M-.") #'find-function-at-point)
 
 ;;; Clojure
 
@@ -53,7 +53,7 @@
      (intern (concat (symbol-name x) "-mode"))
      '(("(\\|)" . 'esk-paren-face))))
   (add-hook
-   (intern (concat (symbol-name x) "-mode-hook")) 'run-coding-hook))
+   (intern (concat (symbol-name x) "-mode-hook")) #'run-coding-hook))
 
 (eval-after-load 'clojure-mode
   '(font-lock-add-keywords

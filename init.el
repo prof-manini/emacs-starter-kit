@@ -129,10 +129,10 @@
                   "yasnippet"
                   ))
 
-(if (locate-file "darcs" exec-path exec-suffixes 'file-executable-p)
+(if (locate-file "darcs" exec-path exec-suffixes #'file-executable-p)
     (esk-load "darcs"))
 
-(if (locate-file "git" exec-path exec-suffixes 'file-executable-p)
+(if (locate-file "git" exec-path exec-suffixes #'file-executable-p)
     (esk-load "git"))
 
 ;; Load generic customizations

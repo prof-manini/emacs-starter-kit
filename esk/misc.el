@@ -7,7 +7,7 @@
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
 
-(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
+(add-hook 'before-make-frame-hook #'turn-off-tool-bar)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -35,7 +35,7 @@
                          indentation
                          indentation::space
                          tabs)
-      ediff-window-setup-function 'ediff-setup-windows-plain
+      ediff-window-setup-function #'ediff-setup-windows-plain
       scroll-preserve-screen-position t)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
@@ -80,20 +80,20 @@
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 
 ;; Makefiles are an exception, TAB is mandatory at bol
-(add-hook 'makefile-mode-hook 'turn-on-whitespace-mode-makefiles)
-(add-hook 'makefile-gmake-mode-hook 'turn-on-whitespace-mode-makefiles)
+(add-hook 'makefile-mode-hook #'turn-on-whitespace-mode-makefiles)
+(add-hook 'makefile-gmake-mode-hook #'turn-on-whitespace-mode-makefiles)
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
+(add-hook 'text-mode-hook #'turn-on-auto-fill)
+(add-hook 'text-mode-hook #'turn-on-flyspell)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
 
 ;; Use a shorter answer
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p #'y-or-n-p)
 
 ;; Seed the random-number generator
 (random t)
@@ -155,6 +155,6 @@
 ;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
 
-(add-hook 'css-mode-hook 'run-coding-hook)
-(add-hook 'html-mode-hook 'run-coding-hook)
-(add-hook 'rst-mode-hook 'run-coding-hook)
+(add-hook 'css-mode-hook #'run-coding-hook)
+(add-hook 'html-mode-hook #'run-coding-hook)
+(add-hook 'rst-mode-hook #'run-coding-hook)

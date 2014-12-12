@@ -17,5 +17,5 @@
 
 (eval-after-load 'gnus
   '(progn
-     (add-hook 'kill-emacs-hook 'esk-gnus-grace-exit-before-kill-emacs)
-     (define-key esk-menu-map (kbd "n") (cons "News" 'esk-gnus-switch-to-group-buffer))))
+     (add-hook 'kill-emacs-hook #'esk-gnus-grace-exit-before-kill-emacs)
+     (define-key esk-menu-map (kbd "n") (cons "News" #'esk-gnus-switch-to-group-buffer))))

@@ -21,6 +21,11 @@
     (interactive)
     (switch-to-buffer "*notmuch-hello*"))
 
+  (defun esk-notmuch-address-selection-function (prompt addresses first)
+    "Use `ido-completing-read' to select one of the addresses."
+    (ido-completing-read prompt (cons first addresses)
+                         nil nil nil 'notmuch-address-history))
+
   (eval-after-load 'notmuch
     '(progn
        (define-key notmuch-show-mode-map "d" 'esk-notmuch-show-add-deleted-tag)
@@ -31,4 +36,5 @@
 
        (require 'notmuch-address)
        (setq notmuch-address-command "/usr/local/bin/notmuch-addrlookup")
+       (setq notmuch-address-selection-function 'esk-notmuch-address-selection-function)
        (notmuch-address-message-insinuate))))

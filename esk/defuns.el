@@ -262,6 +262,9 @@ Symbols matching the text at point are put first in the completion list."
     (compile cd-command)
     (setq compile-command command)))
 
+(defvar virtualenv-old-path)
+(defvar virtualenv-old-exec-path)
+
 (defun esk-virtualenv-activate (dir)
   "Activate the virtualenv located in DIR."
 

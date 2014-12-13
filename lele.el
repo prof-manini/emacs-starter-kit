@@ -38,9 +38,8 @@ start everything unconditionally."
   (message "Have a nice day!"))
 
 
-;; My wmii automatically starts up "emacs -f mine-emacs-!"
 ;; My i3 automatically does
-;;  exec --no-startup-id i3-msg 'workspace 4; exec emacs -f mine-emacs-!; workspace 1'
+;;  exec --no-startup-id i3-msg 'workspace 2; exec emacs -f mine-emacs-!; workspace 1'
 
 (defun mine-emacs-! ()
   "Unconditionally start my emacs setup."

@@ -53,14 +53,6 @@
 ;; Should be able to eval-and-replace anywhere.
 (global-set-key (kbd "C-c e") #'eval-and-replace)
 
-;; This is a little hacky since VC doesn't support git add internally
-;; (eval-after-load 'vc
-;;   (define-key vc-prefix-map "i" '(lambda () (interactive)
-;;                                    (if (not (eq 'Git (vc-backend buffer-file-name)))
-;;                                        (vc-register)
-;;                                      (shell-command (format "git add %s" buffer-file-name))
-;;                                      (message "Staged changes.")))))
-
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)

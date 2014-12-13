@@ -223,11 +223,6 @@ Symbols matching the text at point are put first in the completion list."
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
-;; ;; A monkeypatch to cause annotate to ignore whitespace
-;; (defun vc-git-annotate-command (file buf &optional rev)
-;;   (let ((name (file-relative-name file)))
-;;     (vc-git-command buf 0 name "blame" "-w" rev)))
-
 (defun whatsnew-or-magit-status-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)

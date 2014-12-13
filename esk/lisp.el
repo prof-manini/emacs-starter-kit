@@ -22,7 +22,7 @@
                     nil))))))
 
 (add-hook 'emacs-lisp-mode-hook #'pretty-lisp-lambdas)
-(add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook #'esk-remove-elc-on-save)
 
 (defun esk-remove-elc-on-save ()

@@ -12,13 +12,13 @@
 
 ;; reStructuredText
 
-(require 'rst)
+(eval-after-load 'rst
+  '(progn
+     ;; automatically update contents summary
+     (add-hook 'rst-adjust-hook #'rst-toc-update)
 
-;; automatically update contents summary
-(add-hook 'rst-adjust-hook 'rst-toc-update)
-
-;; disable new auto indent
-(add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))
+     ;; disable new auto indent
+     (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
 
 (defun mine-emacs (&optional dont-ask)

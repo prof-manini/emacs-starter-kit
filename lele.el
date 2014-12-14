@@ -1,10 +1,9 @@
-;-*- coding: utf-8 -*-
-;:Progetto:  dot.emacs -- Lele's personal preferences
-;:Creato:    ven 09 apr 2010 01:08:16 CEST
-;:Autore:    Lele Gaifax <lele@metapensiero.it>
-;:Licenza:   GNU General Public License version 3 or later
-;
-
+;;-*- coding: utf-8 -*-
+;;:Progetto:  dot.emacs -- Lele's personal preferences
+;;:Creato:    ven 09 apr 2010 01:08:16 CEST
+;;:Autore:    Lele Gaifax <lele@metapensiero.it>
+;;:Licenza:   GNU General Public License version 3 or later
+;;
 
 (setq user-mail-address "lele@metapensiero.it"
       user-full-name "Lele Gaifax")

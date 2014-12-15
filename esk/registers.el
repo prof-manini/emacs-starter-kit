@@ -7,8 +7,8 @@
 
 ;; You should add registers here for the files you edit most often.
 
-(dolist (r `((?i (file . ,(concat esk-top-dir "init.el")))
-             (?b (file . ,(concat esk-lisp-dir "bindings.el")))
-             (?m (file . ,esk-user-specific-config))
-             (?r (file . ,(concat esk-lisp-dir "registers.el")))))
+(dolist (r `((?i (file . ,(concat esk/top-dir "init.el")))
+             (?b (file . ,(concat esk/lisp-dir "bindings.el")))
+             (?m (file . ,esk/user-specific-config))
+             (?r (file . ,(concat esk/lisp-dir "registers.el")))))
   (set-register (car r) (cadr r)))

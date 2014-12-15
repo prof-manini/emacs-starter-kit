@@ -17,7 +17,7 @@ update-elpa:
 	$(EMAX) || $(EMAX)
 
 recompile-init:
-	$(EMAX) -f recompile-init
+	$(EMAX) -f esk/recompile-init
 
 MAGIT_DIR := $(abspath elpa-to-submit/magit)
 GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)

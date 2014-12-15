@@ -3,7 +3,7 @@
 
 (require 'python)
 
-(add-hook 'python-mode-hook #'run-coding-hook)
+(add-hook 'python-mode-hook #'esk/run-coding-hook)
 
 (require 'flymake-python-pyflakes)
 (require 'flymake-cursor)

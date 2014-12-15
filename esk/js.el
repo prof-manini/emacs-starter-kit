@@ -33,7 +33,7 @@
 
 (eval-after-load 'js2-mode
   '(progn
-     (add-hook 'js2-mode-hook #'run-coding-hook)
+     (add-hook 'js2-mode-hook #'esk/run-coding-hook)
 
      ;; Prettify the function keyword
      (font-lock-add-keywords

@@ -7,7 +7,7 @@
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
 
-(add-hook 'before-make-frame-hook #'turn-off-tool-bar)
+(add-hook 'before-make-frame-hook #'esk/turn-off-tool-bar)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -80,8 +80,8 @@
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 
 ;; Makefiles are an exception, TAB is mandatory at bol
-(add-hook 'makefile-mode-hook #'turn-on-whitespace-mode-makefiles)
-(add-hook 'makefile-gmake-mode-hook #'turn-on-whitespace-mode-makefiles)
+(add-hook 'makefile-mode-hook #'esk/turn-on-whitespace-mode-makefiles)
+(add-hook 'makefile-gmake-mode-hook #'esk/turn-on-whitespace-mode-makefiles)
 
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
@@ -89,7 +89,7 @@
 (add-hook 'text-mode-hook #'turn-on-auto-fill)
 (add-hook 'text-mode-hook #'turn-on-flyspell)
 
-(defvar coding-hook nil
+(defvar esk/coding-hook nil
   "Hook that gets run on activation of any programming mode.")
 
 ;; Use a shorter answer
@@ -106,7 +106,7 @@
 
 ;; Don't clutter up directories with files~
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat esk-top-dir "backups")))))
+                                        (concat esk/top-dir "backups")))))
 
 ;; Associate modes with file extensions
 
@@ -155,6 +155,6 @@
 ;; make emacs use the clipboard
 (setq x-select-enable-clipboard t)
 
-(add-hook 'css-mode-hook #'run-coding-hook)
-(add-hook 'html-mode-hook #'run-coding-hook)
-(add-hook 'rst-mode-hook #'run-coding-hook)
+(add-hook 'css-mode-hook #'esk/run-coding-hook)
+(add-hook 'html-mode-hook #'esk/run-coding-hook)
+(add-hook 'rst-mode-hook #'esk/run-coding-hook)

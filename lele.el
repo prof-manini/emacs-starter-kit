@@ -20,7 +20,7 @@
      (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
 
-(defun mine-emacs (&optional dont-ask)
+(defun esk/mine-emacs (&optional dont-ask)
   "Connect to IRC, GNUS, Jabber and activate Emacs server, but ask first.
 If DONT-ASK is non-nil, interactively when invoked with a prefix arg,
 start everything unconditionally."
@@ -31,7 +31,7 @@ start everything unconditionally."
   (if (or dont-ask (y-or-n-p "Emacs server? ")) (server-start))
   (if (or dont-ask (y-or-n-p "Notmuch? ")) (notmuch))
   (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
-  (if (or dont-ask (y-or-n-p "IRC? ")) (start-erc-session))
+  (if (or dont-ask (y-or-n-p "IRC? ")) (esk/start-erc-session))
   (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
 
   (message "Have a nice day!"))
@@ -40,9 +40,9 @@ start everything unconditionally."
 ;; My i3 automatically does
 ;;  exec --no-startup-id i3-msg 'workspace 2; exec emacs -f mine-emacs-!; workspace 1'
 
-(defun mine-emacs-! ()
+(defun esk/mine-emacs-! ()
   "Unconditionally start my emacs setup."
-  (mine-emacs t))
+  (esk/mine-emacs t))
 
 
 ;; Customize will write the settings here

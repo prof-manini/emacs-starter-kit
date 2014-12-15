@@ -10,7 +10,7 @@
 
 ;; Network
 
-(defun view-url ()
+(defun esk/view-url ()
   "Open a new buffer containing the contents of URL."
   (interactive)
   (let* ((default (thing-at-point-url-at-point))
@@ -23,7 +23,7 @@
 
 ;; Buffer-related
 
-(defun ido-imenu ()
+(defun esk/ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
   (interactive)
@@ -65,79 +65,81 @@ Symbols matching the text at point are put first in the completion list."
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
 
-;;; These belong in coding-hook:
+;;; These belong in esk/coding-hook:
 
 ;; We have a number of turn-on-* functions since it's advised that lambda
 ;; functions not go in hooks. Repeatedly evaling an add-to-list with a
 ;; hook value will repeatedly add it since there's no way to ensure
 ;; that a lambda doesn't already exist in the list.
 
-(defun local-column-number-mode ()
+(defun esk/local-column-number-mode ()
   (make-local-variable 'column-number-mode)
   (column-number-mode t))
 
-(defun local-comment-auto-fill ()
+(defun esk/local-comment-auto-fill ()
   (set (make-local-variable 'comment-auto-fill-only-comments) t)
   (auto-fill-mode t))
 
-(defun turn-on-hl-line-mode ()
+(defun esk/turn-on-hl-line-mode ()
   (if window-system (hl-line-mode t)))
 
-(defun turn-off-tool-bar ()
+(defun esk/turn-off-tool-bar ()
   (tool-bar-mode -1))
 
-(defun add-watchwords ()
+(defun esk/add-watchwords ()
   (font-lock-add-keywords
    nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|XXX\\):"
           1 font-lock-warning-face t))))
 
-(defun cleanup-buffer-on-save ()
+(defun esk/cleanup-buffer-on-save ()
   (whitespace-cleanup-mode 1))
 
-(defun turn-on-whitespace-mode ()
+(defun esk/turn-on-whitespace-mode ()
   (whitespace-mode)
   (remove-hook 'write-file-functions #'whitespace-write-file-hook t))
 
-(defun turn-on-whitespace-mode-makefiles ()
+(defun esk/turn-on-whitespace-mode-makefiles ()
   (setq indent-tabs-mode t)
   (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
   (add-hook 'before-save-hook #'whitespace-cleanup)
   (whitespace-mode))
 
-(defun turn-on-subword-mode ()
+(defun esk/turn-on-subword-mode ()
   (subword-mode 1)
   ; change the minor mode lighter from the default " ," to something
   ; better
   (let ((entry (assq 'subword-mode minor-mode-alist)))
     (when entry (setcdr entry '(" sw")))))
 
-(defun set-string-delimiters-electric-pairs ()
+(defun esk/set-string-delimiters-electric-pairs ()
   (set (make-local-variable 'electric-pair-pairs) '((?\" . ?\") (?\' . ?\'))))
 
-(add-hook 'coding-hook #'local-column-number-mode)
-(add-hook 'coding-hook #'local-comment-auto-fill)
-(add-hook 'coding-hook #'turn-on-hl-line-mode)
-(add-hook 'coding-hook #'add-watchwords)
-(add-hook 'coding-hook #'cleanup-buffer-on-save)
-(add-hook 'coding-hook #'turn-on-whitespace-mode)
-(add-hook 'coding-hook #'turn-on-subword-mode)
-(add-hook 'coding-hook #'set-string-delimiters-electric-pairs)
+(add-hook 'esk/coding-hook #'esk/local-column-number-mode)
+(add-hook 'esk/coding-hook #'esk/local-comment-auto-fill)
+(add-hook 'esk/coding-hook #'esk/turn-on-hl-line-mode)
+(add-hook 'esk/coding-hook #'esk/add-watchwords)
+(add-hook 'esk/coding-hook #'esk/cleanup-buffer-on-save)
+(add-hook 'esk/coding-hook #'esk/turn-on-whitespace-mode)
+(add-hook 'esk/coding-hook #'esk/turn-on-subword-mode)
+(add-hook 'esk/coding-hook #'esk/set-string-delimiters-electric-pairs)
 
-(defun run-coding-hook ()
+(defun esk/run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
-  (run-hooks 'coding-hook))
+  (run-hooks 'esk/coding-hook))
 
-(defun untabify-buffer ()
+(defun esk/untabify-buffer ()
+  "Replace TABs with spaces in the whole buffer."
   (interactive)
   (untabify (point-min) (point-max)))
 
-(defun indent-buffer ()
+(defun esk/indent-buffer ()
+  "Reindent the whole buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
 
 ;; Other
 
-(defun eval-and-replace ()
+(defun esk/eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
   (backward-kill-sexp)
@@ -147,20 +149,21 @@ Symbols matching the text at point are put first in the completion list."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
-(defun recompile-init ()
+(defun esk/recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory esk-top-dir 0)
+  (byte-recompile-directory esk/top-dir 0)
   ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat esk-top-dir "elpa-to-submit/") 0))
+  (byte-recompile-directory (concat esk/top-dir "elpa-to-submit/") 0))
 
-(defun sudo-edit (&optional arg)
+(defun esk/sudo-edit (&optional arg)
+  "Edit a file as root."
   (interactive "p")
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
-(defun lorem ()
+(defun esk/lorem ()
   "Insert a lorem ipsum."
   (interactive)
   (insert "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do "
@@ -171,7 +174,7 @@ Symbols matching the text at point are put first in the completion list."
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in "
           "culpa qui officia deserunt mollit anim id est laborum."))
 
-(defun switch-or-start (function buffer)
+(defun esk/switch-or-start (function buffer)
   "If the buffer is current, bury it, otherwise invoke the function."
   (if (equal (buffer-name (current-buffer)) buffer)
       (bury-buffer)
@@ -179,17 +182,17 @@ Symbols matching the text at point are put first in the completion list."
         (switch-to-buffer buffer)
       (funcall function))))
 
-(defun insert-date ()
+(defun esk/insert-date ()
   "Insert a time-stamp according to locale's date and time format."
   (interactive)
   (insert (format-time-string "%c" (current-time))))
 
-(defun pairing-bot ()
+(defun esk/pairing-bot ()
   "If you can't pair program with a human, use this instead."
   (interactive)
   (message (if (y-or-n-p "Do you have a test for that? ") "Good." "Bad!")))
 
-(defun toggle-fullscreen ()
+(defun esk/toggle-fullscreen ()
   (interactive)
   ;; TODO: this only works for X. patches welcome for other OSes.
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
@@ -197,7 +200,7 @@ Symbols matching the text at point are put first in the completion list."
   (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                          '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
 
-(defun toggle-window-split ()
+(defun esk/toggle-window-split ()
   "Toggle between horizontal and vertical layout of two windows."
   (interactive)
   (if (= (count-windows) 2)
@@ -223,6 +226,11 @@ Symbols matching the text at point are put first in the completion list."
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+;; ;; A monkeypatch to cause annotate to ignore whitespace
+;; (defun vc-git-annotate-command (file buf &optional rev)
+;;   (let ((name (file-relative-name file)))
+;;     (vc-git-command buf 0 name "blame" "-w" rev)))
+
 (defun whatsnew-or-magit-status-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)
@@ -243,7 +251,7 @@ Symbols matching the text at point are put first in the completion list."
      (t
       (message "No recognized VC repository in sight")))))
 
-(defun compile-next-makefile (command)
+(defun esk/compile-next-makefile (command)
   "Run a compilation after changing the working directory"
   (interactive
    (list
@@ -259,7 +267,7 @@ Symbols matching the text at point are put first in the completion list."
 (defvar virtualenv-old-path)
 (defvar virtualenv-old-exec-path)
 
-(defun esk-virtualenv-activate (dir)
+(defun esk/virtualenv-activate (dir)
   "Activate the virtualenv located in DIR."
 
   ;; Removing the eventually present trailing slash
@@ -287,7 +295,7 @@ Symbols matching the text at point are put first in the completion list."
 
   (message (concat "Virtualenv '" virtualenv-name "' activated.")))
 
-(defun activate-virtual-desktop ()
+(defun esk/activate-virtual-desktop ()
   "Turn on a virtualenv and its related desktop, in auto-save mode"
   (interactive)
 
@@ -299,7 +307,7 @@ Symbols matching the text at point are put first in the completion list."
     (desktop-kill))
 
   (let ((dir (ido-read-directory-name "Virtual desktop: ")))
-    (esk-virtualenv-activate dir)
+    (esk/virtualenv-activate dir)
     (setq desktop-base-file-name "emacs.desktop")
     (setq desktop-dirname dir)
     (setq desktop-save t)
@@ -309,15 +317,14 @@ Symbols matching the text at point are put first in the completion list."
     (setq server-name (md5 dir)))
   (server-start))
 
-(defun sort-words (reverse beg end)
+(defun esk/sort-words (reverse beg end)
   "Sort words in region alphabetically, in REVERSE if negative.
-  Prefixed with negative \\[universal-argument], sorts in reverse.
+Prefixed with negative \\[universal-argument], sorts in reverse.
 
-  The variable `sort-fold-case' determines whether alphabetic case
-  affects the sort order.
+The variable `sort-fold-case' determines whether alphabetic case
+affects the sort order.
 
-  See `sort-regexp-fields'."
-
+See `sort-regexp-fields'."
   (interactive "P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
@@ -340,13 +347,13 @@ Symbols matching the text at point are put first in the completion list."
   (setq lang-ring (make-ring (length langs)))
   (dolist (elem langs) (ring-insert lang-ring elem)))
 
-(defun cycle-ispell-languages ()
+(defun esk/cycle-ispell-languages ()
   (interactive)
   (let ((lang (ring-ref lang-ring -1)))
     (ring-insert lang-ring lang)
     (ispell-change-dictionary lang)))
 
-(defun rename-current-buffer-file ()
+(defun esk/rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
   (let ((name (buffer-name))
@@ -363,7 +370,7 @@ Symbols matching the text at point are put first in the completion list."
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
-(defun delete-current-buffer-file ()
+(defun esk/delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
   (interactive)
   (let ((filename (buffer-file-name))
@@ -376,34 +383,34 @@ Symbols matching the text at point are put first in the completion list."
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
-(defun quote-symbol (quote reverse)
+(defun esk/quote-symbol (quote reverse)
   "Wrap symbol at point (previous if REVERSE) between `quote` chars."
   (if reverse (forward-symbol -1) (forward-symbol 1))
   (insert-char quote)
   (if reverse (forward-symbol 1) (forward-symbol -1))
   (insert-char quote))
 
-(defun single-quote-symbol (&optional reverse)
+(defun esk/single-quote-symbol (&optional reverse)
   "Wrap symbol at point (previous if REVERSE) between single quote chars."
   (interactive "P")
-  (quote-symbol ?\' reverse))
+  (esk/quote-symbol ?\' reverse))
 
-(defun single-quote-symbol-behind ()
+(defun esk/single-quote-symbol-behind ()
   "Wrap previous symbol between single quote chars."
   (interactive)
-  (quote-symbol ?\' 1))
+  (esk/quote-symbol ?\' 1))
 
-(defun double-quote-symbol (&optional reverse)
+(defun esk/double-quote-symbol (&optional reverse)
   "Wrap symbol at point (previous if REVERSE) between double quote chars."
   (interactive "P")
-  (quote-symbol ?\" reverse))
+  (esk/quote-symbol ?\" reverse))
 
-(defun double-quote-symbol-behind ()
+(defun esk/double-quote-symbol-behind ()
   "Wrap previous symbol between double quote chars."
   (interactive)
-  (quote-symbol ?\" 1))
+  (esk/quote-symbol ?\" 1))
 
-(defun move-text-internal (arg)
+(defun esk/move-text-internal (arg)
   (cond
    ((and mark-active transient-mark-mode)
     (if (> (point) (mark))
@@ -424,17 +431,17 @@ Symbols matching the text at point are put first in the completion list."
         (transpose-lines arg))
       (forward-line (if (< arg 0) -2 -1))))))
 
-(defun move-text-down (arg)
+(defun esk/move-text-down (arg)
   "Move region (transient-mark-mode active) or current line arg lines down."
   (interactive "*p")
-  (move-text-internal arg))
+  (esk/move-text-internal arg))
 
-(defun move-text-up (arg)
+(defun esk/move-text-up (arg)
   "Move region (transient-mark-mode active) or current line arg lines up."
   (interactive "*p")
-  (move-text-internal (- arg)))
+  (esk/move-text-internal (- arg)))
 
-(defun open-next-line (arg)
+(defun esk/open-next-line (arg)
   "Move to the next line and then open a line."
   (interactive "p")
   (end-of-line)
@@ -442,7 +449,7 @@ Symbols matching the text at point are put first in the completion list."
   (forward-line 1)
   (indent-according-to-mode))
 
-(defun open-previous-line (arg)
+(defun esk/open-previous-line (arg)
   "Open a new line before the current one."
   (interactive "p")
   (beginning-of-line)
@@ -457,7 +464,7 @@ If ARG is omitted or nil, move point backward one word."
     (interactive "^p")
     (forward-symbol (- (or arg 1)))))
 
-(defun transpose-symbols (arg)
+(defun esk/transpose-symbols (arg)
   "Interchange symbols around point, leaving point at end of them.
 With prefix arg ARG, effect is to take word before or around point
 and drag it forward past ARG other words (backward if ARG negative).

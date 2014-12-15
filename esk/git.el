@@ -14,7 +14,7 @@
        ad-do-it
        (jump-to-register :magit-fullscreen))))
 
-(defun git-grep (command-args)
+(defun esk/git-grep (command-args)
   "Use the `grep' machinery to run `git grep'.
 Without a prefix argument the search is executed in the default-directory of the
 current buffer, otherwise it considers the whole Git repository."

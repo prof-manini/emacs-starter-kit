@@ -6,7 +6,7 @@
   (require 'erc)
   (require 'erc-join))
 
-(defun erc-auto-login-with-netrc (server nick)
+(defun esk/erc-auto-login-with-netrc (server nick)
   "Extract username and password from ~/.netrc to authenticate on freenode.net"
 
   (message "Authenticating %s on IRC server %s..." nick server)
@@ -20,11 +20,11 @@
                          (concat "NickServ identify " password))))
       (message "... credentials not found in ~/.netrc!"))))
 
-(defun start-erc-session ()
+(defun esk/start-erc-session ()
   "Start an ERC session on freenode.net"
 
   ;; Load credentials from ~/.netrc if present
-  ;(add-hook 'erc-after-connect 'erc-auto-login-with-netrc)
+  ;(add-hook 'erc-after-connect 'esk/erc-auto-login-with-netrc)
 
   (setq erc-autojoin-channels-alist
         '(("freenode.net"

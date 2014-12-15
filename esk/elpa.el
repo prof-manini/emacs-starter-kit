@@ -1,7 +1,7 @@
 ;;; esk/elpa.el --- Install a base set of packages automatically.
 ;;
 
-(defvar esk-packages
+(defvar esk/packages
   (list
    'auto-complete
    'darcsum
@@ -24,16 +24,16 @@
    )
   "Libraries that should be installed by default.")
 
-(defun esk-install-packages ()
+(defun esk/install-packages ()
   "Install all starter-kit packages that aren't installed."
   (interactive)
-  (dolist (package esk-packages)
+  (dolist (package esk/packages)
     (unless (or (member package package-activated-list)
                 (functionp package))
       (message "Installing %s" (symbol-name package))
       (package-install package))))
 
-(defun esk-online? ()
+(defun esk/online? ()
   "See if we're online.
 
 Windows does not have the network-interface-list function, so we

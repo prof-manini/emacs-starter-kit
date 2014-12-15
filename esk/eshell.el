@@ -1,6 +1,9 @@
 ;;; esk/eshell.el --- Making the defaults a bit saner
 ;;
 
+(eval-when-compile
+  (require 'em-dirs))
+
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t
       eshell-cmpl-dir-ignore "\\`\\(\\.\\.?\\|CVS\\|\\.svn\\|\\.git\\|\\.bzr\\|_darcs\\)/\\'")

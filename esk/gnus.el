@@ -1,7 +1,9 @@
 ;;; esk/gnus.el --- Gnus customization
 ;;
 
-(eval-when-compile (require 'gnus))
+(eval-when-compile
+  (require 'gnus)
+  (require 'gnus-group))
 
 (defun esk-gnus-grace-exit-before-kill-emacs ()
   "Shutdown gnus if active, when exiting emacs."

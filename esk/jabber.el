@@ -1,6 +1,12 @@
 ;;; esk/jabber.el --- Some jabber helpers
 ;;
 
+(eval-when-compile
+  (require 'jabber-alert)
+  (require 'jabber-muc)
+  (require 'jabber-util)
+  (require 'notifications))
+
 (eval-after-load 'jabber
   '(progn
      (defun jabber-notify (from buf text proposed-alert)

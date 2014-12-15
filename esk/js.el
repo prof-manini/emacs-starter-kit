@@ -3,7 +3,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-(eval-when-compile (require 'js2-mode))
+(eval-when-compile
+  (require 'js2-mode)
+  (require 'hl-line))
 
 (defun js2-apply-jsl-declares ()
   "Extract top level //jsl:declare XXX comments"

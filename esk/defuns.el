@@ -231,7 +231,7 @@ Symbols matching the text at point are put first in the completion list."
 ;;   (let ((name (file-relative-name file)))
 ;;     (vc-git-command buf 0 name "blame" "-w" rev)))
 
-(defun whatsnew-or-magit-status-or-vc-dir ()
+(defun esk/whatsnew-or-magit-status-or-vc-dir ()
   "Run either darcsum-whatsnew or vc-dir accordingly with current vc-backend"
   (interactive)
   (eval-when-compile

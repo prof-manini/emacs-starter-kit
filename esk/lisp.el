@@ -22,8 +22,8 @@
                     nil))))))
 
 (add-hook 'emacs-lisp-mode-hook #'pretty-lisp-lambdas)
-(add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook #'esk-remove-elc-on-save)
+(add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook #'esk/remove-elc-on-save)
 
 (defun esk/remove-elc-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
@@ -43,11 +43,4 @@
      (intern (concat (symbol-name x) "-mode"))
      '(("(\\|)" . 'esk/paren-face))))
   (add-hook
-   (intern (concat (symbol-name x) "-mode-hook")) #'run-coding-hook))
-
-(eval-after-load 'clojure-mode
-  '(font-lock-add-keywords
-    'clojure-mode `(("(\\(fn\\>\\)"
-                     (0 (progn (compose-region (match-beginning 1)
-                                               (match-end 1) "ƒ")
-                               nil))))))
+   (intern (concat (symbol-name x) "-mode-hook")) #'esk/run-coding-hook))

@@ -11,6 +11,8 @@
 
 ;; reStructuredText
 
+(eval-when-compile (require 'rst))
+
 (eval-after-load 'rst
   '(progn
      ;; automatically update contents summary
@@ -20,8 +22,14 @@
      (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
 
+;; Customize my main Emacs instance: I'm used to have one Emacs dedicated to
+;; news, mail, chat and so on, living in the second i3 workspace. This function
+;; is then called by my i3 configuration file with
+;;
+;;  exec --no-startup-id i3-msg 'workspace 2; exec emacs -f mine-emacs-!; workspace 1'
+
 (defun esk/mine-emacs (&optional dont-ask)
-  "Connect to IRC, GNUS, Jabber and activate Emacs server, but ask first.
+  "Connect to IRC, GNUS, Jabber, Notmuch and activate Emacs server, but ask first.
 If DONT-ASK is non-nil, interactively when invoked with a prefix arg,
 start everything unconditionally."
   (interactive "P")
@@ -35,10 +43,6 @@ start everything unconditionally."
   (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
 
   (message "Have a nice day!"))
-
-
-;; My i3 automatically does
-;;  exec --no-startup-id i3-msg 'workspace 2; exec emacs -f mine-emacs-!; workspace 1'
 
 (defun esk/mine-emacs-! ()
   "Unconditionally start my emacs setup."

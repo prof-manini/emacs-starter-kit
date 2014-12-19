@@ -5,7 +5,7 @@
 EMACS=emacs
 EMAX=$(EMACS) --batch -l ~/.emacs.d/init.el
 
-all: update-elpa recompile-init magit-next
+all: magit-next update-elpa recompile-init update-and-compile-magit-next
 
 clean:
 	find . -name '*.elc' -print0 | xargs -r0 rm
@@ -24,6 +24,8 @@ GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)
 DASH_DIR = $(abspath $(wildcard elpa/dash-2*))
 
 magit-next: $(GIT_MODES_DIR) $(MAGIT_DIR)
+
+update-and-compile-magit-next:
 	(cd $(GIT_MODES_DIR) && git pull)
 	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" clean lisp
 	(cd $(MAGIT_DIR) && git pull)

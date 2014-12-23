@@ -62,6 +62,7 @@ start everything unconditionally."
  '(js2-include-jslint-globals nil)
  '(js2-indent-switch-body t)
  '(longlines-show-hard-newlines t)
+ '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)
  '(notmuch-fcc-dirs "metapensiero/Sent")
  '(scss-compile-at-save nil)

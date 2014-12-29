@@ -121,7 +121,7 @@
 
 (global-set-key (kbd "M-T") #'esk/transpose-symbols)
 
-(global-set-key (kbd "S-SPC") #'er/expand-region)
+(global-set-key (kbd "C-S-SPC") #'er/expand-region)
 
 (autoload #'zap-up-to-char "misc"
   "Kill up to, but not including ARGth occurrence of CHAR.")

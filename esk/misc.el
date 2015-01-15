@@ -36,7 +36,9 @@
                          indentation::space
                          tabs)
       ediff-window-setup-function #'ediff-setup-windows-plain
-      scroll-preserve-screen-position t)
+      scroll-preserve-screen-position t
+      compilation-scroll-output t
+      compilation-mode-hook #'visual-line-mode)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 

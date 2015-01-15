@@ -9,6 +9,9 @@
      (require 'flymake-cursor)
 
      (add-hook 'python-mode-hook #'flymake-python-pyflakes-load)
+     (add-hook 'python-mode-hook
+               (lambda ()
+                 (setq-local prettify-symbols-alist '(("lambda" . ?λ)))))
 
      (define-key python-mode-map (kbd "C-c b") #'python-nav-backward-defun)
      (define-key python-mode-map (kbd "C-c f") #'python-nav-forward-defun)

@@ -35,16 +35,12 @@
   '(progn
      (add-hook 'js2-mode-hook #'esk/run-coding-hook)
 
-     ;; Prettify the function keyword
-     (font-lock-add-keywords
-      'js2-mode `(("\\(function *\\)("
-                   (0 (progn (compose-region (match-beginning 1)
-                                             (match-end 1) "ƒ")
-                             nil)))))
-
      ;; Register some mode-specific hooks
      (add-hook 'js2-mode-hook
                (lambda ()
+                 ;; Prettify the function keyword
+                 (setq-local prettify-symbols-alist '(("function" .  ?ƒ)))
+
                  ;; Parse additional externs
                  (add-hook 'js2-post-parse-callbacks #'esk/js2-apply-jsl-declares nil 'local)
                  (js2-reparse t)))

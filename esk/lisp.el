@@ -14,14 +14,6 @@
 
 ;;; Emacs Lisp
 
-(defun pretty-lisp-lambdas ()
-  (font-lock-add-keywords
-   nil `(("(?\\(lambda\\>\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    ,(make-char 'greek-iso8859-7 107))
-                    nil))))))
-
-(add-hook 'emacs-lisp-mode-hook #'pretty-lisp-lambdas)
 (add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook #'esk/remove-elc-on-save)
 

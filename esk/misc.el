@@ -147,6 +147,8 @@
 (set-face-background 'vertical-border "white")
 (set-face-foreground 'vertical-border "white")
 
+(global-prettify-symbols-mode)
+
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")

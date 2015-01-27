@@ -3,7 +3,9 @@
 
 (eval-when-compile
   (require 'desktop)
-  (require 'virtualenv))
+  (require 'virtualenv)
+  (require 'whitespace)
+  (require 'whitespace-cleanup-mode))
 
 (require 'thingatpt)
 (require 'imenu)
@@ -91,18 +93,15 @@ Symbols matching the text at point are put first in the completion list."
    nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|XXX\\):"
           1 font-lock-warning-face t))))
 
-(defun esk/cleanup-buffer-on-save ()
-  (whitespace-cleanup-mode 1))
-
-(defun esk/turn-on-whitespace-mode ()
-  (whitespace-mode)
+(defun esk/remove-whitespace-write-file-hook ()
   (remove-hook 'write-file-functions #'whitespace-write-file-hook t))
+
+(add-hook 'whitespace-mode-hook #'esk/remove-whitespace-write-file-hook)
 
 (defun esk/turn-on-whitespace-mode-makefiles ()
   (setq indent-tabs-mode t)
   (add-to-list (make-local-variable 'whitespace-style) 'indentation::tab)
-  (add-hook 'before-save-hook #'whitespace-cleanup)
-  (whitespace-mode))
+  (whitespace-turn-on))
 
 (defun esk/turn-on-subword-mode ()
   (subword-mode 1)
@@ -118,8 +117,8 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'esk/coding-hook #'esk/local-comment-auto-fill)
 (add-hook 'esk/coding-hook #'esk/turn-on-hl-line-mode)
 (add-hook 'esk/coding-hook #'esk/add-watchwords)
-(add-hook 'esk/coding-hook #'esk/cleanup-buffer-on-save)
-(add-hook 'esk/coding-hook #'esk/turn-on-whitespace-mode)
+(add-hook 'esk/coding-hook #'turn-on-whitespace-cleanup-mode)
+(add-hook 'esk/coding-hook #'whitespace-turn-on)
 (add-hook 'esk/coding-hook #'esk/turn-on-subword-mode)
 (add-hook 'esk/coding-hook #'esk/set-string-delimiters-electric-pairs)
 

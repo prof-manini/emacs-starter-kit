@@ -3,12 +3,12 @@
 
 (eval-when-compile
   (require 'desktop)
-  (require 'virtualenv)
-  (require 'whitespace)
-  (require 'whitespace-cleanup-mode))
+  (require 'virtualenv))
 
-(require 'thingatpt)
 (require 'imenu)
+(require 'thingatpt)
+(require 'whitespace)
+(require 'whitespace-cleanup-mode)
 
 ;; Network
 

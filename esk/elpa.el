@@ -34,6 +34,14 @@
       (message "Installing %s" (symbol-name package))
       (package-install package))))
 
+(defun esk/upgrade-packages ()
+  "Automatically upgrade installed packages to latest version."
+  (package-list-packages)
+  (package-menu-mark-upgrades)
+  (let ((upgrades (package-menu--find-upgrades)))
+    (if upgrades
+        (package-menu-execute t))))
+
 (defun esk/online? ()
   "See if we're online.
 

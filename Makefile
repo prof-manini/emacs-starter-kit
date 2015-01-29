@@ -18,6 +18,10 @@ distclean: clean
 update-elpa:
 	$(EMAX) || $(EMAX)
 
+.PHONY: upgrade-packages
+upgrade-packages:
+	$(EMAX) -f esk/upgrade-packages
+
 .PHONY: recompile-init
 recompile-init:
 	$(EMAX) -f esk/recompile-init

@@ -70,6 +70,7 @@
 
 (global-set-key [f2] #'query-replace)    ; alias di M-%
 (global-set-key [S-f2] #'query-replace-regexp)
+(global-set-key [M-f2] #'iedit-mode)
 
 (global-set-key [f3] #'grep)
 (global-set-key [S-f3] #'grep-find)

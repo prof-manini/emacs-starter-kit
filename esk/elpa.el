@@ -11,6 +11,7 @@
    'find-file-in-project
    'flymake-cursor
    'flymake-python-pyflakes
+   'iedit
 ;;; Use magit-next until it gets merged into master
 ;   'git-commit-mode
 ;   'git-rebase-mode

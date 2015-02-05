@@ -31,7 +31,7 @@
   "[Titolo]:"
   "# -*- coding: utf-8 -*-\n"
   "#+TITLE: " str "\n"
-  "#+AUTHOR: " (user-full-name) " <" user-mail-address "\n"
+  "#+AUTHOR: " (user-full-name) " <" user-mail-address ">\n"
   "#+LANGUAGE: it\n"
   "#+CATEGORY: " _ "\n"
   "#+SEQ_TODO: TODO WONTDO WiP DONE\n"

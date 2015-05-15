@@ -9,6 +9,11 @@
       user-full-name "Lele Gaifax")
 
 
+;; magit: prevent warning about auto revert mode
+
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+
 ;; reStructuredText
 
 (eval-when-compile (require 'rst))

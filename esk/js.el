@@ -33,6 +33,8 @@
 
 (eval-after-load 'js2-mode
   '(progn
+     (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)
+
      (add-hook 'js2-mode-hook #'esk/run-coding-hook)
 
      ;; Register some mode-specific hooks

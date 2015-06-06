@@ -239,7 +239,7 @@ Symbols matching the text at point are put first in the completion list."
       ;; vc gets confused when running status on sibling bzr dirs
       (vc-dir (locate-dominating-file default-directory ".bzr")))
      ((eq backend 'Git)
-      (magit-status-internal (magit-toplevel-safe default-directory)))
+      (magit-status-internal (magit-toplevel default-directory)))
      (backend
       (vc-dir default-directory))
      (t

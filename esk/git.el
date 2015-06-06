@@ -25,7 +25,7 @@ current buffer, otherwise it considers the whole Git repository."
                                (if sap (concat grep-command sap)
                                  grep-command)))))
   (when current-prefix-arg
-      (setq command-args (concat "cd " (magit-get-top-dir) " && " command-args)))
+      (setq command-args (concat "cd " (magit-toplevel) " && " command-args)))
   ; pipe thru cat, to avoid the "terminal not fully functional" error
   (compilation-start (concat command-args " | cat") 'grep-mode))
 

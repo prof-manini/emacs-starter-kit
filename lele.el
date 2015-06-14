@@ -75,7 +75,7 @@ start everything unconditionally."
  '(smtpmail-smtp-server "mail.arstecnica.it")
  '(smtpmail-smtp-service 25)
  '(whitespace-line-column nil)
- '(windmove-window-distance-delta 2))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

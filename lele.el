@@ -74,7 +74,6 @@ start everything unconditionally."
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")
  '(smtpmail-smtp-service 25)
- '(whitespace-action (quote (auto-cleanup)))
  '(whitespace-line-column nil)
  '(windmove-window-distance-delta 2))
 (custom-set-faces

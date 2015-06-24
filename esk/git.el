@@ -36,5 +36,6 @@ current buffer, otherwise it considers the whole Git repository."
   (interactive)
   (let ((parent-dir (or (locate-dominating-file
                          (file-name-directory (directory-file-name (magit-toplevel))) ".git") ".")))
-    (unless (equal parent-dir ".")
+    (if (equal parent-dir ".")
+        (beep)
       (magit-status parent-dir))))

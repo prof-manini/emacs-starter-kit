@@ -30,3 +30,11 @@ current buffer, otherwise it considers the whole Git repository."
   (compilation-start (concat command-args " | cat") 'grep-mode))
 
 (require 'magit)
+
+(defun esk/parent-magit-status ()
+  "Run magit-status on the parent repository"
+  (interactive)
+  (let ((parent-dir (or (locate-dominating-file
+                         (file-name-directory (directory-file-name (magit-toplevel))) ".git") ".")))
+    (unless (equal parent-dir ".")
+      (magit-status parent-dir))))

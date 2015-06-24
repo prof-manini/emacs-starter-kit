@@ -91,6 +91,7 @@
 (global-set-key [f8] #'esk/cycle-ispell-languages)
 
 (global-set-key [f9] #'esk/whatsnew-or-magit-status-or-vc-dir)
+(global-set-key [C-f9] #'esk/parent-magit-status)
 (global-set-key [S-f9] #'magit-blame)
 (global-set-key [M-f9] #'mo-git-blame-current)
 

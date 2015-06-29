@@ -84,7 +84,7 @@
 ;; Autoloaded stuff
 
 (add-to-list 'load-path esk/autoload-dir)
-(add-to-list 'load-path (concat esk/autoload-dir "magit"))
+(add-to-list 'load-path (concat esk/autoload-dir "magit/lisp"))
 (add-to-list 'load-path (concat esk/autoload-dir "git-modes"))
 
 

@@ -4,7 +4,7 @@ EMACS=emacs
 EMAX=$(EMACS) --batch -l ~/.emacs.d/init.el
 
 .PHONY: all
-all: magit-next update-elpa recompile-init
+all: magit update-elpa recompile-init
 
 .PHONY: clean
 clean:
@@ -23,7 +23,7 @@ recompile-init:
 	$(EMAX) -f esk/recompile-init
 
 .PHONY: upgrade
-upgrade: upgrade-elpa upgrade-and-compile-magit-next
+upgrade: upgrade-elpa upgrade-and-compile-magit
 
 .PHONY: upgrade-elpa
 upgrade-elpa:
@@ -33,17 +33,17 @@ MAGIT_DIR := $(abspath elpa-to-submit/magit)
 GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)
 DASH_DIR = $(abspath $(wildcard elpa/dash-2*))
 
-.PHONY: magit-next
-magit-next: $(GIT_MODES_DIR) $(MAGIT_DIR)
+.PHONY: magit
+magit: $(GIT_MODES_DIR) $(MAGIT_DIR)
 
 $(MAGIT_DIR):
-	git clone --branch next https://github.com/magit/magit.git $@
+	git clone https://github.com/magit/magit.git $@
 
 $(GIT_MODES_DIR):
-	git clone --branch next https://github.com/magit/git-modes.git $@
+	git clone https://github.com/magit/git-modes.git $@
 
-.PHONY: upgrade-and-compile-magit-next
-upgrade-and-compile-magit-next:
+.PHONY: upgrade-and-compile-magit
+upgrade-and-compile-magit:
 	(cd $(GIT_MODES_DIR) && git pull)
 	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" clean lisp
 	(cd $(MAGIT_DIR) && git pull)

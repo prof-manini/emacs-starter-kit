@@ -84,8 +84,7 @@ start everything unconditionally."
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")
  '(smtpmail-smtp-service 25)
- '(whitespace-line-column nil)
- )
+ '(whitespace-line-column nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

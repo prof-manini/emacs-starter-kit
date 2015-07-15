@@ -5,6 +5,7 @@
 \.BAK$
 \.orig$
 \.rej$
+(^|/)\.byte-compile-timestamp
 (^|/)ac-comphist\.dat
 (^|/)auto-save-list
 (^|/)backups
@@ -20,6 +21,7 @@
 (^|/)lele
 (^|/)lib
 (^|/)local
+(^|/)network-security.data
 (^|/)nxhtml
 (^|/)places
 (^|/)tramp

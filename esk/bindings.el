@@ -120,6 +120,8 @@
 
 (global-set-key [M-left] #'previous-buffer)
 (global-set-key [M-right] #'next-buffer)
+(global-set-key [M-up] (kbd "C-u 1 C-v"))
+(global-set-key [M-down] (kbd "C-u 1 M-v"))
 
 (global-set-key (kbd "M-T") #'esk/transpose-symbols)
 

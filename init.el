@@ -87,23 +87,7 @@
 (add-to-list 'load-path (concat esk/autoload-dir "magit/lisp"))
 (add-to-list 'load-path (concat esk/autoload-dir "git-modes"))
 
-
-(defun esk/regen-autoloads (&optional force-regen)
-  "Regenerate the autoload definitions file if necessary and load it."
-  (interactive "P")
-  (let ((generated-autoload-file (concat esk/autoload-dir "loaddefs.el")))
-    (when (or force-regen
-              (not (file-exists-p generated-autoload-file))
-              (cl-some (lambda (f)
-                         (file-newer-than-file-p f generated-autoload-file))
-                    (directory-files esk/autoload-dir t "\\.el$")))
-      (message "Updating autoload file %s..." generated-autoload-file)
-      (let (emacs-lisp-mode-hook)
-        (update-directory-autoloads esk/autoload-dir)))
-    (load generated-autoload-file)))
-
-(esk/regen-autoloads)
-
+(load (concat esk/autoload-dir "loaddefs.el"))
 
 ;; Load up starter kit customizations
 

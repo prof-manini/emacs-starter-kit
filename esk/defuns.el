@@ -148,13 +148,6 @@ Symbols matching the text at point are put first in the completion list."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
-(defun esk/recompile-init ()
-  "Byte-compile all your dotfiles again."
-  (interactive)
-  (byte-recompile-directory esk/top-dir 0)
-  ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat esk/top-dir "elpa-to-submit/") 0))
-
 (defun esk/sudo-edit (&optional arg)
   "Edit a file as root."
   (interactive "p")

@@ -69,6 +69,7 @@
 (global-set-key [f1] #'hippie-expand)   ; alias di M-/
 
 (global-set-key [f2] #'query-replace)    ; alias di M-%
+(global-set-key [C-f2] #'map-query-replace-regexp)
 (global-set-key [S-f2] #'query-replace-regexp)
 (global-set-key [M-f2] #'iedit-mode)
 

@@ -24,6 +24,7 @@
    'web-mode
    'wgrep
    'whitespace-cleanup-mode
+   'yaml-mode
    'yasnippet
    )
   "Libraries that should be installed by default.")

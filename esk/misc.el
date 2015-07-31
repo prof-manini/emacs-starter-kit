@@ -163,3 +163,4 @@
 (add-hook 'html-mode-hook #'esk/run-coding-hook)
 (add-hook 'rst-mode-hook #'esk/run-coding-hook)
 (add-hook 'web-mode-hook #'esk/run-coding-hook)
+(add-hook 'yaml-mode-hook #'esk/run-coding-hook)

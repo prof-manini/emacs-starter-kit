@@ -114,6 +114,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.s?css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(pt\\|xml\\|xsl\\|rng\\|xhtml\\|zcml\\)\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(html\\|jinja\\|mako\\)\\'" . web-mode))
 
 (autoload 'rst-mode "rst")
 (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
@@ -161,3 +162,4 @@
 (add-hook 'css-mode-hook #'esk/run-coding-hook)
 (add-hook 'html-mode-hook #'esk/run-coding-hook)
 (add-hook 'rst-mode-hook #'esk/run-coding-hook)
+(add-hook 'web-mode-hook #'esk/run-coding-hook)

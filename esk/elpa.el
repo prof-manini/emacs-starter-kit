@@ -17,6 +17,7 @@
 ;   'git-rebase-mode
 ;   'magit
    'js2-mode
+   'json-mode
    'mo-git-blame
    'scss-mode
    'vc-darcs

@@ -113,7 +113,6 @@
 ;; Associate modes with file extensions
 
 (add-to-list 'auto-mode-alist '("\\.s?css$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(pt\\|xml\\|xsl\\|rng\\|xhtml\\|zcml\\)\\'" . nxml-mode))
 
 (autoload 'rst-mode "rst")

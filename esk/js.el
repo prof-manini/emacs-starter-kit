@@ -2,6 +2,7 @@
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 (eval-when-compile
   (require 'js2-mode)

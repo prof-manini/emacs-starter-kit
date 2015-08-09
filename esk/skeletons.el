@@ -9,10 +9,11 @@
   "Inserisci intestazione standard GPLv3."
   "[Progetto]: "
   comment-start `(delete-horizontal-space) " -*- coding: utf-8 -*-" comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Progetto:  " str " -- " _ comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Creato:    " (format-time-string "%c") comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Autore:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Licenza:   GNU General Public License version 3 or later" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Project:   " str " -- " _ comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :License:   GNU General Public License version 3 or later" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (user-full-name) comment-end "\n"
   comment-start `(delete-horizontal-space) comment-end "\n\n")
 
 (define-skeleton intestazione-gpl-block-comment
@@ -20,10 +21,11 @@
   "[Progetto]: "
   comment-start
   " -*- coding: utf-8 -*-\n"
-  " * :Progetto:  " str " -- " _ "\n"
-  " * :Creato:    " (format-time-string "%c") "\n"
-  " * :Autore:    " (user-full-name) " <" user-mail-address ">" "\n"
-  " * :Licenza:   " "GNU General Public License version 3 or later\n"
+  " * :Project:   " str " -- " _ "\n"
+  " * :Created:   " (format-time-string "%c") "\n"
+  " * :Author:    " (user-full-name) " <" user-mail-address ">" "\n"
+  " * :License:   GNU General Public License version 3 or later\n"
+  " * :Copyright: Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
   " " comment-end "\n\n")
 
 (define-skeleton intestazione-org
@@ -35,7 +37,7 @@
   "#+LANGUAGE: it\n"
   "#+CATEGORY: " _ "\n"
   "#+SEQ_TODO: TODO WONTDO WiP DONE\n"
-  "#+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00\n"
+  "#+PROPERTY: Effort_ALL 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00\n"
   "#+COLUMNS: %40ITEM(Voce) %13Effort(Tempo stimato){:} %CLOCKSUM(Tempo effettivo)\n\n")
 
 (define-skeleton intestazione-preventivo
@@ -66,10 +68,11 @@
   "Inserisci un blocco di commento con varie informazioni standard."
   "[Progetto]: "
   "## -*- coding: utf-8 -*-\n"
-  "## :Progetto:  " str " -- " _ "\n"
-  "## :Creato:    " (format-time-string "%c") "\n"
-  "## :Autore:    " (user-full-name) " <" user-mail-address ">\n"
-  "## :Licenza:   " "GNU General Public License version 3 or later\n"
+  "## :Project:   " str " -- " _ "\n"
+  "## :Created:   " (format-time-string "%c") "\n"
+  "## :Author:    " (user-full-name) " <" user-mail-address ">\n"
+  "## :License:   " "GNU General Public License version 3 or later\n"
+  "## :Copyright: " "Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
   "##\n\n")
 
 (setq auto-insert-alist

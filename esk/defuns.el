@@ -6,6 +6,7 @@
   (require 'virtualenv))
 
 (require 'imenu)
+(require 'smartparens)
 (require 'thingatpt)
 (require 'whitespace)
 (require 'whitespace-cleanup-mode)
@@ -110,9 +111,6 @@ Symbols matching the text at point are put first in the completion list."
   (let ((entry (assq 'subword-mode minor-mode-alist)))
     (when entry (setcdr entry '(" sw")))))
 
-(defun esk/set-string-delimiters-electric-pairs ()
-  (set (make-local-variable 'electric-pair-pairs) '((?\" . ?\") (?\' . ?\'))))
-
 (add-hook 'esk/coding-hook #'esk/local-column-number-mode)
 (add-hook 'esk/coding-hook #'esk/local-comment-auto-fill)
 (add-hook 'esk/coding-hook #'esk/turn-on-hl-line-mode)
@@ -120,7 +118,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'esk/coding-hook #'turn-on-whitespace-cleanup-mode)
 (add-hook 'esk/coding-hook #'whitespace-turn-on)
 (add-hook 'esk/coding-hook #'esk/turn-on-subword-mode)
-(add-hook 'esk/coding-hook #'esk/set-string-delimiters-electric-pairs)
 
 (defun esk/run-coding-hook ()
   "Enable things that are convenient across all coding buffers."

@@ -61,6 +61,10 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
+;; Turn on the global smartparens-mode, except in web-mode buffers
+(add-to-list 'sp-ignore-modes-list 'web-mode)
+(smartparens-global-mode)
+
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
 (setq ido-enable-prefix nil

@@ -20,6 +20,7 @@
    'json-mode
    'mo-git-blame
    'scss-mode
+   'smartparens
    'vc-darcs
    'web-mode
    'wgrep

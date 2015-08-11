@@ -61,9 +61,6 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;; Matching parentheses for all languages and so on
-(electric-pair-mode nil)
-
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
 (setq ido-enable-prefix nil

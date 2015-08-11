@@ -3,6 +3,7 @@
 EMACS=emacs
 BATCH=$(EMACS) --batch -Q
 EMAX=$(BATCH) -l ~/.emacs.d/init.el
+ELPA=$(BATCH) -l ~/.emacs.d/esk/elpa.el
 ESKDIR=esk
 ESKELS=$(wildcard $(ESKDIR)/*.el)
 ETSDIR=elpa-to-submit
@@ -43,14 +44,14 @@ $(BCTIMESTAMP): $(ALLELS)
 .PHONY: update-elpa
 update-elpa:
 	@echo "Installing missing packages from ELPA..."
-	@($(EMAX) || $(EMAX)) >>$(ESKLOG) 2>/dev/null
+	$(ELPA) -f package-refresh-contents -f esk/install-packages
 
 .PHONY: upgrade
 upgrade: upgrade-elpa upgrade-and-compile-magit
 
 .PHONY: upgrade-elpa
 upgrade-elpa:
-	$(EMAX) -f esk/upgrade-packages
+	$(ELPA) -f esk/upgrade-packages
 
 MAGIT_DIR := $(abspath elpa-to-submit/magit)
 GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)

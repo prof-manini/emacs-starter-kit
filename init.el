@@ -43,19 +43,6 @@
  esk/user-specific-config (concat esk/top-dir user-login-name))
 
 
-;;; Load up ELPA, the package manager
-
-;; directory where emacs packages are installed
-(setq package-user-dir (concat esk/top-dir "elpa/"))
-
-(require 'package)
-
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-(package-initialize)
-
-
 (defun esk/load (file)
   "Load a source file and its per-user override."
   (let ((full-path (concat esk/lisp-dir file))

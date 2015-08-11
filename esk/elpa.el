@@ -1,6 +1,14 @@
 ;;; esk/elpa.el --- Install a base set of packages automatically.
 ;;
 
+(require 'package)
+
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
+;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(package-initialize)
+
 (defvar esk/packages
   (list
    'auto-complete

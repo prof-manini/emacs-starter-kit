@@ -2,7 +2,7 @@
 ;;
 
 (when (fboundp 'notmuch)
-  (eval-when-compile (require 'notmuch))
+  (eval-when-compile (require 'notmuch nil t))
 
   (defun esk/notmuch-show-add-deleted-tag ()
     "Tag current message as deleted."

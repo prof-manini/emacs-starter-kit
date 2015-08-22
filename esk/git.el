@@ -14,22 +14,29 @@
        ad-do-it
        (jump-to-register :magit-fullscreen))))
 
+(require 'magit)
+
 (defun esk/git-grep (command-args)
   "Use the `grep' machinery to run `git grep'.
-Without a prefix argument the search is executed in the default-directory of the
-current buffer, otherwise it considers the whole Git repository."
+Without a prefix argument the search is executed in the current Git repository,
+otherwise it recurses down also in all submodules."
   (interactive
-   (let ((sap (thing-at-point 'symbol t))
-         (grep-command "git grep -n --color=always "))
-     (list (read-shell-command "Run git grep (like this): "
-                               (if sap (concat grep-command sap)
-                                 grep-command)))))
-  (when current-prefix-arg
-      (setq command-args (concat "cd " (magit-toplevel) " && " command-args)))
-  ; pipe thru cat, to avoid the "terminal not fully functional" error
-  (compilation-start (concat command-args " | cat") 'grep-mode))
+   (let ((what (or (thing-at-point 'symbol t)
+                   (read-from-minibuffer "Regexp to search: ")))
+         (git-grep "git --no-pager grep -n --color=always --full-name ")
+         (git-submodule-foreach "git --no-pager submodule --quiet foreach ")
+         (sed "sed s,^,$path/,")
+         grep-command)
+     (if current-prefix-arg
+         (setq grep-command (concat git-grep "'" what "' && "
+                                    git-submodule-foreach
+                                    "'"
+                                    git-grep "'" what "' | " sed " || :"
+                                    "'"))
+       (setq grep-command (concat git-grep "'" what "'")))
+     (list (read-shell-command "Run: " grep-command))))
+  (compilation-start (concat "cd " (magit-toplevel) " && " command-args) 'grep-mode))
 
-(require 'magit)
 
 (defun esk/parent-magit-status ()
   "Run magit-status on the parent repository"

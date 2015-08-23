@@ -23,17 +23,15 @@ otherwise it recurses down also in all submodules."
   (interactive
    (let ((what (or (thing-at-point 'symbol t)
                    (read-from-minibuffer "Regexp to search: ")))
-         (git-grep "git --no-pager grep -n --color=always --full-name ")
-         (git-submodule-foreach "git --no-pager submodule --quiet foreach ")
-         (sed "sed s,^,$path/,")
+         (git-grep "git --no-pager grep -n --color=always ")
+         (git-submodule-foreach "git --no-pager submodule --quiet foreach --recursive ")
+         (sed (concat "sed \"s,^,$toplevel/$path/,;s,^" default-directory ",,\""))
          grep-command)
      (if current-prefix-arg
-         (setq grep-command (concat git-grep "'" what "' && "
+         (setq grep-command (concat "(" git-grep "\"" what "\" || :) && "
                                     git-submodule-foreach
-                                    "'"
-                                    git-grep "'" what "' | " sed " || :"
-                                    "'"))
-       (setq grep-command (concat git-grep "'" what "'")))
+                                    "'(" git-grep "\"" what "\" | " sed ") || :'"))
+       (setq grep-command (concat git-grep "\"" what "\"")))
      (list (read-shell-command "Run: " grep-command))))
   (compilation-start (concat "cd " (magit-toplevel) " && " command-args) 'grep-mode))
 

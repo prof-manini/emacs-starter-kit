@@ -14,6 +14,7 @@
    'auto-complete
    'darcsum
    'dash
+   'dockerfile-mode
    'erc-hl-nicks
    'expand-region
    'find-file-in-project

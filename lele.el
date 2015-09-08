@@ -53,8 +53,10 @@ start everything unconditionally."
   "Unconditionally start my emacs setup."
   (esk/mine-emacs t))
 
-;; Enable narrow-to-region
+
+;; Enable some "dangerous" functionalities
 (put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 
 ;; Customize will write the settings here

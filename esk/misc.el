@@ -168,6 +168,7 @@
 (add-hook 'html-mode-hook #'esk/run-coding-hook)
 (add-hook 'json-mode-hook #'esk/run-coding-hook)
 (add-hook 'rst-mode-hook #'esk/run-coding-hook)
+(add-hook 'sh-mode-hook #'esk/run-coding-hook)
 (add-hook 'sql-mode-hook #'esk/run-coding-hook)
 (add-hook 'web-mode-hook #'esk/run-coding-hook)
 (add-hook 'yaml-mode-hook #'esk/run-coding-hook)

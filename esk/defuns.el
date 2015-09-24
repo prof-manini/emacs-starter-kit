@@ -332,6 +332,7 @@ See `sort-regexp-fields'."
   (dolist (elem langs) (ring-insert lang-ring elem)))
 
 (defun esk/cycle-ispell-languages ()
+  "Select the next spell dictionary from the ring."
   (interactive)
   (let ((lang (ring-ref lang-ring -1)))
     (ring-insert lang-ring lang)

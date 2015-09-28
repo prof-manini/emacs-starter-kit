@@ -75,6 +75,10 @@
                                            'face 'warning))))
                  (force-mode-line-update)))))
 
+(eval-after-load 'json-mode
+  '(progn
+     (add-hook 'json-mode-hook (lambda () (setq-local js-indent-level 2)))))
+
 ;; Avoid escape nightmares by editing ExtJS templates in separate buffer
 ;;
 ;; Execute `M-x js2-edit-extjs-template-at-point' with the point inside the

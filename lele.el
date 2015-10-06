@@ -75,6 +75,7 @@ start everything unconditionally."
  '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)
  '(notmuch-fcc-dirs "metapensiero/Sent")
+ '(python-fill-docstring-style 'pep-257-nn)
  '(safe-local-variable-values
    (quote
     ((flymake-python-pyflakes-executable . "python3.5")

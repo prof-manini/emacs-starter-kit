@@ -77,7 +77,8 @@ start everything unconditionally."
  '(notmuch-fcc-dirs "metapensiero/Sent")
  '(safe-local-variable-values
    (quote
-    ((flymake-python-pyflakes-extra-arguments "-m" "pyflakes")
+    ((flymake-python-pyflakes-executable . "python3.5")
+     (flymake-python-pyflakes-extra-arguments "-m" "pyflakes")
      (flymake-python-pyflakes-executable . "python3")
      (org-time-clocksum-format :days "%dd" :hours "%d" :require-minutes nil)
      (org-time-clocksum-use-effort-durations . t)

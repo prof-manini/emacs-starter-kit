@@ -9,7 +9,7 @@ ESKELS=$(wildcard $(ESKDIR)/*.el)
 ETSDIR=elpa-to-submit
 ETSAL=$(ETSDIR)/loaddefs.el
 ETSELS=$(filter-out $(ETSAL),$(wildcard $(ETSDIR)/*.el))
-ALLELS=$(ESKELS) $(ETSELS) $(wildcard *.el)
+ALLELS=$(ESKELS) $(ETSELS) $(wildcard *.el) $(wildcard overrides/*.el)
 ESKLOG=/tmp/$(USER)-emacs-starter-kit.log
 BCTIMESTAMP=.byte-compile-timestamp
 

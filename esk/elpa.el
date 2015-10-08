@@ -4,7 +4,7 @@
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
+;(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 ;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
@@ -14,7 +14,6 @@
    'auto-complete
    'darcsum
    'dash
-   'dockerfile-mode
    'erc-hl-nicks
    'expand-region
    'find-file-in-project

@@ -726,7 +726,7 @@ It makes underscores and dots word constituent chars.")
   "Non-nil means to emit a warning when indentation guessing fails."
   :type 'boolean
   :group 'python
-  :safe' booleanp)
+  :safe 'booleanp)
 
 (defcustom python-indent-trigger-commands
   '(indent-for-tab-command yas-expand yas/expand)

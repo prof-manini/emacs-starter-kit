@@ -3,7 +3,7 @@
 EMACS=emacs
 BATCH=$(EMACS) --batch -Q
 EMAX=$(BATCH) -l ~/.emacs.d/init.el
-ELPA=$(BATCH) -l ~/.emacs.d/esk/elpa.el
+ELPA=$(BATCH) -l ~/.emacs.d/esk/elpa.el$(if $(wildcard ~/.emacs.d/$(USER)/elpa.el), -l ~/.emacs.d/$(USER)/elpa.el,)
 ESKDIR=esk
 ESKELS=$(wildcard $(ESKDIR)/*.el)
 ETSDIR=elpa-to-submit

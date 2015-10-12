@@ -19,14 +19,14 @@
 (define-skeleton intestazione-gpl-block-comment
   "Inserisci intestazione standard GPLv3 (block comment)."
   "[Progetto]: "
-  comment-start
+  comment-start `(delete-horizontal-space)
   " -*- coding: utf-8 -*-\n"
   " * :Project:   " str " -- " _ "\n"
   " * :Created:   " (format-time-string "%c") "\n"
   " * :Author:    " (user-full-name) " <" user-mail-address ">" "\n"
   " * :License:   GNU General Public License version 3 or later\n"
   " * :Copyright: Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
-  " " comment-end "\n\n")
+  " " `(delete-horizontal-space) comment-end "\n\n")
 
 (define-skeleton intestazione-org
   "Intestazione per i file ORG."

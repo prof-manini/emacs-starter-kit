@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: parser
+# key: pars
+# group: argparser
+# --
+from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+
+parser = ArgumentParser(description="${1:description}",
+                        formatter_class=ArgumentDefaultsHelpFormatter)
+

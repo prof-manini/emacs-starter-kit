@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: main
+# key: main
+# --
+def main():
+    from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
+
+    parser = ArgumentParser(description="${1:description}",
+                            formatter_class=ArgumentDefaultsHelpFormatter)
+
+    parser.add_argument('-v', '--verbose', action='store_true', default=False,
+                        help="emit some noise in the process")
+    parser.add_argument('-n', '--dry-run', action='store_true', default=False,
+                        help="test run, just show what would happed")
+
+    args = parser.parse_args()
+
+    ${2:workhorse}(**args.__dict__)

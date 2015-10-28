@@ -1,0 +1,16 @@
+# name: Create a new Raccoon PostgreSQL table
+# key: rdb-createtable
+# expand-env: ((yas/indent-line nil))
+# --
+-- -*- mode: sql; sql-product: postgres; coding: utf-8 -*-
+
+create table ${1:schema}.${2:tablename} (
+   /* Inherited from TimeStamped:
+    *   id uuid_t NOT NULL
+    * , created timestamp_t
+    * , changed timestamp_t
+    */
+    $0
+
+  , constraint pk_$1_$2 primary key (id)
+) inherits (public.TimeStamped)

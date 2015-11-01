@@ -16,7 +16,6 @@
    'darcsum
    'dash
    'expand-region
-   'find-file-in-project
    'flymake-cursor
    'flymake-python-pyflakes
    'iedit

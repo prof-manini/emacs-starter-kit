@@ -497,8 +497,8 @@ The type returned can be `comment', `string' or `paren'."
 
 (defsubst python-syntax-closing-paren-p ()
   "Return non-nil if char after point is a closing paren."
-  (= (syntax-class (syntax-after (point)))
-     (syntax-class (string-to-syntax ")"))))
+  (eql (syntax-class (syntax-after (point)))
+       (syntax-class (string-to-syntax ")"))))
 
 (define-obsolete-function-alias
   'python-info-ppss-context #'python-syntax-context "24.3")
@@ -733,12 +733,6 @@ It makes underscores and dots word constituent chars.")
   "Commands that might trigger a `python-indent-line' call."
   :type '(repeat symbol)
   :group 'python)
-
-(defcustom python-indent-closing-paren-like-open-paren t
-  "Non-nil means that a closing paren will be aligned to the corresponding open paren."
-  :group 'python
-  :type 'boolean
-  :safe 'booleanp)
 
 (define-obsolete-variable-alias
   'python-indent 'python-indent-offset "24.3")
@@ -1028,16 +1022,12 @@ possibilities can be narrowed to specific indentation points."
         (`(,(or :after-line
                 :after-comment
                 :inside-string
-                :after-backslash) . ,start)
+                :after-backslash
+                :inside-paren-at-closing-paren
+                :inside-paren-at-closing-nested-paren) . ,start)
          ;; Copy previous indentation.
          (goto-char start)
          (current-indentation))
-        (`(,(or :inside-paren-at-closing-paren
-                :inside-paren-at-closing-nested-paren) . ,start)
-         (goto-char start)
-         (if python-indent-closing-paren-like-open-paren
-             (current-column)
-           (current-indentation)))
         (`(:inside-docstring . ,start)
          (let* ((line-indentation (current-indentation))
                 (base-indent (progn

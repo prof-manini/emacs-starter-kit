@@ -1,4 +1,4 @@
-;;; esk/notmuch.el --- Notmuch customization
+;;; lele/notmuch.el --- Notmuch customization
 ;;
 
 (when (fboundp 'notmuch)
@@ -32,9 +32,4 @@
        (define-key notmuch-search-mode-map "d" #'esk/notmuch-search-add-deleted-tag)
        (define-key notmuch-common-keymap "g" #'notmuch-refresh-this-buffer)
 
-       (define-key esk/menu-map (kbd "m") (cons "Mail" #'esk/notmuch-switch-to-hello-buffer))
-
-       (require 'notmuch-address)
-       (setq notmuch-address-command "/usr/local/bin/notmuch-addrlookup")
-       (setq notmuch-address-selection-function #'esk/notmuch-address-selection-function)
-       (notmuch-address-message-insinuate))))
+       (define-key esk/menu-map (kbd "m") (cons "Mail" #'esk/notmuch-switch-to-hello-buffer)))))

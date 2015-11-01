@@ -14,6 +14,11 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 
+;; notmuch
+
+(load (concat esk/user-specific-dir "notmuch"))
+
+
 ;; reStructuredText
 
 (eval-when-compile (require 'rst))

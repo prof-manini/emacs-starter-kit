@@ -95,7 +95,6 @@
                   ; extensions
                   "completion"
                   "gnus"
-                  "notmuch"
                   "skeletons"
                   "yasnippet"
                   ))

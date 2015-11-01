@@ -11,7 +11,8 @@
 
 (defvar esk/packages
   (list
-   'auto-complete
+   'company
+   'company-jedi
    'darcsum
    'dash
    'erc-hl-nicks

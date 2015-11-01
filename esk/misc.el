@@ -81,9 +81,6 @@
       ido-file-extensions-order '(".py" ".js" t)
       )
 
-;; ignore some more directory patterns
-(add-to-list 'completion-ignored-extensions ".egg-info/")
-
 ;; Makefiles are an exception, TAB is mandatory at bol
 (add-hook 'makefile-mode-hook #'esk/turn-on-whitespace-mode-makefiles)
 (add-hook 'makefile-gmake-mode-hook #'esk/turn-on-whitespace-mode-makefiles)

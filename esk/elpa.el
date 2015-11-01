@@ -15,7 +15,6 @@
    'company-jedi
    'darcsum
    'dash
-   'erc-hl-nicks
    'expand-region
    'find-file-in-project
    'flymake-cursor

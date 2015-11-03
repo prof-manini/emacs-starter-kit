@@ -2,14 +2,16 @@
 
 EMACS=emacs
 BATCH=$(EMACS) --batch -Q
-EMAX=$(BATCH) -l ~/.emacs.d/init.el
-ELPA=$(BATCH) -l ~/.emacs.d/esk/elpa.el$(if $(wildcard ~/.emacs.d/$(USER)/elpa.el), -l ~/.emacs.d/$(USER)/elpa.el,)
+EDIR=~/.emacs.d
+EMAX=$(BATCH) -l $(EDIR)/init.el
+ELPA=$(BATCH) -l $(EDIR)/esk/elpa.el$(if $(wildcard $(EDIR)/$(USER)/elpa.el), -l $(EDIR)/$(USER)/elpa.el,)
 ESKDIR=esk
 ESKELS=$(wildcard $(ESKDIR)/*.el)
 ETSDIR=elpa-to-submit
 ETSAL=$(ETSDIR)/loaddefs.el
 ETSELS=$(filter-out $(ETSAL),$(wildcard $(ETSDIR)/*.el))
-ALLELS=$(ESKELS) $(ETSELS) $(wildcard *.el) $(wildcard overrides/*.el)
+USERELS=$(wildcard $(EDIR)/$(USER)/*.el) $(wildcard $(EDIR)/$(USER)/gnus/.gnus.el)
+ALLELS=$(ESKELS) $(ETSELS) $(USERELS) $(wildcard *.el) $(wildcard overrides/*.el)
 ESKLOG=/tmp/$(USER)-emacs-starter-kit.log
 BCTIMESTAMP=.byte-compile-timestamp
 

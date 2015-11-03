@@ -23,6 +23,7 @@
 ;   'git-commit-mode
 ;   'git-rebase-mode
 ;   'magit
+   'jedi-core
    'js2-mode
    'json-mode
    'mo-git-blame

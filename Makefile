@@ -42,7 +42,6 @@ $(BCTIMESTAMP): $(ALLELS)
 	@$(EMAX) -f batch-byte-compile $? >>$(ESKLOG) 2>&1
 	@touch $@
 
-
 .PHONY: update-elpa
 update-elpa:
 	@echo "Installing missing packages from ELPA..."

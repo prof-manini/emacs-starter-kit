@@ -52,6 +52,7 @@
         (load user-override))))
 
 ;; Define and load external packages
+;; Hey, package.el, (package-initialize) is done there!
 
 (esk/load "elpa")
 

@@ -16,7 +16,7 @@ ESKLOG=/tmp/$(USER)-emacs-starter-kit.log
 BCTIMESTAMP=.byte-compile-timestamp
 
 .PHONY: all
-all: $(ETSAL) $(BCTIMESTAMP) magit update-elpa
+all: magit $(ETSAL) $(BCTIMESTAMP) update-elpa
 
 .PHONY: clean
 clean:

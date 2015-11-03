@@ -17,6 +17,9 @@
   (interactive)
   (switch-to-buffer "*Group*"))
 
+; Store all Gnus staff under user's subdirectory, not tracked by darcs
+(setq gnus-home-directory (concat esk/user-specific-dir "gnus/"))
+
 (eval-after-load 'gnus
   '(progn
      (add-hook 'kill-emacs-hook #'esk/gnus-grace-exit-before-kill-emacs)

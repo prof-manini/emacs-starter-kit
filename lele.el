@@ -72,6 +72,8 @@ start everything unconditionally."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case t)
  '(fill-column 95)
  '(git-commit-summary-max-length 70)
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))

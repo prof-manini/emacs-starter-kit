@@ -2,12 +2,13 @@
 ;;
 
 (require 'company)
-(require 'company-jedi)
 
-(add-to-list 'company-backends 'company-jedi)
-
-(global-company-mode)
-
-;; ignore some more directory patterns
+;; Ignore some more directory patterns
 (add-to-list 'completion-ignored-extensions ".egg-info/")
 (add-to-list 'completion-ignored-extensions "__pycache__/")
+
+;; Respect the case, I can't imagine why these aren't the default
+(setq company-dabbrev-downcase nil)
+(setq company-dabbrev-ignore-case t)
+
+(global-company-mode)

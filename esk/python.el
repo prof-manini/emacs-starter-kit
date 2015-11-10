@@ -13,6 +13,10 @@
                (lambda ()
                  (setq-local prettify-symbols-alist '(("lambda" . ?λ)))))
 
+     (require 'company-jedi)
+
+     (add-to-list 'company-backends 'company-jedi)
+
      (define-key python-mode-map (kbd "C-c b") #'python-nav-backward-defun)
      (define-key python-mode-map (kbd "C-c f") #'python-nav-forward-defun)
      (define-key python-mode-map (kbd "C-c u") #'python-nav-backward-statement)

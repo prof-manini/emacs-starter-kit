@@ -2,6 +2,7 @@
 ;;
 
 (eval-when-compile
+  (require 'compile)
   (require 'desktop)
   (require 'virtualenv))
 
@@ -234,6 +235,8 @@ Symbols matching the text at point are put first in the completion list."
       (vc-dir default-directory))
      (t
       (message "No recognized VC repository in sight")))))
+
+(autoload 'compilation-read-command "compile")
 
 (defun esk/compile-next-makefile (command)
   "Run a compilation after changing the working directory"

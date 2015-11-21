@@ -399,25 +399,28 @@ See `sort-regexp-fields'."
   (esk/quote-symbol ?\" 1))
 
 (defun esk/move-text-internal (arg)
-  (cond
-   ((and mark-active transient-mark-mode)
-    (if (> (point) (mark))
-        (exchange-point-and-mark))
-    (let ((column (current-column))
-          (text (delete-and-extract-region (point) (mark))))
-      (forward-line arg)
-      (move-to-column column t)
-      (set-mark (point))
-      (insert text)
-      (exchange-point-and-mark)
-      (setq deactivate-mark nil)))
-   (t
+  (if (and mark-active transient-mark-mode (not (= (point) (mark))))
+      ;; region is active and not empty: delete it (without affecting the kill ring)
+      ;; and move it up (negative arg) or down (positive arg) rigidly by arg lines
+      (progn
+        (if (> (point) (mark))
+            (exchange-point-and-mark))
+        (let ((column (current-column))
+              (text (delete-and-extract-region (point) (mark))))
+          (forward-line arg)
+          (move-to-column column t)
+          (set-mark (point))
+          (insert text)
+          (exchange-point-and-mark)
+          (setq deactivate-mark nil)))
+    ;; no region, move current line up (negative arg) or down (positive arg) rigidly
+    ;; by arg lines
     (beginning-of-line)
     (when (or (> arg 0) (not (bobp)))
       (forward-line)
       (when (or (< arg 0) (not (eobp)))
         (transpose-lines arg))
-      (forward-line (if (< arg 0) -2 -1))))))
+      (forward-line -1))))
 
 (defun esk/move-text-down (arg)
   "Move region (transient-mark-mode active) or current line arg lines down."

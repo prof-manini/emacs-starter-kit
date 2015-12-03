@@ -320,25 +320,25 @@ See `sort-regexp-fields'."
 ;; Uncomment/add desired languages. Alternatively, specific users may
 ;; augment the ring adding something like
 ;;
-;;  (ring-insert+extend lang-ring "castellano8" t)
+;;  (ring-insert+extend esk/lang-ring "castellano8" t)
 ;;
 ;; to their user.el file
 
-(let ((langs '("american"
-               "italiano"
-               ; "castellano8"
-               ; "deutsch8"
-               ; "francais"
-               ; "brasileiro"
-               )))
-  (setq lang-ring (make-ring (length langs)))
-  (dolist (elem langs) (ring-insert lang-ring elem)))
+(defvar esk/lang-ring (ring-convert-sequence-to-ring
+                       '("american"
+                         "italiano"
+                         ;; "castellano8"
+                         ;; "deutsch8"
+                         ;; "francais"
+                         ;; "brasileiro"
+                         ))
+  "A ring containing the desired languages.")
 
 (defun esk/cycle-ispell-languages ()
   "Select the next spell dictionary from the ring."
   (interactive)
-  (let ((lang (ring-ref lang-ring -1)))
-    (ring-insert lang-ring lang)
+  (let ((lang (ring-ref esk/lang-ring -1)))
+    (ring-insert esk/lang-ring lang)
     (ispell-change-dictionary lang)))
 
 (defun esk/rename-current-buffer-file ()

@@ -74,6 +74,7 @@ start everything unconditionally."
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(fill-column 95)
  '(git-commit-summary-max-length 70)
+ '(ispell-dictionary "american")
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))
  '(js2-include-jslint-globals nil)
  '(js2-indent-switch-body t)

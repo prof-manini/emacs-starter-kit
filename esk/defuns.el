@@ -305,7 +305,7 @@ Symbols matching the text at point are put first in the completion list."
   (server-start))
 
 (defun esk/sort-words (reverse beg end)
-  "Sort words in region alphabetically, in REVERSE if negative.
+  "Sort words in region alphabetically.
 Prefixed with negative \\[universal-argument], sorts in reverse.
 
 The variable `sort-fold-case' determines whether alphabetic case

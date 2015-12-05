@@ -110,7 +110,7 @@
 (load (concat esk/top-dir "custom") 'noerror)
 
 ;; Load system specific customizations
-(load (concat esk/top-dir system-name) 'noerror)
+(load (concat esk/top-dir (system-name)) 'noerror)
 
 ;; Where emacs will write user custom settings
 (setq custom-file (concat esk/user-specific-config ".el"))

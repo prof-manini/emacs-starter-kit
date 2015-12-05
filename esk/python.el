@@ -1,6 +1,9 @@
 ;;; esk/python.el --- setup of python stuff
 ;;
 
+(eval-when-compile
+  (require 'python))
+
 (defun esk/python-region-as-new-variable ()
   "Create a new variable, just before current statement, initialized to current region."
   (interactive)

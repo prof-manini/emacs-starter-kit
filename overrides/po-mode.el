@@ -677,8 +677,7 @@ No doubt that highlighting, when Emacs does not allow it, is a kludge."
             (start (marker-position (car overlay)))
             (end (marker-position (cdr overlay))))
         (if buffer
-            (save-excursion
-              (set-buffer buffer)
+            (with-current-buffer buffer
               (let ((modified (buffer-modified-p))
                     (buffer-read-only nil)
                     (inhibit-quit t)
@@ -2902,8 +2901,7 @@ Disregard some simple strings which are most probably non-translatable."
     (if data
         ;; Save information for marking functions.
         (let ((buffer (current-buffer)))
-          (save-excursion
-            (set-buffer po-current-po-buffer)
+          (with-current-buffer po-current-po-buffer
             (setq po-string-contents (nth 0 data)
                   po-string-buffer buffer
                   po-string-start (nth 1 data)
@@ -2923,8 +2921,7 @@ Disregard some simple strings which are most probably non-translatable."
         (end po-string-end)
         line string)
     ;; Mark string in program sources.
-    (save-excursion
-      (set-buffer buffer)
+    (with-current-buffer buffer
       (setq line (count-lines (point-min) start))
       (apply po-mark-string-function start end keyword nil))
     ;; Add PO file entry.

@@ -118,6 +118,11 @@ Version number of this version of po-mode.el.")
   :type 'boolean
   :group 'po)
 
+(defcustom po-auto-unfuzzy-on-edit t
+  "*Automatically remove fuzzy marker after successful edit."
+  :type 'boolean
+  :group 'po)
+
 (defcustom po-auto-delete-previous-msgid t
   "*Automatically delete previous msgid (marked #|) when editing entry.
 Value is nil, t, or ask."
@@ -2424,7 +2429,9 @@ When done with the `ediff' session press \\[exit-recursive-edit] exit to
                        (po-decrease-type-counter)
                        (po-add-attribute "fuzzy")
                        (po-current-entry)
-                       (po-increase-type-counter))))))
+                       (po-increase-type-counter))
+                   (when po-auto-unfuzzy-on-edit
+                     (po-unfuzzy))))))
           (t (debug)))))
 
 (defun po-edit-string (string type expand-tabs)

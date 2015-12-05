@@ -75,27 +75,19 @@
   "## :Copyright: " "Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
   "##\n\n")
 
-(setq auto-insert-alist
-      (cons '(("\\.sql\\'" . "SQL header") . intestazione-gpl)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.rst\\'" . "ReST header") . intestazione-gpl)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.pt\\'" . "ZPT header") . intestazione-gpl)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.py\\'" . "Python header") . intestazione-gpl)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.js\\'" . "Javascript header") . intestazione-gpl)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.css\\'" . "CSS header") . intestazione-gpl-block-comment)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.scss\\'" . "SCSS header") . intestazione-gpl-block-comment)
-            auto-insert-alist))
-(setq auto-insert-alist
-      (cons '(("\\.org\\'" . "ORG header") . intestazione-org)
-            auto-insert-alist))
+(add-to-list 'auto-insert-alist
+             '(("\\.sql\\'" . "SQL header") . intestazione-gpl))
+(add-to-list 'auto-insert-alist
+             '(("\\.rst\\'" . "ReST header") . intestazione-gpl))
+(add-to-list 'auto-insert-alist
+             '(("\\.pt\\'" . "ZPT header") . intestazione-gpl))
+(add-to-list 'auto-insert-alist
+             '(("\\.py\\'" . "Python header") . intestazione-gpl))
+(add-to-list 'auto-insert-alist
+             '(("\\.js\\'" . "Javascript header") . intestazione-gpl))
+(add-to-list 'auto-insert-alist
+             '(("\\.css\\'" . "CSS header") . intestazione-gpl-block-comment))
+(add-to-list 'auto-insert-alist
+             '(("\\.scss\\'" . "SCSS header") . intestazione-gpl-block-comment))
+(add-to-list 'auto-insert-alist
+             '(("\\.org\\'" . "ORG header") . intestazione-org))

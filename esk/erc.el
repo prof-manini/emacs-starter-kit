@@ -11,36 +11,36 @@ This results in a filename of the form #channel@server.txt."
 
 (eval-after-load 'erc
   '(progn
-     (setq erc-log-insert-log-on-open nil)
-     (setq erc-log-channels t)
-     (setq erc-log-channels-directory "~/irclogs/")
-     (setq erc-generate-log-file-name-function #'erc-generate-log-file-name-brief)
-     (setq erc-log-write-after-send t)
-     (setq erc-log-write-after-insert t)
-     (setq erc-save-buffer-on-part nil)
-     (setq erc-hide-timestamps nil)
-     (setq erc-notifications-icon
-           "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg")
-     (setq erc-auto-set-away nil)
-     (setq erc-autoaway-mode nil)
-     (setq erc-modules
-           (quote
-            (
-             autojoin
-             button
-             completion
-             fill
-             hl-nicks
-             irccontrols
-             log
-             match
-             move-to-prompt
-             netsplit
-             noncommands
-             notifications
-             readonly
-             ring
-             smiley
-             stamp
-             track
-             )))))
+     (csetq erc-log-insert-log-on-open nil)
+     (csetq erc-log-channels t)
+     (csetq erc-log-channels-directory "~/irclogs/")
+     (csetq erc-generate-log-file-name-function #'erc-generate-log-file-name-brief)
+     (csetq erc-log-write-after-send t)
+     (csetq erc-log-write-after-insert t)
+     (csetq erc-save-buffer-on-part nil)
+     (csetq erc-hide-timestamps nil)
+     (csetq erc-notifications-icon
+            "/usr/share/notify-osd/icons/hicolor/scalable/status/notification-message-im.svg")
+     (csetq erc-auto-set-away nil)
+     (csetq erc-autoaway-mode nil)
+     (csetq erc-modules
+            (quote
+             (
+              autojoin
+              button
+              completion
+              fill
+              hl-nicks
+              irccontrols
+              log
+              match
+              move-to-prompt
+              netsplit
+              noncommands
+              notifications
+              readonly
+              ring
+              smiley
+              stamp
+              track
+              )))))

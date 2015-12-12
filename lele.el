@@ -5,8 +5,8 @@
 ;;:Licenza:   GNU General Public License version 3 or later
 ;;
 
-(setq user-mail-address "lele@metapensiero.it"
-      user-full-name "Lele Gaifax")
+(csetq user-mail-address "lele@metapensiero.it")
+(csetq user-full-name "Lele Gaifax")
 
 
 ;; magit: prevent warning about auto revert mode

@@ -8,8 +8,8 @@
 (add-to-list 'completion-ignored-extensions "__pycache__/")
 
 ;; Respect the case, I can't imagine why these aren't the default
-(setq company-dabbrev-downcase nil)
-(setq company-dabbrev-ignore-case t)
+(csetq company-dabbrev-downcase nil)
+(csetq company-dabbrev-ignore-case t)
 
 (defun esk/company-sort-preferring-exact-or-same-case (candidates)
   (let ((exact nil)

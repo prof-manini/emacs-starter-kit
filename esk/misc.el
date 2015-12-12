@@ -14,43 +14,38 @@
 (prefer-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
 
-(setq visible-bell t
-      echo-keystrokes 0.1
-      enable-local-eval t
-      font-lock-maximum-decoration t
-      inhibit-startup-message t
-      transient-mark-mode t
-      color-theme-is-global t
-      shift-select-mode nil
-      parens-require-spaces nil
-      mode-require-final-newline 'ask
-      truncate-partial-width-windows nil
-      uniquify-buffer-name-style 'forward
-      whitespace-style '(face
-                         trailing
-                         lines-tail
-                         empty
-                         space-before-tab
-                         space-after-tab
-                         indentation
-                         indentation::space
-                         tabs)
-      ediff-window-setup-function #'ediff-setup-windows-plain
-      scroll-preserve-screen-position t
-      compilation-scroll-output t
-      compilation-mode-hook #'visual-line-mode)
+(csetq color-theme-is-global t)
+(csetq compilation-mode-hook #'visual-line-mode)
+(csetq compilation-scroll-output t)
+(csetq echo-keystrokes 0.1)
+(csetq ediff-window-setup-function #'ediff-setup-windows-plain)
+(csetq enable-local-eval t)
+(csetq font-lock-maximum-decoration t)
+(csetq imenu-auto-rescan t)
+(csetq indent-tabs-mode nil)
+(csetq indicate-empty-lines t)
+(csetq inhibit-startup-message t)
+(csetq mode-require-final-newline 'ask)
+(csetq parens-require-spaces nil)
+(csetq scroll-preserve-screen-position t)
+(csetq shift-select-mode nil)
+(csetq transient-mark-mode t)
+(csetq truncate-partial-width-windows nil)
+(csetq uniquify-buffer-name-style 'forward)
+(csetq visible-bell t)
+(csetq visual-line-fringe-indicators '(left-curly-arrow
+                                       right-curly-arrow))
+(csetq whitespace-style '(face
+                          trailing
+                          lines-tail
+                          empty
+                          space-before-tab
+                          space-after-tab
+                          indentation
+                          indentation::space
+                          tabs))
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
-
-;; Set this to whatever browser you use
-;; (setq browse-url-browser-function 'browse-url-firefox)
-;; (setq browse-url-browser-function 'browse-default-macosx-browser)
-;; (setq browse-url-browser-function 'browse-default-windows-browser)
-;; (setq browse-url-browser-function 'browse-default-kde)
-;; (setq browse-url-browser-function 'browse-default-epiphany)
-;; (setq browse-url-browser-function 'browse-default-w3m)
-;; (setq browse-url-browser-function 'browse-url-generic
-;;       browse-url-generic-program "~/src/conkeror/conkeror")
 
 ;; Transparently open compressed files
 (auto-compression-mode t)
@@ -67,24 +62,20 @@
 
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point nil
-      ido-max-prospects 10
-      ido-ignore-files '("\\`#" "\\`.#" "\\.orig\\'"
-                         "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")
-      ido-ignore-directories '("\\`\\.\\./" "\\`\\./" "\\`__pycache__/")
-      ido-auto-merge-work-directories-length -1
-      ido-file-extensions-order '(".py" ".js" t)
-      )
+(csetq ido-enable-prefix nil)
+(csetq ido-enable-flex-matching t)
+(csetq ido-create-new-buffer 'always)
+(csetq ido-use-filename-at-point nil)
+(csetq ido-max-prospects 10)
+(csetq ido-ignore-files '("\\`#" "\\`.#" "\\.orig\\'"
+                         "\\`\\.\\./" "\\`\\./" "\\`__pycache__/"))
+(csetq ido-ignore-directories '("\\`\\.\\./" "\\`\\./" "\\`__pycache__/"))
+(csetq ido-auto-merge-work-directories-length -1)
+(csetq ido-file-extensions-order '(".py" ".js" t))
 
 ;; Makefiles are an exception, TAB is mandatory at bol
 (add-hook 'makefile-mode-hook #'esk/turn-on-whitespace-mode-makefiles)
 (add-hook 'makefile-gmake-mode-hook #'esk/turn-on-whitespace-mode-makefiles)
-
-(set-default 'indicate-empty-lines t)
-(set-default 'imenu-auto-rescan t)
 
 (add-hook 'text-mode-hook #'turn-on-auto-fill)
 (add-hook 'text-mode-hook #'turn-on-flyspell)
@@ -99,14 +90,14 @@
 (random t)
 
 ;; Activate file backups
-(setq version-control t)
-(setq trim-versions-without-ask t)
-(setq delete-old-versions t)
-(setq backup-by-copying-when-linked t)
+(csetq version-control t)
+(csetq trim-versions-without-ask t)
+(csetq delete-old-versions t)
+(csetq backup-by-copying-when-linked t)
 
 ;; Don't clutter up directories with files~
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat esk/top-dir "backups")))))
+(csetq backup-directory-alist `(("." . ,(expand-file-name
+                                         (concat esk/top-dir "backups")))))
 
 ;; Associate modes with file extensions
 
@@ -133,7 +124,7 @@
     (add-to-list 'grep-find-ignored-files "*.class")))
 
 ;; Default to unified diffs
-(setq diff-switches "-u")
+(csetq diff-switches "-u")
 
 ;; Cosmetics
 
@@ -148,7 +139,7 @@
      (set-face-foreground 'diff-removed "red3")))
 
 ;; make emacs use the clipboard
-(setq x-select-enable-clipboard t)
+(csetq select-enable-clipboard t)
 
 (add-hook 'c-mode-hook #'esk/run-coding-hook)
 (add-hook 'css-mode-hook #'esk/run-coding-hook)

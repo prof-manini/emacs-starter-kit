@@ -295,13 +295,13 @@ Symbols matching the text at point are put first in the completion list."
 
   (let ((dir (ido-read-directory-name "Virtual desktop: ")))
     (esk/virtualenv-activate dir)
-    (setq desktop-base-file-name "emacs.desktop")
-    (setq desktop-dirname dir)
-    (setq desktop-save t)
-    (setq desktop-save-mode t)
+    (csetq desktop-base-file-name "emacs.desktop")
+    (csetq desktop-dirname dir)
+    (csetq desktop-save t)
+    (csetq desktop-save-mode t)
     (unless (desktop-read dir)
       (dired dir))
-    (setq server-name (md5 dir)))
+    (csetq server-name (md5 dir)))
   (server-start))
 
 (defun esk/sort-words (reverse beg end)

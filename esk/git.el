@@ -3,6 +3,8 @@
 
 (require 'magit)
 
+(global-magit-file-mode)
+
 (defun esk/git-outer-level (&optional dir)
   "Return the outer repository toplevel directory, or nil if there isn't one."
   (unless dir

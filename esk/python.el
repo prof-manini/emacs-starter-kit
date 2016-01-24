@@ -18,6 +18,9 @@
   '(progn
      (add-hook 'python-mode-hook #'esk/run-coding-hook)
 
+     ;; Avoid pointless warning
+     (csetq python-indent-guess-indent-offset-verbose nil)
+
      (require 'flymake-python-pyflakes)
      (require 'flymake-cursor)
 

@@ -27,6 +27,7 @@
    'js2-mode
    'json-mode
    'mo-git-blame
+   'py-isort
    'scss-mode
    'smartparens
    'vc-darcs

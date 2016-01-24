@@ -37,4 +37,10 @@
      (define-key python-mode-map (kbd "C-c f") #'python-nav-forward-defun)
      (define-key python-mode-map (kbd "C-c u") #'python-nav-backward-statement)
      (define-key python-mode-map (kbd "C-c d") #'python-nav-forward-statement)
+     (define-key python-mode-map (kbd "C-c r") #'py-isort-buffer)
      (define-key python-mode-map (kbd "C-c v") #'esk/python-region-as-new-variable)))
+
+(eval-after-load 'py-isort
+  '(progn
+     ;; --multi_line_output
+     (csetq py-isort-options '("-m 3"))))

@@ -1,36 +1,67 @@
-;;; esk/skeletons.el --- Standard skeletons
+;;; esk/headers.el --- Standard file header skeletons
+;;
+;; The project name, license and copyright holder can be easily customized within a
+;; .dir-locals.el file, for example:
+;;
+;;  ((nil . ((esk/project-name . "my-project")
+;;           (esk/project-license . "MIT License")
+;;           (esk/project-copyright-holder . "Arstecnica s.r.l."))))
 ;;
 
 (require 'autoinsert)
 
 (auto-insert-mode t)
 
-(define-skeleton intestazione-gpl
-  "Inserisci intestazione standard GPLv3."
-  "[Progetto]: "
+(defvar esk/project-name nil
+  "Last project name.")
+
+(put 'esk/project-name 'safe-local-variable 'stringp)
+
+(defun esk/project-name ()
+  (setq esk/project-name (read-string "Project: " esk/project-name)))
+
+(defvar esk/project-license "GNU General Public License version 3 or later"
+  "Last project license.")
+
+(put 'esk/project-license 'safe-local-variable 'stringp)
+
+(defun esk/project-license ()
+  (setq esk/project-license (read-string "License: " esk/project-license)))
+
+(defvar esk/project-copyright-holder (user-full-name)
+  "Last project copyright holder")
+
+(put 'esk/project-copyright-holder 'safe-local-variable 'stringp)
+
+(defun esk/project-copyright-holder ()
+  (setq esk/project-copyright-holder (read-string "Copyright holder: " esk/project-copyright-holder)))
+
+(define-skeleton esk/file-header
+  "Standard file header."
+  "Summary: "
   comment-start `(delete-horizontal-space) " -*- coding: utf-8 -*-" comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Project:   " str " -- " _ comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Project:   " (esk/project-name) " -- " str "\n"
   comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
   comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
-  comment-start `(delete-horizontal-space) " :License:   GNU General Public License version 3 or later" comment-end "\n"
-  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (user-full-name) comment-end "\n"
+  comment-start `(delete-horizontal-space) " :License:   " (esk/project-license) "\n"
+  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
   comment-start `(delete-horizontal-space) comment-end "\n\n")
 
-(define-skeleton intestazione-gpl-block-comment
-  "Inserisci intestazione standard GPLv3 (block comment)."
-  "[Progetto]: "
+(define-skeleton esk/file-header:block
+  "Standard file header (block comment)."
+  "Summary: "
   comment-start `(delete-horizontal-space)
   " -*- coding: utf-8 -*-\n"
-  " * :Project:   " str " -- " _ "\n"
+  " * :Project:   " (esk/project-name) " -- " str "\n"
   " * :Created:   " (format-time-string "%c") "\n"
-  " * :Author:    " (user-full-name) " <" user-mail-address ">" "\n"
-  " * :License:   GNU General Public License version 3 or later\n"
-  " * :Copyright: Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
+  " * :Author:    " (user-full-name) " <" user-mail-address ">\n"
+  " * :License:   " (esk/project-license) "\n"
+  " * :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
   " " `(delete-horizontal-space) comment-end "\n\n")
 
-(define-skeleton intestazione-org
-  "Intestazione per i file ORG."
-  "[Titolo]:"
+(define-skeleton esk/file-header:org
+  "Standard ORG file header."
+  "Title: "
   "# -*- coding: utf-8 -*-\n"
   "#+TITLE: " str "\n"
   "#+AUTHOR: " (user-full-name) " <" user-mail-address ">\n"
@@ -40,9 +71,9 @@
   "#+PROPERTY: Effort_ALL 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00\n"
   "#+COLUMNS: %40ITEM(Voce) %13Effort(Tempo stimato){:} %CLOCKSUM(Tempo effettivo)\n\n")
 
-(define-skeleton intestazione-preventivo
+(define-skeleton esk/file-header:preventivo
   "Intestazione per i preventivi ORG."
-  "[Titolo]:"
+  "Title: "
   "# -*- coding: utf-8 -*-\n"
   "#+TITLE: Preventivo " str "\n"
   "#+AUTHOR: " (user-full-name) " <" user-mail-address ">\n"
@@ -64,30 +95,34 @@
   "    :Effort:   0:30\n"
   "    :END:\n")
 
-(define-skeleton intestazione-mako
-  "Inserisci un blocco di commento con varie informazioni standard."
-  "[Progetto]: "
+(define-skeleton esk/file-header:mako
+  "Standard Mako file header."
+  "Summary: "
   "## -*- coding: utf-8 -*-\n"
-  "## :Project:   " str " -- " _ "\n"
+  "## :Project:   " (esk/project-name) " -- " str "\n"
   "## :Created:   " (format-time-string "%c") "\n"
   "## :Author:    " (user-full-name) " <" user-mail-address ">\n"
-  "## :License:   " "GNU General Public License version 3 or later\n"
-  "## :Copyright: " "Copyright (C) " (format-time-string "%Y") " " (user-full-name) "\n"
+  "## :License:   " (esk/project-license) "\n"
+  "## :Copyright: " "Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
   "##\n\n")
 
-(add-to-list 'auto-insert-alist
-             '(("\\.sql\\'" . "SQL header") . intestazione-gpl))
-(add-to-list 'auto-insert-alist
-             '(("\\.rst\\'" . "ReST header") . intestazione-gpl))
-(add-to-list 'auto-insert-alist
-             '(("\\.pt\\'" . "ZPT header") . intestazione-gpl))
-(add-to-list 'auto-insert-alist
-             '(("\\.py\\'" . "Python header") . intestazione-gpl))
-(add-to-list 'auto-insert-alist
-             '(("\\.js\\'" . "Javascript header") . intestazione-gpl))
-(add-to-list 'auto-insert-alist
-             '(("\\.css\\'" . "CSS header") . intestazione-gpl-block-comment))
-(add-to-list 'auto-insert-alist
-             '(("\\.scss\\'" . "SCSS header") . intestazione-gpl-block-comment))
-(add-to-list 'auto-insert-alist
-             '(("\\.org\\'" . "ORG header") . intestazione-org))
+(define-skeleton esk/file-header:sql
+  "Standard SQL file header."
+  "Summary: "
+  comment-start `(delete-horizontal-space) " -*- sql-product: " (symbol-name (sql-read-product "SQL product: ")) "; coding: utf-8 -*-" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Project:   " (esk/project-name) " -- " str comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
+  comment-start `(delete-horizontal-space) " :License:   " (esk/project-license) "\n"
+  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
+  comment-start `(delete-horizontal-space) comment-end "\n\n")
+
+(add-to-list 'auto-insert-alist '(("\\.css\\'" . "CSS header") . esk/file-header:block))
+(add-to-list 'auto-insert-alist '(("\\.js\\'" . "Javascript header") . esk/file-header))
+(add-to-list 'auto-insert-alist '(("\\.mako\\'" . "Mako header") . esk/file-header:mako))
+(add-to-list 'auto-insert-alist '(("\\.org\\'" . "ORG header") . esk/file-header:org))
+(add-to-list 'auto-insert-alist '(("\\.pt\\'" . "ZPT header") . esk/file-header))
+(add-to-list 'auto-insert-alist '(("\\.py\\'" . "Python header") . esk/file-header))
+(add-to-list 'auto-insert-alist '(("\\.rst\\'" . "ReST header") . esk/file-header))
+(add-to-list 'auto-insert-alist '(("\\.scss\\'" . "SCSS header") . esk/file-header:block))
+(add-to-list 'auto-insert-alist '(("\\.sql\\'" . "SQL header") . esk/file-header:sql))

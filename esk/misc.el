@@ -21,6 +21,7 @@
 (csetq ediff-window-setup-function #'ediff-setup-windows-plain)
 (csetq enable-local-eval t)
 (csetq font-lock-maximum-decoration t)
+(csetq gc-cons-threshold 20000000)
 (csetq imenu-auto-rescan t)
 (csetq indent-tabs-mode nil)
 (csetq indicate-empty-lines t)

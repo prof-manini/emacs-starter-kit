@@ -93,6 +93,7 @@ not in the generic assignments."
                   "bindings"
                   "misc"
                   "registers"
+                  "headers"
 
                   ; major modes
                   "erc"
@@ -105,7 +106,6 @@ not in the generic assignments."
                   ; extensions
                   "completion"
                   "gnus"
-                  "skeletons"
                   "yasnippet"
                   ))
 

@@ -44,7 +44,7 @@
   comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
   comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
   comment-start `(delete-horizontal-space) " :License:   " (esk/project-license) "\n"
-  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Copyright: © " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
   comment-start `(delete-horizontal-space) comment-end "\n\n")
 
 (define-skeleton esk/file-header:block
@@ -56,7 +56,7 @@
   " * :Created:   " (format-time-string "%c") "\n"
   " * :Author:    " (user-full-name) " <" user-mail-address ">\n"
   " * :License:   " (esk/project-license) "\n"
-  " * :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
+  " * :Copyright: © " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
   " " `(delete-horizontal-space) comment-end "\n\n")
 
 (define-skeleton esk/file-header:org
@@ -103,7 +103,7 @@
   "## :Created:   " (format-time-string "%c") "\n"
   "## :Author:    " (user-full-name) " <" user-mail-address ">\n"
   "## :License:   " (esk/project-license) "\n"
-  "## :Copyright: " "Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
+  "## :Copyright: " "© " (format-time-string "%Y") " " (esk/project-copyright-holder) "\n"
   "##\n\n")
 
 (define-skeleton esk/file-header:sql
@@ -114,7 +114,7 @@
   comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
   comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"
   comment-start `(delete-horizontal-space) " :License:   " (esk/project-license) "\n"
-  comment-start `(delete-horizontal-space) " :Copyright: Copyright (C) " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
+  comment-start `(delete-horizontal-space) " :Copyright: © " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
   comment-start `(delete-horizontal-space) comment-end "\n\n")
 
 (add-to-list 'auto-insert-alist '(("\\.css\\'" . "CSS header") . esk/file-header:block))

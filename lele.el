@@ -67,6 +67,7 @@ start everything unconditionally."
 
 
 ;; Enable some "dangerous" functionalities
+
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 

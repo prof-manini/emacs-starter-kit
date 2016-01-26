@@ -32,6 +32,13 @@
      (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
 
+;; Automatically update copyright years when saving
+
+(csetq copyright-names-regexp (regexp-quote (user-full-name)))
+(csetq copyright-year-ranges t)
+(add-hook 'before-save-hook #'copyright-update)
+
+
 ;; Customize my main Emacs instance: I'm used to have one Emacs dedicated to
 ;; news, mail, chat and so on, living in the second i3 workspace. This function
 ;; is then called by my i3 configuration file with

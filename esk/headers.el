@@ -50,8 +50,7 @@
 (define-skeleton esk/file-header:block
   "Standard file header (block comment)."
   "Summary: "
-  comment-start `(delete-horizontal-space)
-  " -*- coding: utf-8 -*-\n"
+  comment-start `(delete-horizontal-space) " -*- coding: utf-8 -*-\n"
   " * :Project:   " (esk/project-name) " -- " str "\n"
   " * :Created:   " (format-time-string "%c") "\n"
   " * :Author:    " (user-full-name) " <" user-mail-address ">\n"

@@ -102,10 +102,10 @@
 
 ;; Associate modes with file extensions
 
-(add-to-list 'auto-mode-alist '("\\.s?css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(pt\\|xml\\|xsl\\|rng\\|xhtml\\|zcml\\)\\'" . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(html\\|jinja\\|mako\\)\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.raml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.raml\\'" . yaml-mode))
 
 (autoload 'rst-mode "rst")
 (add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))

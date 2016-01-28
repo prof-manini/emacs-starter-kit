@@ -116,12 +116,12 @@
   comment-start `(delete-horizontal-space) " :Copyright: © " (format-time-string "%Y") " " (esk/project-copyright-holder) comment-end "\n"
   comment-start `(delete-horizontal-space) comment-end "\n\n")
 
-(add-to-list 'auto-insert-alist '(("\\.css\\'" . "CSS header") . esk/file-header:block))
+(add-to-list 'auto-insert-alist '(("\\.css\\'" . "CSS header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.js\\'" . "Javascript header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.mako\\'" . "Mako header") . esk/file-header:mako))
 (add-to-list 'auto-insert-alist '(("\\.org\\'" . "ORG header") . esk/file-header:org))
 (add-to-list 'auto-insert-alist '(("\\.pt\\'" . "ZPT header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.py\\'" . "Python header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.rst\\'" . "ReST header") . esk/file-header))
-(add-to-list 'auto-insert-alist '(("\\.scss\\'" . "SCSS header") . esk/file-header:block))
+(add-to-list 'auto-insert-alist '(("\\.scss\\'" . "SCSS header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.sql\\'" . "SQL header") . esk/file-header:sql))

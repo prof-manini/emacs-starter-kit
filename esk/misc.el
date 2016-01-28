@@ -108,7 +108,7 @@
 (add-to-list 'auto-mode-alist '("\\.raml\\'" . yaml-mode))
 
 (autoload 'rst-mode "rst")
-(add-to-list 'auto-mode-alist '("\\.rst$" . rst-mode))
+(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode))
 
 (autoload 'po-mode "po-mode"
   "Major mode for translators to edit PO files" t)
@@ -117,7 +117,7 @@
 (modify-coding-system-alist 'file "\\.po[tx]?\\'\\|\\.po\\." 'po-find-file-coding-system)
 
 (autoload 'scss-mode "scss-mode")
-(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 (eval-after-load 'grep
   '(when (boundp 'grep-find-ignored-files)

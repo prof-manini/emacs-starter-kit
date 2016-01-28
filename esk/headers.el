@@ -125,3 +125,6 @@
 (add-to-list 'auto-insert-alist '(("\\.rst\\'" . "ReST header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.scss\\'" . "SCSS header") . esk/file-header))
 (add-to-list 'auto-insert-alist '(("\\.sql\\'" . "SQL header") . esk/file-header:sql))
+
+(add-to-list 'auto-insert-alist '(c-mode . esk/file-header:block))
+(add-to-list 'auto-insert-alist '(makefile-gmake-mode . esk/file-header))

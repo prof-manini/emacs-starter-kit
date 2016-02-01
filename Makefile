@@ -16,7 +16,7 @@ ESKLOG=/tmp/$(USER)-emacs-starter-kit.log
 BCTIMESTAMP=.byte-compile-timestamp
 
 .PHONY: all
-all: magit $(ETSAL) $(BCTIMESTAMP) update-elpa
+all: $(ETSAL) $(BCTIMESTAMP) update-elpa
 
 .PHONY: clean
 clean:
@@ -48,28 +48,8 @@ update-elpa:
 	$(ELPA) -f package-refresh-contents -f esk/install-packages
 
 .PHONY: upgrade
-upgrade: upgrade-elpa upgrade-and-compile-magit
+upgrade: upgrade-elpa
 
 .PHONY: upgrade-elpa
 upgrade-elpa:
 	$(ELPA) -f esk/upgrade-packages
-
-MAGIT_DIR := $(abspath elpa-to-submit/magit)
-GIT_MODES_DIR := $(abspath elpa-to-submit/git-modes)
-DASH_DIR = $(abspath $(wildcard elpa/dash-2*))
-
-.PHONY: magit
-magit: $(GIT_MODES_DIR) $(MAGIT_DIR)
-
-$(MAGIT_DIR):
-	git clone https://github.com/magit/magit.git $@
-
-$(GIT_MODES_DIR):
-	git clone https://github.com/magit/git-modes.git $@
-
-.PHONY: upgrade-and-compile-magit
-upgrade-and-compile-magit:
-	(cd $(GIT_MODES_DIR) && git pull)
-	make -C $(GIT_MODES_DIR) EFLAGS="-L $(DASH_DIR)" clean lisp
-	(cd $(MAGIT_DIR) && git pull)
-	make -C $(MAGIT_DIR) EFLAGS="-L $(GIT_MODES_DIR) -L $(DASH_DIR)" clean lisp

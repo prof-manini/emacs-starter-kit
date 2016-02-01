@@ -81,10 +81,9 @@ not in the generic assignments."
 ;; Autoloaded stuff
 
 (add-to-list 'load-path esk/autoload-dir)
-(add-to-list 'load-path (concat esk/autoload-dir "magit/lisp"))
-(add-to-list 'load-path (concat esk/autoload-dir "git-modes"))
 
 (load (concat esk/autoload-dir "loaddefs.el"))
+
 
 ;; Load up starter kit customizations
 

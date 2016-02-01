@@ -19,10 +19,7 @@
    'flymake-cursor
    'flymake-python-pyflakes
    'iedit
-;;; Use magit-next until it gets merged into master
-;   'git-commit-mode
-;   'git-rebase-mode
-;   'magit
+   'magit
    'jedi-core
    'js2-mode
    'json-mode

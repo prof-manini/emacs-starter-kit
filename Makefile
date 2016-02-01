@@ -16,7 +16,7 @@ ESKLOG=/tmp/$(USER)-emacs-starter-kit.log
 BCTIMESTAMP=.byte-compile-timestamp
 
 .PHONY: all
-all: $(ETSAL) $(BCTIMESTAMP) update-elpa
+all: update-elpa $(ETSAL) $(BCTIMESTAMP)
 
 .PHONY: clean
 clean:
@@ -47,9 +47,7 @@ update-elpa:
 	@echo "Installing missing packages from ELPA..."
 	$(ELPA) -f package-refresh-contents -f esk/install-packages
 
-.PHONY: upgrade
-upgrade: upgrade-elpa
-
 .PHONY: upgrade-elpa
 upgrade-elpa:
-	$(ELPA) -f esk/upgrade-packages
+	@echo "Upgrading packages from ELPA..."
+	$(ELPA) -f package-refresh-contents -f esk/upgrade-packages

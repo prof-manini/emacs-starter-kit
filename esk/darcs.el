@@ -9,5 +9,8 @@
 
 ;; vc-darcs
 (add-to-list 'vc-handled-backends 'DARCS)
-(autoload 'vc-darcs-find-file-hook "vc-darcs")
-(add-hook 'find-file-hooks 'vc-darcs-find-file-hook)
+
+;; This is annoying: when recording a patch from the command line
+;; the changelog becomes read-only...
+;;(autoload 'vc-darcs-find-file-hook "vc-darcs")
+;;(add-hook 'find-file-hooks 'vc-darcs-find-file-hook)

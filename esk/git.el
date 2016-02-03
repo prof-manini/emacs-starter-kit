@@ -53,4 +53,4 @@ outmost Git repository recursing down in all submodules."
   (let ((parent-dir (esk/git-outer-level)))
     (if (not parent-dir)
         (beep)
-      (magit-status parent-dir))))
+      (magit-status-internal parent-dir))))

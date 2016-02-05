@@ -21,6 +21,9 @@
      ;; Avoid pointless warning
      (csetq python-indent-guess-indent-offset-verbose nil)
 
+     ;; Activate pdbtrack in M-x shell buffers
+     (add-hook 'comint-output-filter-functions #'python-pdbtrack-comint-output-filter-function)
+
      (require 'flymake-python-pyflakes)
      (require 'flymake-cursor)
 

@@ -1936,9 +1936,8 @@ If FORM is itself a string, then this string is used for insertion."
       (goto-char (point-min))
       (when prefix (insert prefix " "))
       (when multi-line (insert "\"\"\n"))
+      (insert "\"")
       (while (not (eobp))
-        ;; start each line with a quote
-        (insert "\"")
         ;; see where to set next linebreak
         (let* ((start-of-line (point))
                ;; calculate position before which break has to occur;
@@ -1947,7 +1946,7 @@ If FORM is itself a string, then this string is used for insertion."
           ;; break at \n, no matter where it is on the line
           (if (re-search-forward "\\\\n" max-end-of-line 'move-to-limit)
               ;; insert quote if not already at end of text
-              (unless (eobp) (insert "\"\n"))
+              (unless (eobp) (insert "\"\n\""))
             ;; no \n found within a line, and point is at max. end of line now
             ;; if already at end-of-buffer, do nothing
             (when (not (eobp))
@@ -1956,7 +1955,7 @@ If FORM is itself a string, then this string is used for insertion."
                   ;; when found a space, break after it
                   (forward-char 1))
               ;; in any case, break at point
-              (insert "\"\n")))))
+              (insert "\"\n\"")))))
       (goto-char (point-max))
       (insert "\"")
       (when prefix (insert "\n"))

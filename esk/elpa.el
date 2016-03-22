@@ -15,14 +15,15 @@
    'company-jedi
    'darcsum
    'dash
+   'erc-hl-nicks
    'expand-region
    'flymake-cursor
    'flymake-python-pyflakes
    'iedit
-   'magit
    'jedi-core
    'js2-mode
    'json-mode
+   'magit
    'mo-git-blame
    'py-isort
    'scss-mode

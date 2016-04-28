@@ -108,7 +108,7 @@
 (define-skeleton esk/file-header:sql
   "Standard SQL file header."
   "Summary: "
-  comment-start `(delete-horizontal-space) " -*- sql-product: " (symbol-name (sql-read-product "SQL product: ")) "; coding: utf-8 -*-" comment-end "\n"
+  comment-start `(delete-horizontal-space) " -*- coding: utf-8; sql-product: " (symbol-name (sql-read-product "SQL product: ")) " -*-" comment-end "\n"
   comment-start `(delete-horizontal-space) " :Project:   " (esk/project-name) " -- " str comment-end "\n"
   comment-start `(delete-horizontal-space) " :Created:   " (format-time-string "%c") comment-end "\n"
   comment-start `(delete-horizontal-space) " :Author:    " (user-full-name) " <" user-mail-address ">" comment-end "\n"

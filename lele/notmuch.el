@@ -32,4 +32,8 @@
        (define-key notmuch-search-mode-map "d" #'esk/notmuch-search-add-deleted-tag)
        (define-key notmuch-common-keymap "g" #'notmuch-refresh-this-buffer)
 
-       (define-key esk/menu-map (kbd "m") (cons "Mail" #'esk/notmuch-switch-to-hello-buffer)))))
+       (define-key esk/menu-map (kbd "m") (cons "Mail" #'esk/notmuch-switch-to-hello-buffer))
+
+       ;; Do not insert any pointless description of the citation text when replying
+       (setq notmuch-mua-reply-insert-header-p-function
+             'notmuch-show-reply-insert-header-p-never))))

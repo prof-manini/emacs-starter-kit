@@ -95,7 +95,9 @@ start everything unconditionally."
  '(python-fill-docstring-style (quote pep-257-nn))
  '(safe-local-variable-values
    (quote
-    ((flymake-python-pyflakes-executable . "python3.5")
+    ((web-mode-engines-alist quote
+                             (("jinja" . "\\.templ\\'")))
+     (flymake-python-pyflakes-executable . "python3.5")
      (flymake-python-pyflakes-extra-arguments "-m" "pyflakes")
      (flymake-python-pyflakes-executable . "python3")
      (org-time-clocksum-format :days "%dd" :hours "%d" :require-minutes nil)
@@ -105,6 +107,7 @@ start everything unconditionally."
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")
  '(smtpmail-smtp-service 25)
+ '(web-mode-markup-indent-offset 2)
  '(whitespace-line-column nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

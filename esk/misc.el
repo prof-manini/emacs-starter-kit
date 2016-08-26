@@ -92,13 +92,16 @@
 
 ;; Activate file backups
 (csetq version-control t)
-(csetq trim-versions-without-ask t)
 (csetq delete-old-versions t)
 (csetq backup-by-copying-when-linked t)
+(csetq vc-make-backup-files t)
 
 ;; Don't clutter up directories with files~
 (csetq backup-directory-alist `(("." . ,(expand-file-name
                                          (concat esk/top-dir "backups")))))
+
+;; Ignore files contained within a .git directory
+(csetq backup-enable-predicate #'esk/backup-enable-predicate)
 
 ;; Associate modes with file extensions
 

@@ -463,3 +463,11 @@ If ARG is zero, the words around or after point and around or after mark
 are interchanged."
   (interactive "*p")
   (transpose-subr #'forward-symbol arg))
+
+(defun esk/backup-enable-predicate (name)
+  "Avoid backups of files contained in .git/ directory, in particular COMMIT_EDITMSG"
+  (and (normal-backup-enable-predicate name)
+       (not (equal ".git"
+                   (file-name-nondirectory
+                    (directory-file-name
+                     (file-name-directory name)))))))

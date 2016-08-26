@@ -97,7 +97,7 @@ not in the generic assignments."
                   ; major modes
                   "erc"
                   "eshell"
-                  "jabber"
+                  ;; "jabber"
                   "js"
                   "lisp"
                   "python"

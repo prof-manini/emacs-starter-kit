@@ -56,7 +56,7 @@ start everything unconditionally."
   (if (or dont-ask (y-or-n-p "Notmuch? ")) (notmuch))
   (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
   (if (or dont-ask (y-or-n-p "IRC? ")) (esk/start-erc-session))
-  (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
+  ;; (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
 
   (message "Have a nice day!"))
 

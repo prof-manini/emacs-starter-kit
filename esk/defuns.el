@@ -7,7 +7,7 @@
   (require 'virtualenv))
 
 (require 'imenu)
-(require 'smartparens)
+(require 'smartparens-python)
 (require 'thingatpt)
 (require 'whitespace)
 (require 'whitespace-cleanup-mode)

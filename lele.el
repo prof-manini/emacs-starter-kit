@@ -30,6 +30,12 @@
      ;; disable new auto indent
      (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
+;; These are common associations in PatchDB context
+(eval-after-load 'projectile
+  '(progn
+     (add-to-list 'projectile-other-file-alist '("sql" "rst" "py"))
+     (add-to-list 'projectile-other-file-alist '("rst" "sql" "py"))))
+
 
 ;; Automatically update copyright years when saving
 

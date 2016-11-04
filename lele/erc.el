@@ -32,7 +32,6 @@
            "#linuxtrent"
            "#darcs"
            "#sqlalchemy"
-           "#trac"
            )))
   (setq erc-nick '("lelit" "lelix"))
 

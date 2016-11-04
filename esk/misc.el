@@ -63,6 +63,7 @@
 
 ;; ido-mode is like magic pixie dust!
 (ido-mode t)
+(ido-everywhere 1)
 (csetq ido-enable-prefix nil)
 (csetq ido-enable-flex-matching t)
 (csetq ido-create-new-buffer 'always)

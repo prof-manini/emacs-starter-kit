@@ -102,6 +102,7 @@ start everything unconditionally."
  '(package-selected-packages
    (quote
     (company-jedi company notmuch yasnippet yaml-mode whitespace-cleanup-mode wgrep web-mode vc-darcs sphinx-doc smartparens rainbow-mode notmuch-labeler nginx-mode mo-git-blame json-mode js2-mode jabber iedit idomenu google-contacts flymake-python-pyflakes flymake-cursor expand-region erc-hl-nicks emmet-mode dockerfile-mode darcsum cython-mode auto-complete)))
+ '(projectile-mode-line '(:eval (format " 〚%s〛" (projectile-project-name))))
  '(python-fill-docstring-style (quote pep-257-nn))
  '(safe-local-variable-values
    (quote

@@ -96,6 +96,9 @@ start everything unconditionally."
  '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)
  '(notmuch-fcc-dirs "metapensiero/Sent")
+ '(org-time-clocksum-format
+   (quote
+    (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
  '(package-selected-packages
    (quote
     (company-jedi company notmuch yasnippet yaml-mode whitespace-cleanup-mode wgrep web-mode vc-darcs sphinx-doc smartparens rainbow-mode notmuch-labeler nginx-mode mo-git-blame json-mode js2-mode jabber iedit idomenu google-contacts flymake-python-pyflakes flymake-cursor expand-region erc-hl-nicks emmet-mode dockerfile-mode darcsum cython-mode auto-complete)))

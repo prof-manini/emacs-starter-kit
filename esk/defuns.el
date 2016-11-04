@@ -302,7 +302,13 @@ Symbols matching the text at point are put first in the completion list."
     (unless (desktop-read dir)
       (dired dir))
     (csetq server-name (md5 dir)))
-  (server-start))
+
+  ;; Activate the Emacs server
+  (server-start)
+
+  ;; Activate projectile)
+  (require 'projectile)
+  (projectile-mode))
 
 (defun esk/sort-words (reverse beg end)
   "Sort words in region alphabetically.

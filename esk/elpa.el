@@ -17,6 +17,7 @@
    'dash
    'erc-hl-nicks
    'expand-region
+   'flx-ido
    'flymake-cursor
    'flymake-python-pyflakes
    'iedit
@@ -25,6 +26,7 @@
    'json-mode
    'magit
    'mo-git-blame
+   'projectile
    'py-isort
    'scss-mode
    'smartparens

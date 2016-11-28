@@ -84,6 +84,7 @@ start everything unconditionally."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auto-revert-mode-text "")
  '(auto-revert-tail-mode-text "")
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(fill-column 95)

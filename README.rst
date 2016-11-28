@@ -1,4 +1,4 @@
-..  -*- coding: utf-8 -*-
+.. -*- coding: utf-8 -*-
 
 =====================================
 Yet another fork of Emacs Starter Kit
@@ -8,15 +8,6 @@ This is a fork of the original `Emacs Starter Kit`_, more precisely of `Gabriele
 branch of it.
 
 __ https://github.com/gabrielelanaro/emacs-starter-kit
-
-Introduction
-============
-
-I don't like ``git``, and after a brief period with ``bzr`` I decided to switch back to
-``darcs``, that is simple and awesome expecially for this kind of projects, where usually each
-single user will want to customize this and that with as little as possible interferences with
-whatever upstream is doing, and still being able to record his own changes and freely exchange
-those with co-workers. ``darcs`` simply excels at that.
 
 Installation
 ============
@@ -28,7 +19,7 @@ First of all, you may want to move your current configuration in a safe place, m
 
 Then fetch a copy of this repository::
 
-  $ darcs get --lazy http://hub.darcs.net/lelit/emacs-starter-kit .emacs.d
+  $ git clone --depth 1 https://github.com/lelit/emacs-starter-kit.git .emacs.d
 
 You may want to tweak the file ``.emacs.d/esk/elpa.el`` adjusting the list of external
 packages.

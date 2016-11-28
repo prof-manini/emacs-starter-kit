@@ -72,7 +72,11 @@ If user wants, she should define the list esk/gnus-user-groups in her
 `~/.emacs.d/her-name/gnus.el' containing the newsgroups she's interested to."
   (require 'gnus-start)
   (when (boundp 'esk/gnus-user-groups)
-    (mapc #'gnus-subscribe-newsgroup (reverse esk/gnus-user-groups))))
+    (unless gnus-have-read-active-file
+      (gnus-read-active-file))
+    (mapc (lambda (group)
+            (unless (gnus-group-entry group)
+              (gnus-subscribe-newsgroup group))) (reverse esk/gnus-user-groups))))
 
 (eval-after-load 'gnus
   '(progn

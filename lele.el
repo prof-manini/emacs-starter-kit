@@ -56,8 +56,6 @@ If DONT-ASK is non-nil, interactively when invoked with a prefix arg,
 start everything unconditionally."
   (interactive "P")
 
-  (set-frame-font "DejaVu Sans Mono-10" t)
-
   (if (or dont-ask (y-or-n-p "Emacs server? ")) (server-start))
   (if (or dont-ask (y-or-n-p "Notmuch? ")) (notmuch))
   (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
@@ -69,6 +67,12 @@ start everything unconditionally."
 (defun esk/mine-emacs-! ()
   "Unconditionally start my emacs setup."
   (esk/mine-emacs t))
+
+
+;; Use a nicer font
+
+;(set-frame-font "DejaVu Sans Mono-10" t)
+(set-frame-font "Cousine-10" t)
 
 
 ;; Enable some "dangerous" functionalities

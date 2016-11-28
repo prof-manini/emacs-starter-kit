@@ -30,9 +30,21 @@
 (csetq gnus-summary-same-subject "⤷")
 
 ;; Prefer plain text alternative
-(csetq mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*")
-       mm-automatic-display (remove "text/html" mm-automatic-display)
-       gnus-buttonized-mime-types '("multipart/alternative" "multipart/signed"))
+(csetq mm-discouraged-alternatives '("text/html" "text/richtext" "image/.*"))
+(csetq mm-automatic-display
+       '("text/plain" "text/enriched" "text/richtext"
+         ;; "text/html"
+         "text/x-verbatim"
+         "text/x-vcard" "image/.*" "message/delivery-status" "multipart/.*"
+         "message/rfc822" "text/x-patch" "text/dns" "application/pgp-signature"
+         "application/emacs-lisp" "application/x-emacs-lisp"
+         "application/x-pkcs7-signature"
+         "application/pkcs7-signature" "application/x-pkcs7-mime"
+         "application/pkcs7-mime"
+         ;; Mutt still uses this even though it has already been withdrawn.
+         "application/pgp\\'"
+         "text/x-org"))
+(csetq gnus-buttonized-mime-types '("multipart/alternative" "multipart/signed"))
 
 ;; Archive - putting sent mail and news somewhere
 (csetq gnus-message-archive-group

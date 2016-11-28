@@ -14,6 +14,11 @@
 (csetq gnus-read-newsrc-file nil)
 (csetq gnus-save-newsrc-file nil)
 
+; Store all Gnus staff under a directory ignored by git
+(csetq gnus-home-directory (concat esk/top-dir "gnus/"))
+(csetq gnus-init-file (concat gnus-home-directory "gnus-init"))
+(csetq gnus-startup-file (concat gnus-home-directory "newsrc"))
+
 ;; Also, I manually select which newsgroups I'm gonna follow, so don't bother
 ;; with keeping a notion of "new" newsgroups
 (csetq gnus-save-killed-list nil)
@@ -55,9 +60,6 @@ If user wants, she should define the list esk/gnus-user-groups in her
 `~/.emacs.d/her-name/gnus.el' containing the newsgroups she's interested to."
   (when (boundp 'esk/gnus-user-groups)
     (mapc #'gnus-subscribe-newsgroup (reverse esk/gnus-user-groups))))
-
-; Store all Gnus staff under a directory ignored by git
-(csetq gnus-home-directory (concat esk/top-dir "gnus/"))
 
 (eval-after-load 'gnus
   '(progn

@@ -58,6 +58,7 @@
   "Subscribe to user's groups, if defined.
 If user wants, she should define the list esk/gnus-user-groups in her
 `~/.emacs.d/her-name/gnus.el' containing the newsgroups she's interested to."
+  (require 'gnus-start)
   (when (boundp 'esk/gnus-user-groups)
     (mapc #'gnus-subscribe-newsgroup (reverse esk/gnus-user-groups))))
 

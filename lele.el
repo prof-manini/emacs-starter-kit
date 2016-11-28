@@ -135,16 +135,6 @@ start everything unconditionally."
      )))
  '(projectile-mode-line (quote (:eval (format " 〚%s〛" (projectile-project-name)))))
  '(python-fill-docstring-style (quote pep-257-nn))
- '(safe-local-variable-values
-   (quote
-    ((web-mode-engines-alist quote
-                             (("jinja" . "\\.templ\\'")))
-     (flymake-python-pyflakes-executable . "python3.5")
-     (flymake-python-pyflakes-extra-arguments "-m" "pyflakes")
-     (flymake-python-pyflakes-executable . "python3")
-     (org-time-clocksum-format :days "%dd" :hours "%d" :require-minutes nil)
-     (org-time-clocksum-use-effort-durations . t)
-     (lexical-binding . t))))
  '(scss-compile-at-save nil)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")

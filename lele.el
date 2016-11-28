@@ -90,8 +90,6 @@ start everything unconditionally."
  '(git-commit-summary-max-length 70)
  '(ispell-dictionary "american")
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))
- '(js2-include-jslint-globals nil)
- '(js2-indent-switch-body t)
  '(longlines-show-hard-newlines t)
  '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)

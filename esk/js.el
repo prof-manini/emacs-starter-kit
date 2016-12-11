@@ -18,14 +18,14 @@
                js2-additional-externs)))
 
 (defun esk/js2-get-jsl-declares ()
-  (loop for node in (js2-ast-root-comments js2-mode-ast)
-        when (and (js2-comment-node-p node)
-                  (save-excursion
-                    (goto-char (+ 2 (js2-node-abs-pos node)))
-                    (looking-at "jsl:declare ")))
-        append (esk/js2-get-jsl-declares-in
-                (match-end 0)
-                (js2-node-abs-end node))))
+  (cl-loop for node in (js2-ast-root-comments js2-mode-ast)
+           when (and (js2-comment-node-p node)
+                     (save-excursion
+                       (goto-char (+ 2 (js2-node-abs-pos node)))
+                       (looking-at "jsl:declare ")))
+           append (esk/js2-get-jsl-declares-in
+                   (match-end 0)
+                   (js2-node-abs-end node))))
 
 (defun esk/js2-get-jsl-declares-in (beg end)
   (let (res)

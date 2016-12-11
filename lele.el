@@ -8,11 +8,6 @@
 (csetq user-mail-address "lele@metapensiero.it")
 (csetq user-full-name "Lele Gaifax")
 
-;; magit: prevent warning about auto revert mode
-
-(setq magit-last-seen-setup-instructions "1.4.0")
-
-
 ;; notmuch
 
 (load (concat esk/user-specific-dir "notmuch"))

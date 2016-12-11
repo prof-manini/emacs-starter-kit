@@ -91,6 +91,7 @@ start everything unconditionally."
  '(ispell-dictionary "american")
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))
  '(longlines-show-hard-newlines t)
+ '(magit-delete-by-moving-to-trash nil)
  '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)
  '(notmuch-fcc-dirs "metapensiero/Sent")

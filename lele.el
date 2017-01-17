@@ -26,12 +26,15 @@
      (add-hook 'rst-mode-hook (lambda () (electric-indent-local-mode -1)))))
 
 
-;; These are common associations in PatchDB context
+;; projectile
 
 (eval-after-load 'projectile
   '(progn
+     ;; These are common associations in PatchDB context
      (add-to-list 'projectile-other-file-alist '("sql" "rst" "py"))
-     (add-to-list 'projectile-other-file-alist '("rst" "sql" "py"))))
+     (add-to-list 'projectile-other-file-alist '("rst" "sql" "py"))
+     ;; And this is for javascripthon
+     (add-to-list 'projectile-other-file-alist '("pj" "js" "py"))))
 
 
 ;; Automatically update copyright years when saving

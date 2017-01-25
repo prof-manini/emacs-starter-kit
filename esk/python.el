@@ -14,6 +14,29 @@
     (esk/open-previous-line 1)
     (insert name " = " text)))
 
+(defun esk/python-add-symbol-to-__all__ ()
+  "Take the symbol under the point and add it to the __all__ tuple, if it's not already there."
+  ;; adapted from
+  ;; http://stackoverflow.com/questions/860357/emacs-function-to-add-symbol-to-all-in-python-mode#860569
+  (interactive)
+  (save-excursion
+    (let ((thing (thing-at-point 'symbol)) found)
+      (goto-char (point-min))
+      (while (and (not found)
+                  (re-search-forward (rx symbol-start "__all__" symbol-end
+                                         (0+ space) "=" (0+ space)
+                                         (syntax open-parenthesis))
+                                     nil t))
+        (setq found (not (python-syntax-comment-or-string-p))))
+      (if found
+          (when (not (looking-at (rx-to-string
+                                  `(and (0+ (not (syntax close-parenthesis)))
+                                        (syntax string-quote) ,thing (syntax string-quote)))))
+            (insert (format "\'%s\', " thing))
+            (esk/sort-symbols nil (beginning-of-thing 'sexp) (end-of-thing 'sexp)))
+        (end-of-buffer)
+        (insert (format "\n\n__all__ = (\'%s\',)\n" thing))))))
+
 (eval-after-load 'python
   '(progn
      (add-hook 'python-mode-hook #'esk/run-coding-hook)
@@ -36,6 +59,7 @@
 
      (add-to-list 'company-backends 'company-jedi)
 
+     (define-key python-mode-map (kbd "C-c +") #'esk/python-add-symbol-to-__all__)
      (define-key python-mode-map (kbd "C-c b") #'python-nav-backward-defun)
      (define-key python-mode-map (kbd "C-c f") #'python-nav-forward-defun)
      (define-key python-mode-map (kbd "C-c u") #'python-nav-backward-statement)

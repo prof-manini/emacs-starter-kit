@@ -102,7 +102,7 @@ start everything unconditionally."
  '(auto-revert-tail-mode-text "")
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(fill-column 95)
- '(flymake-python-pyflakes-executable (quote "python3.6"))
+ '(flymake-python-pyflakes-executable (quote "/usr/local/bin/python3.6"))
  '(flymake-python-pyflakes-extra-arguments (quote ("-m" "pyflakes")))
  '(git-commit-summary-max-length 70)
  '(ispell-dictionary "american")

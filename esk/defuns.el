@@ -321,6 +321,17 @@ See `sort-regexp-fields'."
   (interactive "P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
 
+(defun esk/sort-symbols (reverse beg end)
+  "Sort symbols in region alphabetically.
+Prefixed with negative \\[universal-argument], sorts in reverse.
+
+The variable `sort-fold-case' determines whether alphabetic case
+affects the sort order.
+
+See `sort-regexp-fields'."
+  (interactive "P\nr")
+  (sort-regexp-fields reverse "\\(\\sw\\|\\s_\\)+" "\\&" beg end))
+
 ;; Cycle thru a ring of dictionaries
 
 ;; Uncomment/add desired languages. Alternatively, specific users may

@@ -41,7 +41,8 @@
      (define-key python-mode-map (kbd "C-c u") #'python-nav-backward-statement)
      (define-key python-mode-map (kbd "C-c d") #'python-nav-forward-statement)
      (define-key python-mode-map (kbd "C-c r") #'py-isort-buffer)
-     (define-key python-mode-map (kbd "C-c v") #'esk/python-region-as-new-variable)))
+     (define-key python-mode-map (kbd "C-c v") #'esk/python-region-as-new-variable)
+     (define-key python-mode-map (kbd "C-c S") #'esk/sort-symbols)))
 
 (eval-after-load 'py-isort
   '(progn

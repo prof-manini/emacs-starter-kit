@@ -154,7 +154,7 @@
 (csetq select-enable-clipboard t)
 
 (add-hook 'c-mode-hook #'esk/run-coding-hook)
-(add-hook 'c++-mode #'esk/run-coding-hook)
+(add-hook 'c++-mode-hook #'esk/run-coding-hook)
 (add-hook 'css-mode-hook #'esk/run-coding-hook)
 (add-hook 'dockerfile-mode-hook #'esk/run-coding-hook)
 (add-hook 'html-mode-hook #'esk/run-coding-hook)

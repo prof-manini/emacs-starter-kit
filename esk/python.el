@@ -34,7 +34,7 @@
                                         (syntax string-quote) ,thing (syntax string-quote)))))
             (insert (format "\'%s\', " thing))
             (esk/sort-symbols nil (beginning-of-thing 'sexp) (end-of-thing 'sexp)))
-        (end-of-buffer)
+        (goto-char (point-max))
         (insert (format "\n\n__all__ = (\'%s\',)\n" thing))))))
 
 (eval-after-load 'python

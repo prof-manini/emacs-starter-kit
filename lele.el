@@ -105,6 +105,7 @@ start everything unconditionally."
  '(flymake-python-pyflakes-executable (quote "/usr/local/bin/python3.6"))
  '(flymake-python-pyflakes-extra-arguments (quote ("-m" "pyflakes")))
  '(git-commit-summary-max-length 70)
+ '(ido-ignore-buffers (quote ("\\` " "newsrc-dribble" "daneel.arstecnica.it:")))
  '(ispell-dictionary "american")
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))
  '(longlines-show-hard-newlines t)

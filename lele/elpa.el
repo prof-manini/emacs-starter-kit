@@ -1,5 +1,6 @@
 ;;; lele/elpa.el --- Lele's ELPA specialization
 
+(push 'async esk/packages)
 (push 'dockerfile-mode esk/packages)
 (push 'erc-hl-nicks esk/packages)
 (push 'nginx-mode esk/packages)

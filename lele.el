@@ -8,9 +8,15 @@
 (csetq user-mail-address "lele@metapensiero.it")
 (csetq user-full-name "Lele Gaifax")
 
+
 ;; notmuch
 
 (load (concat esk/user-specific-dir "notmuch"))
+
+;; Use async send-mail
+(require 'smtpmail-async)
+(setq send-mail-function #'async-smtpmail-send-it
+      message-send-mail-function #'async-smtpmail-send-it)
 
 
 ;; reStructuredText

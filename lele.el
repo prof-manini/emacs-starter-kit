@@ -160,6 +160,7 @@ start everything unconditionally."
  '(smtpmail-smtp-server "mail.arstecnica.it")
  '(smtpmail-smtp-service 25)
  '(web-mode-markup-indent-offset 2)
+ '(wgrep-enable-key "\C-x\C-q")
  '(whitespace-line-column nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

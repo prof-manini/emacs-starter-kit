@@ -43,6 +43,17 @@
      (add-to-list 'projectile-other-file-alist '("pj" "js" "py"))))
 
 
+;; google-translate
+
+(require 'google-translate)
+(csetq google-translate-default-source-language "en")
+(csetq google-translate-default-target-language "it")
+(global-set-key "\C-ct." #'google-translate-at-point)
+(global-set-key "\C-ctt" #'google-translate-query-translate)
+(global-set-key "\C-ctr." #'google-translate-at-point-reverse)
+(global-set-key "\C-ctrt" #'google-translate-query-translate-reverse)
+
+
 ;; Automatically update copyright years when saving
 
 (csetq copyright-names-regexp (regexp-quote (user-full-name)))

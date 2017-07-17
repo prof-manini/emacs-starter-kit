@@ -78,7 +78,7 @@
 ;;  exec --no-startup-id i3-msg 'workspace 2; exec emacs -f mine-emacs-!; workspace 1'
 
 (defun esk/mine-emacs (&optional dont-ask)
-  "Connect to IRC, GNUS, Jabber, Notmuch and activate Emacs server, but ask first.
+  "Connect to IRC, GNUS, Notmuch and activate Emacs server, but ask first.
 If DONT-ASK is non-nil, interactively when invoked with a prefix arg,
 start everything unconditionally."
   (interactive "P")
@@ -87,7 +87,6 @@ start everything unconditionally."
   (if (or dont-ask (y-or-n-p "Notmuch? ")) (notmuch))
   (if (or dont-ask (y-or-n-p "GNUS? ")) (gnus))
   (if (or dont-ask (y-or-n-p "IRC? ")) (esk/start-erc-session))
-  ;; (if (or dont-ask (y-or-n-p "Jabber? ")) (jabber-connect-all))
 
   (message "Have a nice day!"))
 

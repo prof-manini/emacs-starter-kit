@@ -107,7 +107,7 @@
 
 (global-set-key [f12] #'auto-fill-mode)
 (global-set-key [C-f12] #'visual-line-mode)
-(global-set-key [S-f12] #'linum-mode)
+(global-set-key [S-f12] #'toggle-display-line-numbers)
 (global-set-key [M-f12] #'menu-bar-mode)
 
 ;; Other global keys

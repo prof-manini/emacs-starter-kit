@@ -10,6 +10,7 @@
 .newsrc-dribble
 .yas-compiled-snippets.el
 /.byte-compile-timestamp
+/.cache/
 /ac-comphist.dat
 /auto-save-list/
 /backups/

@@ -9,3 +9,4 @@
 (push 'notmuch-labeler esk/packages)
 (push 'rainbow-mode esk/packages)
 (push 's esk/packages)
+(push 'treemacs esk/packages)

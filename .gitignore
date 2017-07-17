@@ -26,6 +26,7 @@
 /local/
 /network-security.data
 /projectile.cache
+/tramp
 \#*
 __pycache__/
 loaddefs.el

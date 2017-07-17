@@ -5,6 +5,7 @@ BATCH=$(EMACS) --batch -Q
 EDIR=~/.emacs.d
 EMAX=$(BATCH) -l $(EDIR)/init.el
 ELPA=$(BATCH) -l $(EDIR)/esk/elpa.el$(if $(wildcard $(EDIR)/$(USER)/elpa.el), -l $(EDIR)/$(USER)/elpa.el,)
+UPLD=$(BATCH) -l $(EDIR)/esk/update-loaddefs.el
 ESKDIR=esk
 ESKELS=$(wildcard $(ESKDIR)/*.el)
 ETSDIR=elpa-to-submit
@@ -28,14 +29,7 @@ distclean: clean
 
 $(ETSAL): $(ETSELS)
 	@echo "Generating $@..."
-	@cd $(ETSDIR) && $(BATCH) --eval "(progn\
-	  (fset 'message (lambda (&rest _)))\
-	  (setq make-backup-files nil)\
-	  (setq vc-handled-backends nil)\
-	  (setq default-directory (file-truename default-directory))\
-	  (setq generated-autoload-file (expand-file-name \"loaddefs.el\"))\
-	  (setq find-file-visit-truename t)\
-	  (update-directory-autoloads default-directory)))" >>$(ESKLOG) 2>/dev/null
+	@cd $(ETSDIR) && $(UPLD) >>$(ESKLOG) 2>/dev/null
 
 $(BCTIMESTAMP): $(ALLELS)
 	@echo "Compiling $?..."

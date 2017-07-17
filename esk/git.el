@@ -38,19 +38,26 @@ Look up `pathspec' in the `git help glossary' for details.")
 
 (defun esk/git-grep (command)
   "Use the `grep' machinery to run `git grep'.
-Without a universal prefix argument, the search is executed only
-in the current Git repository, otherwise it recurses down also in
-all submodules.
-With two univeral prefix arguments, the search starts in the
-outmost Git repository recursing down in all submodules."
+By default the search is executed only in the current Git repository,
+starting from its top level directory.
+
+With an universal prefix argument it recurses down also in all submodules.
+
+With two univeral prefix arguments, the search starts in the outmost Git
+repository recursing down in all submodules.
+
+With an universal prefix argument equal to 0 the search starts from
+the current directory."
   (interactive
-   (let ((what (or (thing-at-point 'symbol t)
-                   (read-from-minibuffer "Regexp to search: ")))
-         (toplevel (esk/git-toplevel (equal current-prefix-arg '(16))))
+   (let ((what (thing-at-point 'symbol t))
+         (toplevel (if (= (prefix-numeric-value current-prefix-arg) 0)
+                       default-directory
+                     (esk/git-toplevel (= (prefix-numeric-value current-prefix-arg) 16))))
          (git-grep "git --no-pager grep -n --color=always ")
          grep-command)
-     (setq what (shell-quote-argument what))
-     (if current-prefix-arg
+     (setq what (shell-quote-argument
+                 (read-from-minibuffer "Regexp to search: " what)))
+     (if (and current-prefix-arg (> (prefix-numeric-value current-prefix-arg) 0))
          (let ((git-submodule-foreach "git --no-pager submodule --quiet foreach --recursive ")
                (sed (concat "sed \"s,^,$toplevel/$path/,;s,^"
                             (expand-file-name toplevel) ",,\"")))

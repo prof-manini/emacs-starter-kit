@@ -128,6 +128,7 @@ start everything unconditionally."
  '(magit-delete-by-moving-to-trash nil)
  '(message-fill-column 78)
  '(message-kill-buffer-on-exit t)
+ '(mm-text-html-renderer (quote w3m))
  '(mode-line-percent-position (quote (-3 "%o")))
  '(notmuch-fcc-dirs "metapensiero/Sent")
  '(org-time-clocksum-format

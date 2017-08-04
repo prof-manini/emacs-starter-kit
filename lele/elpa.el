@@ -10,3 +10,4 @@
 (push 'rainbow-mode esk/packages)
 (push 's esk/packages)
 (push 'treemacs esk/packages)
+(push 'w3m esk/packages)

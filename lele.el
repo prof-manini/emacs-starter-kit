@@ -12,6 +12,7 @@
 ;; notmuch
 
 (load (concat esk/user-specific-dir "notmuch"))
+(csetq notmuch-crypto-process-mime t)
 
 ;; Use async send-mail
 (require 'smtpmail-async)

@@ -25,7 +25,6 @@
    'js2-mode
    'json-mode
    'magit
-   'mo-git-blame
    'projectile
    'py-isort
    'scss-mode

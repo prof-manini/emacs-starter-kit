@@ -37,6 +37,20 @@
         (goto-char (point-max))
         (insert (format "\n\n__all__ = (\'%s\',)\n" thing))))))
 
+(defun esk/python-split-string ()
+  "Split string at point."
+  (interactive)
+  (let ((ssp (python-syntax-context 'string)))
+    (when ssp
+      (let ((ssqc (char-after ssp))
+            (ws (progn
+                  (looking-at "\s*")
+                  (match-string-no-properties 0))))
+        (insert ssqc)
+        (newline-and-indent)
+        (insert ssqc)
+        (insert ws)))))
+
 (eval-after-load 'python
   '(progn
      (add-hook 'python-mode-hook #'esk/run-coding-hook)
@@ -59,6 +73,7 @@
 
      (add-to-list 'company-backends 'company-jedi)
 
+     (define-key python-mode-map [C-return] #'esk/python-split-string)
      (define-key python-mode-map (kbd "C-c +") #'esk/python-add-symbol-to-__all__)
      (define-key python-mode-map (kbd "C-c b") #'python-nav-backward-defun)
      (define-key python-mode-map (kbd "C-c f") #'python-nav-forward-defun)

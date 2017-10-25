@@ -124,6 +124,9 @@ Symbols matching the text at point are put first in the completion list."
   "Enable things that are convenient across all coding buffers."
   (run-hooks 'esk/coding-hook))
 
+(defun esk/turn-on-truncate-lines ()
+  (setq truncate-lines t))
+
 (defun esk/untabify-buffer ()
   "Replace TABs with spaces in the whole buffer."
   (interactive)

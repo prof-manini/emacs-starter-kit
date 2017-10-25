@@ -15,7 +15,7 @@
 (ansi-color-for-comint-mode-on)
 
 (csetq color-theme-is-global t)
-(csetq compilation-mode-hook #'visual-line-mode)
+(add-hook 'compilation-mode-hook #'esk/turn-on-truncate-lines)
 (csetq compilation-scroll-output t)
 (csetq echo-keystrokes 0.1)
 (csetq ediff-window-setup-function #'ediff-setup-windows-plain)

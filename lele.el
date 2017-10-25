@@ -112,7 +112,12 @@ start everything unconditionally."
  '(fill-column 95)
  '(flymake-start-syntax-check-on-find-file nil)
  '(git-commit-summary-max-length 70)
- '(ido-ignore-buffers (quote ("\\` " "newsrc-dribble" "daneel.arstecnica.it:")))
+ '(ido-ignore-buffers
+   (quote
+    ("\\` "
+     "newsrc-dribble"
+     "daneel\\.arstecnica\\.it:"
+     "\\*notmuch-saved-search-unread\\*")))
  '(ispell-dictionary "american")
  '(jedi:server-command (quote ("/usr/local/bin/jediepcserver")))
  '(longlines-show-hard-newlines t)

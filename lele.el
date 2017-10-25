@@ -62,16 +62,6 @@
 (add-hook 'before-save-hook #'copyright-update)
 
 
-;; Monkey patch flymake-python-pyflakes-warn-regex function: ignore the argument and always
-;; return the right regexp for pyflakes: I'm executing it with "python3.6 -m pyflakes" so the
-;; original logic is wrong
-
-(eval-after-load 'flymake-python-pyflakes
-  '(defun flymake-python-pyflakes-warn-regex (executable)
-     "Return a regex which identifies warnings output by EXECUTABLE."
-     "\\(^redefinition\\|.*unused.*\\|used$\\)"))
-
-
 ;; Customize my main Emacs instance: I'm used to have one Emacs dedicated to
 ;; news, mail, chat and so on, living in the second i3 workspace. This function
 ;; is then called by my i3 configuration file with
@@ -119,8 +109,7 @@ start everything unconditionally."
  '(auto-revert-tail-mode-text "")
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(fill-column 95)
- '(flymake-python-pyflakes-executable (quote "/usr/local/bin/python3.6"))
- '(flymake-python-pyflakes-extra-arguments (quote ("-m" "pyflakes")))
+ '(flymake-start-syntax-check-on-find-file nil)
  '(git-commit-summary-max-length 70)
  '(ido-ignore-buffers (quote ("\\` " "newsrc-dribble" "daneel.arstecnica.it:")))
  '(ispell-dictionary "american")
@@ -168,6 +157,16 @@ start everything unconditionally."
      )))
  '(projectile-mode-line (quote (:eval (format " 〚%s〛" (projectile-project-name)))))
  '(python-fill-docstring-style (quote pep-257-nn))
+ '(python-flymake-command (quote ("python3.6" "-m" "flake8"
+                                  "--ignore=E121,E123,E126,E226,E24,E704,E711,W503,W504"
+                                  "-")))
+ '(python-flymake-command-output-regexp
+   (list "^\\(?:.*\\.p[yj]\\|<?stdin>?\\):\\(?1:[0-9]+\\):\\(?:\\(?2:[0-9]+\\):\\)? \\(?3:.*\\)$" 1 2 nil 3))
+ '(python-flymake-msg-alist
+   (quote
+    (("\\(^redefinition\\|.*unused.*\\|used$\\)" . :warning)
+     ("^E999" . :error)
+     ("^[EW][0-9]+" . :note))))
  '(scss-compile-at-save nil)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")

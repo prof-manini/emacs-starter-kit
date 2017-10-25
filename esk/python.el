@@ -1,4 +1,4 @@
-;;; esk/python.el --- setup of python stuff
+;;; esk/python.el --- setup of python stuff  -*- lexical-binding:t -*-
 ;;
 
 (eval-when-compile
@@ -37,6 +37,18 @@
         (goto-char (point-max))
         (insert (format "\n\n__all__ = (\'%s\',)\n" thing))))))
 
+(defun esk/python-mode-setup ()
+  ;; Run other hooks
+  (esk/run-coding-hook)
+
+  ;; Activate flymake
+  (flymake-mode 1)
+
+  ;; Prettify only lambda keyword
+  (setq prettify-symbols-alist '(("lambda" . ?λ)))
+  (prettify-symbols-mode -1)
+  (prettify-symbols-mode))
+
 (defun esk/python-split-string ()
   "Split string at point."
   (interactive)
@@ -53,21 +65,13 @@
 
 (eval-after-load 'python
   '(progn
-     (add-hook 'python-mode-hook #'esk/run-coding-hook)
+     (add-hook 'python-mode-hook #'esk/python-mode-setup)
 
      ;; Avoid pointless warning
      (csetq python-indent-guess-indent-offset-verbose nil)
 
      ;; Activate pdbtrack in M-x shell buffers
      (add-hook 'comint-output-filter-functions #'python-pdbtrack-comint-output-filter-function)
-
-     (require 'flymake-python-pyflakes)
-     (require 'flymake-cursor)
-
-     (add-hook 'python-mode-hook #'flymake-python-pyflakes-load)
-     (add-hook 'python-mode-hook
-               (lambda ()
-                 (setq-local prettify-symbols-alist '(("lambda" . ?λ)))))
 
      (require 'company-jedi)
 

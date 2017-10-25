@@ -18,8 +18,6 @@
    'erc-hl-nicks
    'expand-region
    'flx-ido
-   'flymake-cursor
-   'flymake-python-pyflakes
    'iedit
    'jedi-core
    'js2-mode

@@ -108,6 +108,7 @@ start everything unconditionally."
  '(auto-revert-mode-text "")
  '(auto-revert-tail-mode-text "")
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
+ '(desktop-restore-eager 20)
  '(fill-column 95)
  '(flymake-start-syntax-check-on-find-file nil)
  '(git-commit-summary-max-length 70)

@@ -136,17 +136,18 @@ start everything unconditionally."
      company
      company-jedi
      darcsum
+     docker-tramp
      dockerfile-mode
      erc-hl-nicks
      expand-region
      flx-ido
-     flymake-cursor
-     flymake-python-pyflakes
+     git-timemachine
+     google-translate
      iedit
      js2-mode
-     json-mode
+     less-css-mode
+     lsp-mode
      magit
-     mo-git-blame
      nginx-mode
      notmuch
      notmuch-labeler
@@ -154,7 +155,9 @@ start everything unconditionally."
      py-isort
      rainbow-mode
      smartparens
+     treemacs
      vc-darcs
+     w3m
      web-mode
      wgrep
      whitespace-cleanup-mode

@@ -14,7 +14,7 @@
 (csetq gnus-read-newsrc-file nil)
 (csetq gnus-save-newsrc-file nil)
 
-; Store all Gnus staff under a directory ignored by git
+;; Store all Gnus stuff under a directory ignored by git
 (csetq gnus-home-directory (concat esk/top-dir "gnus/"))
 (csetq gnus-init-file (concat gnus-home-directory "gnus-init"))
 (csetq gnus-startup-file (concat gnus-home-directory "newsrc"))

@@ -78,8 +78,6 @@
 ;; even more when coupled with flx
 (require 'flx-ido)
 (flx-ido-mode t)
-;; disable ido faces to see flx highlights.
-(csetq ido-use-faces nil)
 
 ;; Makefiles are an exception, TAB is mandatory at bol
 (add-hook 'makefile-mode-hook #'esk/turn-on-whitespace-mode-makefiles)

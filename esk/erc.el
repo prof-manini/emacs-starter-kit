@@ -3,7 +3,7 @@
 
 (eval-when-compile (require 'erc))
 
-(defun erc-generate-log-file-name-brief (buffer target nick server port)
+(defun esk/erc-generate-log-file-name-brief (buffer target nick server port)
   "Computes a log file name from the TARGET and SERVER only.
 This results in a filename of the form #channel@server.txt."
   (let ((file (concat target "@" server ".txt")))
@@ -14,7 +14,7 @@ This results in a filename of the form #channel@server.txt."
      (csetq erc-log-insert-log-on-open nil)
      (csetq erc-log-channels t)
      (csetq erc-log-channels-directory "~/irclogs/")
-     (csetq erc-generate-log-file-name-function #'erc-generate-log-file-name-brief)
+     (csetq erc-generate-log-file-name-function #'esk/erc-generate-log-file-name-brief)
      (csetq erc-log-write-after-send t)
      (csetq erc-log-write-after-insert t)
      (csetq erc-save-buffer-on-part nil)

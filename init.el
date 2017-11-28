@@ -103,6 +103,7 @@ not in the generic assignments."
 
                   ; extensions
                   "completion"
+                  "elfeed"
                   "gnus"
                   "yasnippet"
                   ))

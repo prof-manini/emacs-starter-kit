@@ -2,6 +2,8 @@
 
 (push 'async esk/packages)
 (push 'dockerfile-mode esk/packages)
+(push 'elfeed esk/packages)
+(push 'elfeed-goodies esk/packages)
 (push 'erc-hl-nicks esk/packages)
 (push 'google-translate esk/packages)
 (push 'nginx-mode esk/packages)

@@ -28,7 +28,7 @@
 /network-security.data
 /projectile.cache
 /tramp
-/url/cookies
+/url/
 \#*
 __pycache__/
 loaddefs.el

@@ -167,16 +167,16 @@ start everything unconditionally."
      )))
  '(projectile-mode-line (quote (:eval (format " 〚%s〛" (projectile-project-name)))))
  '(python-fill-docstring-style (quote pep-257-nn))
- '(python-flymake-command (quote ("python3.6" "-m" "flake8"
-                                  "--ignore=E121,E123,E126,E226,E24,E704,E711,W503,W504"
-                                  "-")))
- '(python-flymake-command-output-regexp
+ '(python-flymake-command
+   (quote
+    ("flake8" "--ignore=E121,E123,E126,E226,E24,E266,E704,E711,W503,W504" "-")))
+ '(python-flymake-command-output-pattern
    (list "^\\(?:.*\\.p[yj]\\|<?stdin>?\\):\\(?1:[0-9]+\\):\\(?:\\(?2:[0-9]+\\):\\)? \\(?3:.*\\)$" 1 2 nil 3))
  '(python-flymake-msg-alist
    (quote
     (("\\(^redefinition\\|.*unused.*\\|used$\\)" . :warning)
-     ("^E999" . :error)
-     ("^[EW][0-9]+" . :note))))
+     ("^E[0-9]+" . :error)
+     ("^W[0-9]+" . :note))))
  '(scss-compile-at-save nil)
  '(send-mail-function (quote smtpmail-send-it))
  '(smtpmail-smtp-server "mail.arstecnica.it")

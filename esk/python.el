@@ -63,6 +63,14 @@
         (insert ssqc)
         (insert ws)))))
 
+(defconst esk/python-c-style
+  '("python"
+    (indent-tabs-mode . nil)
+    (c-basic-offset . 4))
+  "Rectified CPython style")
+
+(c-add-style "python3" esk/python-c-style)
+
 (eval-after-load 'python
   '(progn
      (add-hook 'python-mode-hook #'esk/python-mode-setup)

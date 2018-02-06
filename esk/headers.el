@@ -66,13 +66,15 @@
   "#+AUTHOR: " (user-full-name) " <" user-mail-address ">\n"
   "#+DATE: " (format-time-string "%x") "\n"
   "#+LANGUAGE: it\n"
-  "#+LaTeX_HEADER: \\usepackage[italian]{babel}\n"
-  "#+CATEGORY: " _ "\n"
+  "#+CATEGORY: " - "\n"
   "#+SEQ_TODO: TODO(t) WiP(w) | DONE(d) CANCELLED(c)\n"
   "#+STARTUP: showall\n"
   "#+OPTIONS: H:4\n"
   "#+PROPERTY: Effort_ALL 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00\n"
-  "#+COLUMNS: %40ITEM(Voce) %13Effort(Ore stimate){:} %CLOCKSUM(Ore lavorate)\n\n")
+  "#+COLUMNS: %40ITEM(Voce) %13Effort(Ore stimate){:} %CLOCKSUM(Ore lavorate)\n"
+  "#+LATEX_HEADER: \\usepackage[italian]{babel}\n\n"
+  "* " str "\n\n"
+  "# Local IspellDict: italiano\n")
 
 (define-skeleton esk/file-header:preventivo
   "Intestazione per i preventivi ORG."
@@ -82,13 +84,13 @@
   "#+AUTHOR: " (user-full-name) " <" user-mail-address ">\n"
   "#+DATE: " (format-time-string "%x") "\n"
   "#+LANGUAGE: it\n"
-  "#+LaTeX_HEADER: \\usepackage[italian]{babel}\n"
-  "#+CATEGORY: " _ "\n"
+  "#+CATEGORY: " - "\n"
   "#+SEQ_TODO: TODO(t) WiP(w) | DONE(d) CANCELLED(c)\n"
   "#+STARTUP: showall\n"
   "#+OPTIONS: H:4\n"
   "#+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00\n"
-  "#+COLUMNS: %40ITEM(Voce) %13Effort(Ore stimate){:} %CLOCKSUM(Ore lavorate)\n\n"
+  "#+COLUMNS: %40ITEM(Voce) %13Effort(Ore stimate){:} %CLOCKSUM(Ore lavorate)\n"
+  "#+LATEX_HEADER: \\usepackage[italian]{babel}\n\n"
   "#+BEGIN: columnview :hlines 1 :id global :indent t\n"
   "#+END:\n\n"
   "* " str "\n\n"
@@ -100,7 +102,8 @@
   "*** Stima\n"
   "    :PROPERTIES:\n"
   "    :Effort:   0:30\n"
-  "    :END:\n")
+  "    :END:\n\n"
+  "# Local IspellDict: italiano\n")
 
 (define-skeleton esk/file-header:mako
   "Standard Mako file header."

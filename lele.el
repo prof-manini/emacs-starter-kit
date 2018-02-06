@@ -111,6 +111,7 @@ start everything unconditionally."
  '(canlock-password "4ed8bef8ca02417ad311454b547d2c0b6206cd99")
  '(desktop-restore-eager 20)
  '(fill-column 95)
+ '(flymake-start-on-flymake-mode nil)
  '(git-commit-summary-max-length 70)
  '(ido-ignore-buffers
    (quote

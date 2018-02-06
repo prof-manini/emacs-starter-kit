@@ -128,6 +128,7 @@ start everything unconditionally."
  '(mm-text-html-renderer (quote w3m))
  '(mode-line-percent-position (quote (-3 "%o")))
  '(notmuch-fcc-dirs "metapensiero/Sent")
+ '(org-list-allow-alphabetical t)
  '(org-time-clocksum-format
    (quote
     (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))

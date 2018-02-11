@@ -1,0 +1,17 @@
+* Ennesimo fork dell'Emacs Starter Kit
+
+Questo progetto deriva da (è un /fork/ di) quello dell'[[https://github.com/lelit/emacs-starter-kit][Emacs Starter Kit]]
+del mio amico Lele Gaifas (lelit on github) a sua volta derivato da
+[[https://github.com/gabrielelanaro/emacs-starter-kit][quello]] di Gabriele Lanaro che lo ha costruito a partire dall'originale
+Emacs Starter Kit e dal suo /Emacs for Python/. Ricostruire questa
+storia può essere interessante ed istruttivo ma tutte le informazioni
+necessarie per utilizzare questo kit le trovate sulla [[https://github.com/lelit/emacs-starter-kit][pagina]] di
+Lele. Prima o poi arriveranno anche alcuni contributi miei.
+
+* Note, suggerimenti, configurazioni personali
+
+Lavori in corso :)
+
+# Local Variables:
+# ispell-local-dictionary: "italian"
+# End:

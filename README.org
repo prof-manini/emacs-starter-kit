@@ -1,0 +1,11 @@
+* Yet another fork of Emacs Starter Kit
+
+This is a fork of the [[https://github.com/lelit/emacs-starter-kit][Emacs Starter Kit]] from my good friend Lele
+Gaifas (lelit on github) which in turn is a fork of [[https://github.com/gabrielelanaro/emacs-starter-kit][Gabriele Lanaro's]]
+one which is a merge of the original Emacs Starter Kit and his Emacs
+for Python files. You may learn a lot by tracing back the history of
+this project, but all you need to know can be found on [[https://github.com/lelit/emacs-starter-kit][lele's]] page.
+
+* My personal notes, suggestions and configurations.
+
+Will be here soon.
